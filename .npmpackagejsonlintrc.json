@@ -1,0 +1,28 @@
+{
+  "rules": {
+    "require-name": "error",
+    "name-type": "error",
+    "name-format": "error",
+
+    "require-version": "error",
+    "version-type": "error",
+    "version-format": "error",
+
+    "require-description": "error",
+    "description-type": "error",
+
+    "require-author": "error",
+    "valid-values-author": ["error", [
+      "Raccoons <info@raccoons.co>"
+    ]],
+
+    "require-license": "error",
+    "license-type": "error",
+    "valid-values-license": ["error", [
+      "MIT"
+    ]],
+
+    "require-engines": "error",
+    "engines-type": "error"
+  }
+}
