@@ -1,7 +1,7 @@
 {
   "name": "failfast",
   "version": "0.0.1",
-  "description": "FailFast is the TypeScript annotation to support Test-driven development discipline",
+  "description": "FailFast is the TypeScript annotation to support Test-driven development discipline.",
   "files": [
     "lib/"
   ],
