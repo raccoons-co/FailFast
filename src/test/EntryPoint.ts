@@ -1,7 +1,7 @@
-import FailFastAnnotationTest from "./FailFastAnnotationTest";
+import TestAnnotationTest from "./TestAnnotationTest";
 
 try {
-    new FailFastAnnotationTest();
+    new TestAnnotationTest();
 } catch(exception) {
     console.log(exception);
 }

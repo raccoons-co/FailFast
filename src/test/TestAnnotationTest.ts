@@ -1,12 +1,12 @@
-import {FailFast} from "../main/index";
+import {Test} from "../main/index";
 
-export default class FailFastAnnotationTest {
-    @FailFast
+export default class TestAnnotationTest {
+    @Test
     public nothing() {
         console.log("Nothing");
     }
 
-    @FailFast
+    @Test
     public else() {
         console.log("Else");
     }

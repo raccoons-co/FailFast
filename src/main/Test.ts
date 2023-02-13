@@ -1,13 +1,12 @@
 import Annotation from "./Annotation";
 
-class FailFast implements Annotation {
+class Test implements Annotation {
     public methodRunDecorator() {
         return function (target: object, propertyKey: string, descriptor: PropertyDescriptor) {
-
-            const childFunction = descriptor.value;
-            childFunction.apply();
+            const method = descriptor.value;
+            method.apply();
         }
     }
 }
 
-export default new FailFast().methodRunDecorator();
+export default new Test().methodRunDecorator();

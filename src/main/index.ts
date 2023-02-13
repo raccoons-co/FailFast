@@ -1,5 +1,5 @@
-import FailFast from "./FailFast";
+import Test from "./Test";
 
 export {
-    FailFast
+    Test
 }
