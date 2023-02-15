@@ -1,11 +1,11 @@
-# FailFast
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/raccoons-co/failfast/tree/develop.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/raccoons-co/failfast/tree/develop)
+# Cleanway
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/raccoons-co/cleanway/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/raccoons-co/cleanway/tree/master)
 
-FailFast is the TypeScript annotation to support Test-driven development discipline.
+Cleanway is the TypeScript annotations to support Test-driven development discipline.
 
 Install library with
 ```shell
-% npm install @raccoons-co/failfast
+% npm install @raccoons-co/cleanway
 ```
 
 Implement your main `EntryPoint.ts`:
@@ -21,7 +21,7 @@ try {
 
 Implement `YourTest.ts`:
 ```
-import {Test} from "@raccooons-co/failfast";
+import {Test} from "@raccooons-co/cleanway";
 
 export default class YourTest {
     @Test
@@ -40,7 +40,7 @@ export default class YourTest {
 }
 ```
 
-Run `failfast` with `package.json` script:
+Run `cleanway` with `package.json` script:
 ```
   "scripts": {
     "build": "tsc",

@@ -1,7 +1,7 @@
 {
-  "name": "failfast",
+  "name": "cleanway",
   "version": "0.0.1",
-  "description": "FailFast is the TypeScript annotation to support Test-driven development discipline.",
+  "description": "Cleanway is the TypeScript annotations to support Test-driven development discipline.",
   "files": [
     "lib/"
   ],
@@ -21,6 +21,7 @@
   },
   "keywords": [
     "TypeScript",
+    "Annotation",
     "TDD"
   ],
   "author": "Raccoons <info@raccoons.co>",
