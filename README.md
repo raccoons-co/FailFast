@@ -10,10 +10,10 @@ Install library with
 
 Implement your main `EntryPoint.ts`:
 ```
-import TestAnnotationTest from "./YourTest.ts";
+import YourTest from "./YourTest";
 
 try {
-    new TestAnnotationTest();
+    new YourTest();
 } catch(exception) {
     console.log(exception);
 }

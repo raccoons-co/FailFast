@@ -1,7 +1,7 @@
 import Annotation from "./Annotation";
 
 class Test implements Annotation {
-    public methodRunDecorator() {
+    public runMethod(){
         return function (target: object, propertyKey: string, descriptor: PropertyDescriptor) {
             const method = descriptor.value;
             method.apply();
@@ -9,4 +9,4 @@ class Test implements Annotation {
     }
 }
 
-export default new Test().methodRunDecorator();
+export default new Test().runMethod();
