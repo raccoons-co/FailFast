@@ -1,6 +1,6 @@
 {
   "name": "cleanway",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Cleanway is the TypeScript annotations to support Test-driven development discipline.",
   "files": [
     "lib/"

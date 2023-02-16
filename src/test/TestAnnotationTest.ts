@@ -5,6 +5,10 @@ import TestsInventory from "../main/TestsInventory";
 
 export default class TestAnnotationTest {
 
+    public testShouldFail() {
+        console.log("Test");
+    }
+
     @Test
     public testsCountAfterFirstTest() {
         assert.equal(TestsInventory.instance().methods().length, 1,"Incorrect tests count");
@@ -14,4 +18,5 @@ export default class TestAnnotationTest {
     public testsCountAfterSecondTest() {
         assert.equal(TestsInventory.instance().methods().length, 2,"Incorrect tests count");
     }
+
 }

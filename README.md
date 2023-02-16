@@ -25,18 +25,13 @@ import {Test} from "@raccooons-co/cleanway";
 
 export default class YourTest {
     @Test
-    public nothing() {
-        console.log("Nothing");
-    }
+    public nothing() {}
 
     @Test
-    public else() {
-        console.log("Else");
-    }
+    public else() {}
+
     @Test
-    public matters() {
-        console.log("Matters");
-    }
+    public matters() {}
 }
 ```
 
