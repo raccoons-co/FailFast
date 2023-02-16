@@ -1,15 +1,13 @@
 import Annotation from "./Annotation";
-import TestsInventory from "./TestsInventory";
+import TestMethodRunner from "./TestMethodRunner";
 
 class Test implements Annotation {
-    public runMethod(){
+
+    public execute(){
         return function (target: object, propertyKey: string, descriptor: PropertyDescriptor) {
-            const method = descriptor.value;
-            TestsInventory.instance().methods().push(method);
-            console.log("Run test", method);
-            method.apply();
+            new TestMethodRunner(target, propertyKey, descriptor).run();
         }
     }
 }
 
-export default new Test().runMethod();
+export default new Test().execute();
