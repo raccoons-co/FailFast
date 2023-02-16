@@ -1,12 +1,13 @@
 import Annotation from "./Annotation";
+import TestMethodRunner from "./TestMethodRunner";
 
 class Test implements Annotation {
-    public methodRunDecorator() {
+
+    public execute(){
         return function (target: object, propertyKey: string, descriptor: PropertyDescriptor) {
-            const method = descriptor.value;
-            method.apply();
+            new TestMethodRunner(target, propertyKey, descriptor).run();
         }
     }
 }
 
-export default new Test().methodRunDecorator();
+export default new Test().execute();
