@@ -1,13 +1,22 @@
 import {Test} from "../main/index";
+import {assert} from "chai";
+import TestsInventory from "../main/TestsInventory";
+
 
 export default class TestAnnotationTest {
-    @Test
-    public nothing() {
-        console.log("Nothing");
+
+    public testShouldFail() {
+        console.log("Test");
     }
 
     @Test
-    public else() {
-        console.log("Else");
+    public testsCountAfterFirstTest() {
+        assert.equal(TestsInventory.instance().methods().length, 1,"Incorrect tests count");
     }
+
+    @Test
+    public testsCountAfterSecondTest() {
+        assert.equal(TestsInventory.instance().methods().length, 2,"Incorrect tests count");
+    }
+
 }
