@@ -1,4 +1,4 @@
-/* eslint-disable */
+/*eslint @typescript-eslint/no-empty-function: "off"*/
 import {Test} from "../main/index";
 
 export default class YourTest {
