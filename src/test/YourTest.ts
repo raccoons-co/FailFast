@@ -1,13 +1,18 @@
-/*eslint @typescript-eslint/no-empty-function: "off"*/
 import {Test} from "../main/index";
 
 export default class YourTest {
     @Test
-    public nothing() {}
+    public nothing() {
+        // Intentionally empty.
+    }
 
     @Test
-    public else() {}
+    public else() {
+        // Intentionally empty.
+    }
 
     @Test
-    public matters() {}
+    public matters() {
+        // Intentionally empty.
+    }
 }
