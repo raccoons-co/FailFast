@@ -1,14 +1,25 @@
 {
-  "name": "cleanway",
+  "name": "@raccoons-co/cleanway",
   "version": "0.0.0",
   "description": "Cleanway is the TypeScript annotations to support Test-driven development discipline.",
+  "keywords": [
+    "TypeScript",
+    "Annotation",
+    "TDD"
+  ],
+  "homepage": "https://github.com/raccoons-co/cleanway#readme",
+  "bugs": {
+    "url": "https://github.com/raccoons-co/cleanway/issues"
+  },
+  "license": "MIT",
+  "author": "Raccoons <info@raccoons.co>",
   "files": [
     "lib/"
   ],
   "main": "lib/main/index",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raccoons-co/cleanway.git"
   },
   "scripts": {
     "build": "tsc",
@@ -19,13 +30,6 @@
     "pretest": "npm run build",
     "test": "node lib/test/EntryPoint"
   },
-  "keywords": [
-    "TypeScript",
-    "Annotation",
-    "TDD"
-  ],
-  "author": "Raccoons <info@raccoons.co>",
-  "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.3.4",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
@@ -38,5 +42,9 @@
   },
   "engines": {
     "node": ">=16.x"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
