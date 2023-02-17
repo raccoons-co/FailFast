@@ -5,6 +5,8 @@ orbs:
 
 jobs:
   node/pack:
+    docker:
+      - image: circleci/node:18.14.0
     steps:
       - run: npm pack
 
@@ -22,10 +24,3 @@ workflows:
       - node/pack:
           requires:
             - node/test
-          matrix:
-            parameters:
-              version:
-                # https://circleci.com/developer/images/image/cimg/node
-                - '19.6.0'
-                - '18.14.0'
-                - '16.19.0'
