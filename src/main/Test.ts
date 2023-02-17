@@ -3,7 +3,7 @@ import TestMethodRunner from "./TestMethodRunner";
 
 class Test implements Annotation {
 
-    public execute(){
+    public execute() {
         return function (target: object, propertyKey: string, descriptor: PropertyDescriptor) {
             new TestMethodRunner(target, propertyKey, descriptor).run();
         }

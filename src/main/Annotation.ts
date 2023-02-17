@@ -1,4 +1,3 @@
-/*eslint @typescript-eslint/no-empty-interface: "off"*/
 export default interface Annotation {
-    // Intentionally empty.
+    execute(): (target: object, propertyKey: string, descriptor: PropertyDescriptor) => void;
 }

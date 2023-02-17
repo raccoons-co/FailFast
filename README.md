@@ -1,7 +1,7 @@
 # Cleanway
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/raccoons-co/cleanway/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/raccoons-co/cleanway/tree/master)
 
-Cleanway is the TypeScript annotations to support Test-driven development discipline.
+TypeScript annotations library to support Test-driven development discipline.
 
 Install library with
 ```shell
@@ -24,14 +24,21 @@ Implement `YourTest.ts`:
 import {Test} from "@raccooons-co/cleanway";
 
 export default class YourTest {
-    @Test
-    public nothing() {}
 
     @Test
-    public else() {}
+    public nothing() {
+        // But your assertions here.
+    }
 
     @Test
-    public matters() {}
+    public else() {
+        // More assertions.
+    }
+
+    @Test
+    public matters() {
+        // For your code.
+    }
 }
 ```
 
