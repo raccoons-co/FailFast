@@ -4,7 +4,7 @@ orbs:
   node: circleci/node@5.1.0
 
 jobs:
-  node/pack:
+  pack:
     docker:
       - image: circleci/node:18.14.0
     steps:
@@ -21,6 +21,6 @@ workflows:
                 - '19.6.0'
                 - '18.14.0'
                 - '16.19.0'
-      - node/pack:
+      - pack:
           requires:
             - node/test
