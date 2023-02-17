@@ -7,9 +7,10 @@ workflows:
   simple:
     jobs:
       - node/test:
-          # Relevant tags can be found on https://circleci.com/developer/images/image/cimg/node
-          version: '18.14'
-          pkg-manager: npm
-      - node/pack:
-          version: '18.14'
-          pkg-manager: npm
+          matrix:
+            parameters:
+              version:
+                # https://circleci.com/developer/images/image/cimg/node
+                - '19.6.0'
+                - '18.14.0'
+                - '16.19.0'
