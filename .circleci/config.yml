@@ -9,6 +9,7 @@ jobs:
       - image: cimg/node:18.14.0
     steps:
       - checkout
+      - run: npm ci
       - run: npm run build
       - run: npm pack --dry-run
 
