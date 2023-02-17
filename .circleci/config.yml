@@ -3,6 +3,11 @@ version: 2.1
 orbs:
   node: circleci/node@5.1.0
 
+jobs:
+  node/pack:
+    steps:
+      - run: npm pack
+
 workflows:
   simple:
     jobs:
@@ -14,3 +19,6 @@ workflows:
                 - '19.6.0'
                 - '18.14.0'
                 - '16.19.0'
+      - node/pack:
+          requires:
+            - node/test
