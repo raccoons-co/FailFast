@@ -6,7 +6,7 @@ orbs:
 jobs:
   pack:
     docker:
-      - image: circleci/node:18.14.0
+      - image: cimg/node:18.14.0
     steps:
       - run: npm pack
 
