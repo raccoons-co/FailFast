@@ -8,17 +8,6 @@ Install library with
 % npm install @raccoons-co/cleanway
 ```
 
-Implement your main `EntryPoint.ts`:
-```
-import YourTest from "./YourTest";
-
-try {
-    new YourTest();
-} catch(exception) {
-    console.log(exception);
-}
-```
-
 Implement `YourTest.ts`:
 ```
 import {Test} from "@raccooons-co/cleanway";
@@ -39,6 +28,17 @@ export default class YourTest {
     public matters() {
         // For your code.
     }
+}
+```
+
+Implement your main `EntryPoint.ts`:
+```
+import YourTest from "./YourTest";
+
+try {
+    new YourTest();
+} catch(exception) {
+    console.log(exception);
 }
 ```
 
