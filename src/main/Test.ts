@@ -6,7 +6,7 @@ class Test implements Annotation {
     public execute() {
         return function (target: object, propertyKey: string, descriptor: PropertyDescriptor) {
             const method = descriptor.value;
-            TestsInventory.instance().methods().push(method);
+            TestsInventory.instance().keep(method);
             method.apply();
         }
     }
