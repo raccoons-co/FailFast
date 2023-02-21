@@ -25,7 +25,7 @@
     "build": "tsc",
     "lint.packagejson": "npmPkgJsonLint .",
     "lint.typescript": "eslint './src/**/*.ts'",
-    "postinstall": "npm-run-all lint.*",
+    "posttest": "npm-run-all lint.*",
     "prepublishOnly": "npm run build",
     "pretest": "npm run build",
     "test": "node lib/test/EntryPoint"

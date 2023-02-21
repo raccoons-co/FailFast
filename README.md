@@ -8,7 +8,7 @@ NOTE: Decorators are an experimental feature that may change in future releases.
 
 Install library with
 ```shell
-% npm install @raccoons-co/cleanway
+% npm install @raccoons-co/cleanway --save-dev
 ```
 
 Implement `YourTest.ts`:
