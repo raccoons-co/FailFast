@@ -10,7 +10,7 @@ export default class TestAnnotationTest {
 
     @Test
     public testsCountAfterFirstTest() {
-        assert.equal(TestsInventory.instance().methods().length, 1);
+        assert.equal(TestsInventory.instance().size(), 1);
     }
 
     public ignoreMethodInTheMeddle() {
@@ -19,7 +19,7 @@ export default class TestAnnotationTest {
 
     @Test
     public testsCountAfterSecondTest() {
-        assert.equal(TestsInventory.instance().methods().length, 2);
+        assert.equal(TestsInventory.instance().size(), 2);
     }
 
     public ignoreMethodInTheEnd() {
