@@ -1,7 +1,10 @@
 # Cleanway
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/raccoons-co/cleanway/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/raccoons-co/cleanway/tree/master)
 
-TypeScript annotations library to support Test-driven development discipline.
+`@Test` annotation for TypeScript to support a test-driven development discipline.
+```
+NOTE: Decorators are an experimental feature that may change in future releases.
+```
 
 Install library with
 ```shell
