@@ -1,6 +1,6 @@
 {
   "name": "@raccoons-co/cleanway",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Cleanway is the TypeScript annotations to support Test-driven development discipline.",
   "keywords": [
     "TypeScript",
