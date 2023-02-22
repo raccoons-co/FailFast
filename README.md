@@ -6,14 +6,16 @@
 NOTE: Decorators are an experimental feature that may change in future releases.
 ```
 
-Install library with
+Install library as development dependency:
 ```shell
 % npm install @raccoons-co/cleanway --save-dev
 ```
 
-Implement `YourTest.ts`:
+Enable the `experimentalDecorators` compiler option in your `tsconfig.json`.
+
+Implement `src/test/YourTest.ts`:
 ```
-import {Test} from "@raccooons-co/cleanway";
+import {Test} from "@raccoons-co/cleanway";
 
 export default class YourTest {
 
@@ -34,7 +36,7 @@ export default class YourTest {
 }
 ```
 
-Implement your main `EntryPoint.ts`:
+Implement your main `./src/test/EntryPoint.ts`:
 ```
 import YourTest from "./YourTest";
 
@@ -45,11 +47,18 @@ try {
 }
 ```
 
-Run `cleanway` with `package.json` script:
+Create empty file `./src/main/YourProgram.ts`.
+
+Add `test` script to `package.json`:
 ```
   "scripts": {
     "build": "tsc",
     "pretest": "npm run build",
-    "test": "node lib/test/EntryPoint"
+    "test": "node dist/test/EntryPoint"
   }
+```
+
+Run:
+```shell script
+% npm test
 ```

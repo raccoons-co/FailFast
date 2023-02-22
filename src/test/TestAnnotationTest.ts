@@ -1,6 +1,5 @@
-import {Test} from "../main/index";
+import {Test, TestsInventory} from "@raccoons-co/cleanway";
 import {assert} from "chai";
-import TestsInventory from "../main/TestsInventory";
 
 export default class TestAnnotationTest {
 
