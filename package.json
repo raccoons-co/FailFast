@@ -1,32 +1,37 @@
 {
-  "name": "cleanway",
-  "version": "0.0.0",
-  "description": "Cleanway is the TypeScript annotations to support Test-driven development discipline.",
-  "files": [
-    "lib/"
-  ],
-  "main": "lib/main/index",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
-  "scripts": {
-    "build": "tsc",
-    "lint.packagejson": "npmPkgJsonLint .",
-    "lint.typescript": "eslint './src/**/*.ts'",
-    "postinstall": "npm-run-all lint.*",
-    "prepublishOnly": "npm run build",
-    "pretest": "npm run build",
-    "test": "node lib/test/EntryPoint"
-  },
+  "name": "@raccoons-co/cleanway",
+  "version": "0.0.2",
+  "description": "`@Test` annotation for TypeScript to support a test-driven development discipline.",
   "keywords": [
     "TypeScript",
     "Annotation",
     "TDD"
   ],
-  "author": "Raccoons <info@raccoons.co>",
+  "homepage": "https://github.com/raccoons-co/cleanway#readme",
+  "bugs": {
+    "url": "https://github.com/raccoons-co/cleanway/issues"
+  },
   "license": "MIT",
+  "author": "Raccoons <info@raccoons.co>",
+  "files": [
+    "lib/"
+  ],
+  "main": "lib/main/index",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raccoons-co/cleanway.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint.packagejson": "npmPkgJsonLint .",
+    "lint.typescript": "eslint './src/**/*.ts'",
+    "posttest": "npm-run-all lint.*",
+    "prepublishOnly": "npm run build",
+    "pretest": "npm run build",
+    "test": "node lib/test/EntryPoint"
+  },
   "devDependencies": {
+    "@raccoons-co/cleanway": "^0.0.2",
     "@types/chai": "^4.3.4",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
@@ -38,5 +43,9 @@
   },
   "engines": {
     "node": ">=16.x"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

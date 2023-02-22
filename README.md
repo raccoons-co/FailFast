@@ -1,14 +1,42 @@
 # Cleanway
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/raccoons-co/cleanway/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/raccoons-co/cleanway/tree/master)
 
-Cleanway is the TypeScript annotations to support Test-driven development discipline.
-
-Install library with
-```shell
-% npm install @raccoons-co/cleanway
+`@Test` annotation for TypeScript to support a test-driven development discipline.
+```
+NOTE: Decorators are an experimental feature that may change in future releases.
 ```
 
-Implement your main `EntryPoint.ts`:
+Install library as development dependency:
+```shell
+% npm install @raccoons-co/cleanway --save-dev
+```
+
+Enable the `experimentalDecorators` compiler option in your `tsconfig.json`.
+
+Implement `src/test/YourTest.ts`:
+```
+import {Test} from "@raccoons-co/cleanway";
+
+export default class YourTest {
+
+    @Test
+    public nothing() {
+        // But your assertions here.
+    }
+
+    @Test
+    public else() {
+        // More assertions.
+    }
+
+    @Test
+    public matters() {
+        // For your code.
+    }
+}
+```
+
+Implement your main `./src/test/EntryPoint.ts`:
 ```
 import YourTest from "./YourTest";
 
@@ -19,27 +47,18 @@ try {
 }
 ```
 
-Implement `YourTest.ts`:
-```
-import {Test} from "@raccooons-co/cleanway";
+Create empty file `./src/main/YourProgram.ts`.
 
-export default class YourTest {
-    @Test
-    public nothing() {}
-
-    @Test
-    public else() {}
-
-    @Test
-    public matters() {}
-}
-```
-
-Run `cleanway` with `package.json` script:
+Add `test` script to `package.json`:
 ```
   "scripts": {
     "build": "tsc",
     "pretest": "npm run build",
-    "test": "node lib/test/EntryPoint"
+    "test": "node dist/test/EntryPoint"
   }
+```
+
+Run:
+```shell script
+% npm test
 ```

@@ -15,7 +15,11 @@ export default class TestsInventory {
         return TestsInventory.inventoryInstance;
     }
 
-    public methods(){
-        return this.methodsList;
+    public keep(method: PropertyDescriptor){
+        return this.methodsList.push(method);
+    }
+
+    public size(): number {
+        return this.methodsList.length;
     }
 }

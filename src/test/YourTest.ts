@@ -1,18 +1,19 @@
-import {Test} from "../main/index";
+import {Test} from "@raccoons-co/cleanway";
 
 export default class YourTest {
+
     @Test
     public nothing() {
-        // Intentionally empty.
+        // But your assertions here.
     }
 
     @Test
     public else() {
-        // Intentionally empty.
+        // More assertions.
     }
 
     @Test
     public matters() {
-        // Intentionally empty.
+        // For your clean code.
     }
 }
