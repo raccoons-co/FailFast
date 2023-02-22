@@ -1,4 +1,4 @@
-import {Test} from "../main/index";
+import {Test} from "@raccoons-co/cleanway";
 
 export default class YourTest {
 
