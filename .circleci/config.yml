@@ -3,16 +3,18 @@ version: 2.1
 orbs:
   node: circleci/node@5.1.0
 
-jobs:
-  pack:
+executors:
+  docker:
     docker:
       - image: cimg/node:lts
-    steps:
-      - checkout
-      - run: npm install
-      - run: npm test
-      - run: npm pack --dry-run
+  linux:
+    machine:
+      image: ubuntu-2004:2023.02.1
+  macos:
+    macos:
+      xcode: 14.2.0
 
+jobs:
   test:
     parameters:
       os:
@@ -25,14 +27,11 @@ jobs:
        - node/install:
             node-version: << parameters.node-version >>
        - node/test
+       - run: npm pack --dry-run
 
 workflows:
   simple:
     jobs:
-      - pack:
-          requires:
-            - test
-
       - test:
           matrix:
             parameters:
