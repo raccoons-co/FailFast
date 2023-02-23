@@ -1,12 +1,12 @@
 import Annotation from "./Annotation";
-import TestsInventory from "./TestsInventory";
+import TestCasesInventory from "./TestCasesInventory";
 
 class Test implements Annotation {
 
     public execute() {
         return function (target: object, propertyKey: string, descriptor: PropertyDescriptor) {
             const method = descriptor.value;
-            TestsInventory.instance().keep(method);
+            TestCasesInventory.instance().keep(method);
             method.apply();
         }
     }

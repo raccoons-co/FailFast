@@ -1,4 +1,4 @@
-import {Test, TestsInventory} from "../main/index";
+import {Test, TestCasesInventory} from "../main/index";
 import {assert} from "chai";
 
 export default class TestAnnotationTest {
@@ -8,8 +8,8 @@ export default class TestAnnotationTest {
     }
 
     @Test
-    public testsCountAfterFirstTest() {
-        assert.equal(TestsInventory.instance().size(), 1);
+    public casesCountAfterFirstTest() {
+        assert.equal(TestCasesInventory.instance().size(), 1);
     }
 
     public ignoreMethodInTheMeddle() {
@@ -17,8 +17,8 @@ export default class TestAnnotationTest {
     }
 
     @Test
-    public testsCountAfterSecondTest() {
-        assert.equal(TestsInventory.instance().size(), 2);
+    public casesCountAfterSecondTest() {
+        assert.equal(TestCasesInventory.instance().size(), 2);
     }
 
     public ignoreMethodInTheEnd() {

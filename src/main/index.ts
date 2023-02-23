@@ -1,7 +1,7 @@
 import Test from "./Test";
-import TestsInventory from "./TestsInventory";
+import TestCasesInventory from "./TestCasesInventory";
 
 export {
     Test,
-    TestsInventory
+    TestCasesInventory
 }
