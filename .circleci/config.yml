@@ -12,6 +12,14 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm pack --dry-run
+  macos/test:
+    macos:
+      xcode: 14.2.0
+    steps:
+      - node/install:
+          node-version: 'lts'
+      - run npm ci
+      - run npm test
 
 workflows:
   simple:
@@ -28,3 +36,4 @@ workflows:
       - pack:
           requires:
             - node/test
+      - macos/test

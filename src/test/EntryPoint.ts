@@ -1,9 +1,7 @@
-import TestAnnotationTest from "./TestAnnotationTest";
-import YourTest from "./YourTest";
+import Cleanway from "./Cleanway";
 
 try {
-    new TestAnnotationTest();
-    new YourTest();
+    new Cleanway();
 } catch(exception) {
     console.log(exception);
 }
