@@ -18,8 +18,8 @@ jobs:
     steps:
       - node/install:
           node-version: 'lts'
-      - run npm ci
-      - run npm test
+      - run: npm ci
+      - run: npm test
 
 workflows:
   simple:
