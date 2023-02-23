@@ -12,14 +12,18 @@ jobs:
       - run: npm install
       - run: npm test
       - run: npm pack --dry-run
-  macos-test:
-    macos:
-      xcode: 14.2.0
-    steps:
-      - node/install:
-          node-version: 'lts'
-      - run: npm install
-      - run: npm test
+
+  test:
+    parameters:
+      os:
+        type: executor
+      node-version:
+         type: string
+    executor: << parameters.os >>
+     steps:
+       - checkout
+       - node/install:
+          node-version: << parameters.node-version >>
 
 workflows:
   simple:
@@ -36,4 +40,9 @@ workflows:
       - pack:
           requires:
             - node/test
-      - macos-test
+
+      - test:
+          matrix:
+            parameters:
+              os: [docker, linux, macos]
+              node-version: ["current", "lts"]
