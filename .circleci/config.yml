@@ -15,7 +15,7 @@ executors:
       xcode: 14.2.0
 
 jobs:
-  test:
+  test-node:
     parameters:
       os:
         type: executor
@@ -33,7 +33,7 @@ jobs:
 workflows:
   simple:
     jobs:
-      - test:
+      - test-node:
           matrix:
             parameters:
               os: [docker, linux, macos]
