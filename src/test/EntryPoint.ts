@@ -1,7 +1,7 @@
-import Cleanway from "./Cleanway";
+import CleanWay from "./CleanWay";
 
 try {
-    new Cleanway();
+    new CleanWay();
 } catch(exception) {
     console.log(exception);
 }

@@ -3,17 +3,17 @@ import {Test} from "../main/index";
 export default class YourTest {
 
     @Test
-    public nothing() {
+    public nothing(): void {
         // But your assertions here.
     }
 
     @Test
-    public else() {
+    public else(): void {
         // More assertions.
     }
 
     @Test
-    public matters() {
+    public matters(): void {
         // For your clean code.
     }
 }

@@ -20,18 +20,18 @@ import {Test} from "@raccoons-co/cleanway";
 export default class YourTest {
 
     @Test
-    public nothing() {
+    public nothing(): void {
         // But your assertions here.
     }
 
     @Test
-    public else() {
+    public else(): void {
         // More assertions.
     }
 
     @Test
-    public matters() {
-        // For your code.
+    public matters(): void {
+        // For your clean code.
     }
 }
 ```

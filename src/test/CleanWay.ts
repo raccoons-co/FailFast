@@ -2,15 +2,15 @@ import {Test} from "../main/index";
 import TestAnnotationTest from "./TestAnnotationTest";
 import YourTest from "./YourTest";
 
-export default class Cleanway {
+export default class CleanWay {
 
     @Test
-    public caseTestAnnotationTest() {
+    public caseTestAnnotationTest(): void {
         new TestAnnotationTest();
     }
 
     @Test
-    public caseYourTest(){
+    public caseYourTest(): void {
         new YourTest();
     }
 }
