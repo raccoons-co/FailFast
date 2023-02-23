@@ -4,13 +4,13 @@ orbs:
   node: circleci/node@5.1.0
 
 executors:
-  docker:
+  Docker:
     docker:
       - image: cimg/node:lts
-  linux:
+  Linux:
     machine:
       image: ubuntu-2004:2023.02.1
-  macos:
+  macOS:
     macos:
       xcode: 14.2.0
 
@@ -28,7 +28,7 @@ jobs:
             node-version: << parameters.node-version >>
        - run: npm ci
        - run: npm test
-       - run: npm pack --dry-run
+       - run: npm pack
 
 workflows:
   simple:
@@ -36,5 +36,5 @@ workflows:
       - test:
           matrix:
             parameters:
-              os: [docker, linux, macos]
-              node-version: ["19.6.1", "lts", 16.9.1]
+              os: [Docker, Linux, macOS]
+              node-version: ["19.6.1", "18.14.2", "16.9.1"]
