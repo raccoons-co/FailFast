@@ -6,7 +6,7 @@ orbs:
 jobs:
   pack:
     docker:
-      - image: cimg/node:18.14.0
+      - image: cimg/node:lts
     steps:
       - checkout
       - run: npm ci
@@ -21,9 +21,10 @@ workflows:
             parameters:
               version:
                 # https://circleci.com/developer/images/image/cimg/node
-                - '19.6.0'
-                - '18.14.0'
-                - '16.19.0'
+                - 'current'
+                - 'lts'
+                - '16.19.1'
+                - '14.21.3'
       - pack:
           requires:
             - node/test
