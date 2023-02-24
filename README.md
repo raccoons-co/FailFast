@@ -1,8 +1,8 @@
 # Clean Way
 
-#### A clean way to well-written TypeScript prose at Node.js galaxy .
+>My clean way to well-written TypeScript prose in the Node.js galaxy.—iselo
 
-This library provides an `EntryPoint` to `@Test`-driven development discipline practice in `CleanWayBuilder`. 
+This library provides an `EntryPoint` to `@Test`-driven development discipline practice. 
  ```
 NOTE: Decorators are an experimental feature.
 ```
@@ -11,7 +11,6 @@ NOTE: Decorators are an experimental feature.
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=bugs)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
 
-#### Clean way  is simple.
 
 Install library as development dependency:
 ```shell
