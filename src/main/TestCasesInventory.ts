@@ -29,7 +29,9 @@ export default class TestCasesInventory {
     public count(status: TestStatus): number {
         let count = 0;
         this.testCases.forEach((caseRecord) => {
-            caseRecord.status() == status ? count++ : count;
+            if (caseRecord.status() == status) {
+                count++
+            }
         });
         return count;
     }
