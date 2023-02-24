@@ -1,4 +1,5 @@
 #Clean Way
+
 #####A clean way to well-written TypeScript prose at Node.js galaxy .
 
 This library provides an `EntryPoint` to `@Test`-driven development discipline practice in `CleanWayBuilder`. 
@@ -9,6 +10,7 @@ NOTE: Decorators are an experimental feature.
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=bugs)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
+
 #####CleanWayBuilder is simple.
 
 Install library as development dependency:
@@ -20,34 +22,20 @@ Enable experimental support for decorators in your `tsconfig.json`.
 
 Implement `src/test/EntryPoint.ts`:
 ~~~~
-import CleanWayBuilder from "@raccoons-co/cleanway";
+import {CleanWayBuilder} from "@raccoons-co/cleanway";
+import YourTest from "./YourTest";
 
 try {
-    new CleanWayBuilder().log();
+    new CleanWayBuilder()
+        .use(YourTest)
+        .build();
 } catch(exception) {
     console.log(exception);
 }
+
 ~~~~
 
-Implement `src/test/CleanWayBuilder.ts`:
-~~~~
-import {BugEye, Test} from "../main/index";
-import YourTest from "./YourTest";
-
-export default class CleanWayBuilder extends BugEye {
-
-    @Test
-    public run(): void {
-        try {
-            new YourTest();
-        } catch(exception) {
-            console.log(exception);
-        }
-    }
-}
-~~~~
-
-Write `src/test/YourTest.ts` class:
+Create `src/test/YourTest.ts`:
 ~~~~
 import {Test} from "@raccoons-co/cleanway";
 
@@ -70,7 +58,7 @@ export default class YourTest {
 }
 ~~~~
 
-Create `src/main/YourProgram.ts` file.
+Create empty file `src/main/YourProgram.ts`.
 
 Paste scripts section to `package.json`:
 ~~~~
@@ -85,5 +73,7 @@ Run locally and with your CI:
 ~~~~shell script
 % npm test
 ~~~~
+
+Start to write `YourTest` cases.
 
 Have a nice ride.
