@@ -55,11 +55,11 @@ Create empty file `src/main/YourProgram.ts`.
 
 Add scripts to `package.json`:
 ```
-  "scripts": {
-    "build": "tsc",
-    "pretest": "npm run build",
-    "test": "node dist/test/EntryPoint"
-  }
+"scripts": {
+  "build": "tsc",
+  "pretest": "npm run build",
+  "test": "node dist/test/EntryPoint"
+}
 ```
 
 Run:
