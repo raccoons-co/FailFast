@@ -8,12 +8,17 @@ export default class TestAnnotationTest {
     }
 
     @Test
-    public casesCountAfterFirstTest(): void {
-        assert.equal(TestCasesInventory.instance().size(), 1);
+    public casesCountBeforeFirstTest(): void {
+        assert.equal(TestCasesInventory.instance().size(), 0);
     }
 
     public ignoreMethodInTheMiddle(): void {
         assert.fail("Non-test method at the middle shouldn't fail.");
+    }
+
+    @Test
+    public casesCountAfterFirstTest(): void {
+        assert.equal(TestCasesInventory.instance().size(), 1);
     }
 
     @Test

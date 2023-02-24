@@ -1,7 +1,10 @@
+import CaseRecord from "./CaseRecord";
+import {TestStatus} from "./TestStatus";
+
 export default class TestCasesInventory {
 
     private static inventoryInstance: TestCasesInventory;
-    private testCases: Array<PropertyDescriptor>;
+    private testCases: Array<CaseRecord>;
 
     private constructor() {
         this.testCases = [];
@@ -15,11 +18,35 @@ export default class TestCasesInventory {
         return TestCasesInventory.inventoryInstance;
     }
 
-    public keep(method: PropertyDescriptor){
-        return this.testCases.push(method);
+    public keep(record: CaseRecord){
+        return this.testCases.push(record);
     }
 
     public size(): number {
         return this.testCases.length;
+    }
+
+    public count(status: TestStatus): number {
+        let count = 0;
+        this.testCases.forEach((caseRecord) => {
+            (caseRecord.status() == status) ? count++ : count;
+        });
+        return count;
+    }
+
+    public summary(qualityGate= 0): void {
+        this.testCases.forEach((record) => {
+            console.log(record.toString());
+        });
+
+        const passedTests = this.count(TestStatus.PASSED);
+        console.log("Tests passed: %s of %s", passedTests, this.size());
+
+        if ( passedTests + qualityGate != this.size() ) {
+            throw new Error("Nice try!")
+        }
+        else {
+            console.log("Clean!");
+        }
     }
 }
