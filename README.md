@@ -40,7 +40,7 @@ export default class YourTest {
 }
 ```
 
-Implement your main `./src/test/EntryPoint.ts`:
+Implement your main `src/test/EntryPoint.ts`:
 ```
 import YourTest from "./YourTest";
 
@@ -51,9 +51,9 @@ try {
 }
 ```
 
-Create empty file `./src/main/YourProgram.ts`.
+Create empty file `src/main/YourProgram.ts`.
 
-Add `test` script to `package.json`:
+Add scripts to `package.json`:
 ```
   "scripts": {
     "build": "tsc",
