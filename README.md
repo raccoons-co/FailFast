@@ -31,9 +31,27 @@ try {
 
 Implement `src/test/CleanWay.ts`:
 ~~~~
-import {BugEye, Test} from "@raccoons-co/cleanway";
+import {BugEye, Test} from "../main/index";
+import YourTest from "./YourTest";
 
 export default class CleanWay extends BugEye {
+
+    @Test
+    public run(): void {
+        try {
+            new YourTest();
+        } catch(exception) {
+            console.log(exception);
+        }
+    }
+}
+~~~~
+
+Write `src/test/YourTest.ts` class:
+~~~~
+import {Test} from "@raccoons-co/cleanway";
+
+export default class YourTest {
 
     @Test
     public nothing() {
@@ -52,7 +70,7 @@ export default class CleanWay extends BugEye {
 }
 ~~~~
 
-Create empty file `src/main/YourProgram.ts`.
+Create `src/main/YourProgram.ts` file.
 
 Paste scripts section to `package.json`:
 ~~~~

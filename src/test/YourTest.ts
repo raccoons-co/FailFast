@@ -1,6 +1,6 @@
-import {BugEye, Test} from "../main/index";
+import {Test} from "../main/index";
 
-export default class YourCleanWay extends BugEye {
+export default class YourTest {
 
     @Test
     public nothing() {
