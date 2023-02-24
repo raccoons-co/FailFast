@@ -1,4 +1,4 @@
-export default class FailedCaseException extends Error {
+export default class FailedTestCaseException extends Error {
 
     constructor(message?: string) {
         super(message);

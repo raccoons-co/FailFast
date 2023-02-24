@@ -1,9 +1,9 @@
-import BugEye from "./BugEye";
+import CleanWayBuilder from "./CleanWayBuilder";
 import Test from "./Test";
-import TestCasesInventory from "./TestCasesInventory";
+import TestCaseInventory from "./TestCaseInventory";
 
 export {
-    BugEye,
+    CleanWayBuilder,
     Test,
-    TestCasesInventory
+    TestCaseInventory
 }

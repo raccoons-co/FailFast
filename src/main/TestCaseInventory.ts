@@ -1,24 +1,24 @@
-import CaseRecord from "./CaseRecord";
-import {TestStatus} from "./TestStatus";
+import TestCaseRecord from "./TestCaseRecord";
+import {TestCaseStatus} from "./TestCaseStatus";
 
-export default class TestCasesInventory {
+export default class TestCaseInventory {
 
-    private static inventoryInstance: TestCasesInventory;
-    private testCases: Array<CaseRecord>;
+    private static inventoryInstance: TestCaseInventory;
+    private testCases: Array<TestCaseRecord>;
 
     private constructor() {
         this.testCases = [];
     }
 
-    public static instance(): TestCasesInventory {
-        if (!TestCasesInventory.inventoryInstance) {
-            TestCasesInventory.inventoryInstance = new TestCasesInventory();
+    public static instance(): TestCaseInventory {
+        if (!TestCaseInventory.inventoryInstance) {
+            TestCaseInventory.inventoryInstance = new TestCaseInventory();
         }
 
-        return TestCasesInventory.inventoryInstance;
+        return TestCaseInventory.inventoryInstance;
     }
 
-    public keep(record: CaseRecord) {
+    public keep(record: TestCaseRecord) {
         return this.testCases.push(record);
     }
 
@@ -26,7 +26,7 @@ export default class TestCasesInventory {
         return this.testCases.length;
     }
 
-    public count(status: TestStatus): number {
+    public count(status: TestCaseStatus): number {
         let count = 0;
         this.testCases.forEach((caseRecord) => {
             if (caseRecord.status() == status) {
@@ -41,7 +41,7 @@ export default class TestCasesInventory {
             console.log(record.toString());
         });
 
-        const passedTests = this.count(TestStatus.PASSED);
+        const passedTests = this.count(TestCaseStatus.PASSED);
         console.log("Tests passed: %s of %s", passedTests, this.size());
 
         if ( passedTests + qualityGate != this.size() ) {

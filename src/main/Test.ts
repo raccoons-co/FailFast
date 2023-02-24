@@ -1,8 +1,8 @@
 import Annotation from "./Annotation";
-import TestCasesInventory from "./TestCasesInventory";
-import FailedCaseException from "./FailedCaseException";
-import {TestStatus} from "./TestStatus";
-import CaseRecord from "./CaseRecord";
+import TestCaseInventory from "./TestCaseInventory";
+import FailedTestCaseException from "./FailedTestCaseException";
+import {TestCaseStatus} from "./TestCaseStatus";
+import TestCaseRecord from "./TestCaseRecord";
 
 class Test implements Annotation {
 
@@ -11,10 +11,10 @@ class Test implements Annotation {
             try {
                 const method = descriptor.value;
                 method.apply(target);
-                TestCasesInventory.instance().keep(new CaseRecord(TestStatus.PASSED, propertyKey));
+                TestCaseInventory.instance().keep(new TestCaseRecord(TestCaseStatus.PASSED, propertyKey));
             } catch (e) {
-                TestCasesInventory.instance().keep(
-                    new CaseRecord(TestStatus.FAILED, propertyKey, (e as FailedCaseException).message));
+                TestCaseInventory.instance().keep(
+                    new TestCaseRecord(TestCaseStatus.FAILED, propertyKey, (e as FailedTestCaseException).message));
             }
         }
     }

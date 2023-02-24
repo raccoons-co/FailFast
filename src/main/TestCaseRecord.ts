@@ -1,12 +1,12 @@
-import {TestStatus} from "./TestStatus";
+import {TestCaseStatus} from "./TestCaseStatus";
 
-export default class CaseRecord {
+export default class TestCaseRecord {
 
-    private testStatus: TestStatus;
+    private testStatus: TestCaseStatus;
     private propertyKey: string;
     private note: string;
 
-    constructor(testStatus: TestStatus, propertyKey: string, note = String()) {
+    constructor(testStatus: TestCaseStatus, propertyKey: string, note = String()) {
         this.testStatus = testStatus;
         this.propertyKey = propertyKey;
         this.note = note;
@@ -16,7 +16,7 @@ export default class CaseRecord {
         return this.testStatus + ": " + this.propertyKey +" "+ this.note;
     }
 
-    public status(): TestStatus {
+    public status(): TestCaseStatus {
         return this.testStatus;
     }
 }

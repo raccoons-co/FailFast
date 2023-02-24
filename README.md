@@ -1,7 +1,7 @@
 #Clean Way
 #####A clean way to well-written TypeScript prose at Node.js galaxy .
 
-This library provides an `EntryPoint` to `@Test`-driven development discipline practice in `CleanWay`. 
+This library provides an `EntryPoint` to `@Test`-driven development discipline practice in `CleanWayBuilder`. 
  ```
 NOTE: Decorators are an experimental feature.
 ```
@@ -9,7 +9,7 @@ NOTE: Decorators are an experimental feature.
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=bugs)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
-#####CleanWay is simple.
+#####CleanWayBuilder is simple.
 
 Install library as development dependency:
 ```shell
@@ -20,21 +20,21 @@ Enable experimental support for decorators in your `tsconfig.json`.
 
 Implement `src/test/EntryPoint.ts`:
 ~~~~
-import CleanWay from "@raccoons-co/cleanway";
+import CleanWayBuilder from "@raccoons-co/cleanway";
 
 try {
-    new CleanWay().log();
+    new CleanWayBuilder().log();
 } catch(exception) {
     console.log(exception);
 }
 ~~~~
 
-Implement `src/test/CleanWay.ts`:
+Implement `src/test/CleanWayBuilder.ts`:
 ~~~~
 import {BugEye, Test} from "../main/index";
 import YourTest from "./YourTest";
 
-export default class CleanWay extends BugEye {
+export default class CleanWayBuilder extends BugEye {
 
     @Test
     public run(): void {

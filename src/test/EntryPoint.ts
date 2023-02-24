@@ -1,3 +1,12 @@
-import CleanWay from "./CleanWay";
+import {CleanWayBuilder} from "../main/index";
+import TestAnnotationTest from "./TestAnnotationTest";
+import YourTest from "./YourTest";
 
-new CleanWay().log();
+try {
+    new CleanWayBuilder()
+        .use(TestAnnotationTest)
+        .use(YourTest)
+        .build();
+} catch(exception) {
+    console.log(exception);
+}
