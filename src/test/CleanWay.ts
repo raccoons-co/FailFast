@@ -1,17 +1,17 @@
 import {BugEye, Test} from "../main/index";
 import TestAnnotationTest from "./TestAnnotationTest";
-import YourTest from "./YourTest";
+import YourCleanWay from "./YourCleanWay";
 import {assert} from "chai";
 
 export default class CleanWay extends BugEye {
 
     @Test
-    public runTestAnnotationTest(): void {
+    public runTestAnnotationTest() {
         assert.doesNotThrow( () => { new TestAnnotationTest() }, Error);
     }
 
     @Test
-    public runYourTest(): void {
-        assert.doesNotThrow( () => { new YourTest() }, Error);
+    public runYourTest() {
+        assert.doesNotThrow( () => { new YourCleanWay() }, Error);
     }
 }

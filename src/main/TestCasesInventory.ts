@@ -18,7 +18,7 @@ export default class TestCasesInventory {
         return TestCasesInventory.inventoryInstance;
     }
 
-    public keep(record: CaseRecord){
+    public keep(record: CaseRecord) {
         return this.testCases.push(record);
     }
 
@@ -34,7 +34,7 @@ export default class TestCasesInventory {
         return count;
     }
 
-    public summary(qualityGate= 0): void {
+    public summary(qualityGate= 0) {
         this.testCases.forEach((record) => {
             console.log(record.toString());
         });

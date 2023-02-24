@@ -16,7 +16,7 @@ export default class CaseRecord {
         return this.testStatus + ": " + this.propertyKey +" "+ this.note;
     }
 
-    public status() {
+    public status(): TestStatus {
         return this.testStatus;
     }
 }
