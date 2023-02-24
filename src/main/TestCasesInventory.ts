@@ -1,10 +1,10 @@
 export default class TestCasesInventory {
 
     private static inventoryInstance: TestCasesInventory;
-    private methodsList: Array<PropertyDescriptor>;
+    private testCases: Array<PropertyDescriptor>;
 
     private constructor() {
-        this.methodsList = [];
+        this.testCases = [];
     }
 
     public static instance(): TestCasesInventory {
@@ -16,10 +16,10 @@ export default class TestCasesInventory {
     }
 
     public keep(method: PropertyDescriptor){
-        return this.methodsList.push(method);
+        return this.testCases.push(method);
     }
 
     public size(): number {
-        return this.methodsList.length;
+        return this.testCases.length;
     }
 }
