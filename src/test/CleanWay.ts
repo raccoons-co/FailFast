@@ -5,12 +5,12 @@ import YourTest from "./YourTest";
 export default class CleanWay {
 
     @Test
-    public caseTestAnnotationTest(): void {
+    public runTestAnnotationTest(): void {
         new TestAnnotationTest();
     }
 
     @Test
-    public caseYourTest(): void {
+    public runYourTest(): void {
         new YourTest();
     }
 }

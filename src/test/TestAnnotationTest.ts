@@ -4,7 +4,7 @@ import {assert} from "chai";
 export default class TestAnnotationTest {
 
     public ignoreMethodAtTheBeginning(): void {
-        assert.fail("Non test method at the beginning shouldn't fail.");
+        assert.fail("Non-test method at the beginning shouldn't fail.");
     }
 
     @Test
@@ -12,8 +12,8 @@ export default class TestAnnotationTest {
         assert.equal(TestCasesInventory.instance().size(), 1);
     }
 
-    public ignoreMethodInTheMeddle(): void {
-        assert.fail("Non test method at the middle shouldn't fail.");
+    public ignoreMethodInTheMiddle(): void {
+        assert.fail("Non-test method at the middle shouldn't fail.");
     }
 
     @Test
@@ -22,6 +22,6 @@ export default class TestAnnotationTest {
     }
 
     public ignoreMethodInTheEnd(): void {
-        assert.fail("Non test method at the end shouldn't fail.");
+        assert.fail("Non-test method at the end shouldn't fail.");
     }
 }
