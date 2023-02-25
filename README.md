@@ -1,25 +1,31 @@
-# Clean Way
+>*A clean way to well-written TypeScript prose in the Node.js galaxy.*
 
->My clean way to well-written TypeScript prose in the Node.js galaxy.—iselo
+#### Clean Way
 
-This library provides an `EntryPoint` to `@Test`-driven development discipline practice. 
- ```
-NOTE: Decorators are an experimental feature.
-```
+The library provides an `EntryPoint` to `@Test`-driven development discipline 
+practice.
+
+Despite the code is 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/raccoons-co/cleanway/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/raccoons-co/cleanway/tree/master)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
+its tests and has 
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=bugs)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
+rating.
 
+```
+NOTE: Decorators are an experimental feature.
+```
 
-Install library as development dependency:
-```shell
+To use this library please 
+enable experimental support for decorators in your `tsconfig.json` 
+and install package as development dependency.
+
+```shell script
 % npm i -D @raccoons-co/cleanway
 ```
 
-Enable experimental support for decorators in your `tsconfig.json`.
-
-Implement `src/test/EntryPoint.ts`:
+Then implement `src/test/EntryPoint.ts` as follows:
 ~~~~
 import {CleanWayBuilder} from "@raccoons-co/cleanway";
 import YourTest from "./YourTest";
@@ -31,10 +37,11 @@ try {
 } catch(exception) {
     console.log(exception);
 }
-
 ~~~~
 
-Create `src/test/YourTest.ts`:
+Then create an empty file `src/main/YourProgram.ts` 
+and implement `src/test/YourTest.ts`cases:
+
 ~~~~
 import {Test} from "@raccoons-co/cleanway";
 
@@ -57,9 +64,7 @@ export default class YourTest {
 }
 ~~~~
 
-Create empty file `src/main/YourProgram.ts`.
-
-Paste scripts section to `package.json`:
+Finally paste scripts section to `package.json`:
 ~~~~
 "scripts": {
   "build": "tsc",
@@ -68,11 +73,12 @@ Paste scripts section to `package.json`:
 }
 ~~~~
 
-Run locally and with your CI:
+Now you are ready to follow clean way while developing your program locally 
+and running test cases with your continuous integration platform. 
+
 ~~~~shell script
 % npm test
 ~~~~
 
-Start to write `YourTest` cases.
-
-Have a nice ride.
+Write `YourTest` cases, fail fast 
+and have a nice journey in the Node.js galaxy.
