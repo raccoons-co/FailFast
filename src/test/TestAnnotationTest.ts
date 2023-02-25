@@ -1,5 +1,6 @@
-import {Test, TestCaseInventory} from "../main/index";
+import {Test} from "../main/index";
 import {assert} from "chai";
+import TestCaseInventory from "../main/TestCaseInventory";
 import {TestCaseStatus} from "../main/TestCaseStatus";
 
 export default class TestAnnotationTest {
@@ -30,6 +31,7 @@ export default class TestAnnotationTest {
     @Test
     public passedCasesCountAfterThirdTest() {
         assert.equal(TestCaseInventory.instance().count(TestCaseStatus.PASSED), 3);
+
     }
 
     public ignoreMethodInTheEnd() {
