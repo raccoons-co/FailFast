@@ -3,27 +3,38 @@ version: 2.1
 orbs:
   node: circleci/node@5.1.0
 
-jobs:
-  pack:
+executors:
+  docker:
     docker:
-      - image: cimg/node:18.14.0
+      - image: cimg/node:lts
+  linux:
+    machine:
+      image: ubuntu-2004:2023.02.1
+  macos:
+    macos:
+      xcode: 14.2.0
+
+jobs:
+  test-node:
+    parameters:
+      os:
+        type: executor
+      node-version:
+         type: string
+    executor: << parameters.os >>
     steps:
-      - checkout
-      - run: npm ci
-      - run: npm run build
-      - run: npm pack --dry-run
+       - checkout
+       - node/install:
+            node-version: << parameters.node-version >>
+       - run: npm ci
+       - run: npm test
+       - run: npm pack
 
 workflows:
   simple:
     jobs:
-      - node/test:
+      - test-node:
           matrix:
             parameters:
-              version:
-                # https://circleci.com/developer/images/image/cimg/node
-                - '19.6.0'
-                - '18.14.0'
-                - '16.19.0'
-      - pack:
-          requires:
-            - node/test
+              os: [docker, linux, macos]
+              node-version: ["19.6.1", "18.14.2", "16.9.1", "14.21.3"]
