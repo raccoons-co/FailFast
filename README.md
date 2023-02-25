@@ -33,13 +33,11 @@ and install package as development dependency.
 % npm i -D @raccoons-co/cleanway
 ```
 
-Then copy to your project:
+Then copy files to your project from [cleanway-skeleton](https://github.com/raccoons-co/cleanway-skeleton)
+template:
 - src/test/EntryPoint.ts
 - src/test/YourTest.ts
 - src/main/YourProgram.ts
-
-from [cleanway-skeleton](https://github.com/raccoons-co/cleanway-skeleton)
-template.
 
 Finally paste scripts section to `package.json`:
 ~~~~
