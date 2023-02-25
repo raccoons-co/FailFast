@@ -1,27 +1,38 @@
-import {Test, TestsInventory} from "@raccoons-co/cleanway";
+import {Test, TestCaseInventory} from "../main/index";
 import {assert} from "chai";
+import {TestCaseStatus} from "../main/TestCaseStatus";
 
 export default class TestAnnotationTest {
 
     public ignoreMethodAtTheBeginning() {
-        assert.fail("Non test method at the beginning shouldn't fail.");
+        assert.fail("Non-test method at the beginning shouldn't fail.");
     }
 
     @Test
-    public testsCountAfterFirstTest() {
-        assert.equal(TestsInventory.instance().size(), 1);
+    public casesCountBeforeFirstTest() {
+        assert.equal(TestCaseInventory.instance().size(), 0);
     }
 
-    public ignoreMethodInTheMeddle() {
-        assert.fail("Non test method at the middle shouldn't fail.");
+    public ignoreMethodInTheMiddle() {
+        assert.fail("Non-test method at the middle shouldn't fail.");
     }
 
     @Test
-    public testsCountAfterSecondTest() {
-        assert.equal(TestsInventory.instance().size(), 2);
+    public casesCountAfterFirstTest() {
+        assert.equal(TestCaseInventory.instance().size(), 1);
+    }
+
+    @Test
+    public casesCountAfterSecondTest() {
+        assert.equal(TestCaseInventory.instance().size(), 2);
+    }
+
+    @Test
+    public passedCasesCountAfterThirdTest() {
+        assert.equal(TestCaseInventory.instance().count(TestCaseStatus.PASSED), 3);
     }
 
     public ignoreMethodInTheEnd() {
-        assert.fail("Non test method at the end shouldn't fail.");
+        assert.fail("Non-test method at the end shouldn't fail.");
     }
 }

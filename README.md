@@ -1,20 +1,48 @@
-# Cleanway
+>*A clean way to well-written TypeScript prose in the Node.js galaxy.*
+
+#### Clean Way
+
+The library provides an `EntryPoint` to `@Test`-driven development discipline 
+practice.
+
+Despite the code is 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/raccoons-co/cleanway/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/raccoons-co/cleanway/tree/master)
+its tests and has 
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=bugs)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
+rating.
 
-`@Test` annotation for TypeScript to support a test-driven development discipline.
 ```
-NOTE: Decorators are an experimental feature that may change in future releases.
-```
-
-Install library as development dependency:
-```shell
-% npm install @raccoons-co/cleanway --save-dev
+NOTE: Decorators are an experimental feature.
 ```
 
-Enable the `experimentalDecorators` compiler option in your `tsconfig.json`.
+To use this library please 
+enable experimental support for decorators in your `tsconfig.json` 
+and install package as development dependency.
 
-Implement `src/test/YourTest.ts`:
+```shell script
+% npm i -D @raccoons-co/cleanway
 ```
+
+Then implement `src/test/EntryPoint.ts` as follows:
+~~~~
+import {CleanWayBuilder} from "@raccoons-co/cleanway";
+import YourTest from "./YourTest";
+
+try {
+    new CleanWayBuilder()
+        .use(YourTest)
+        .build();
+} catch(exception) {
+    console.log(exception);
+}
+~~~~
+
+Then create an empty file `src/main/YourProgram.ts` 
+and implement `src/test/YourTest.ts`cases:
+
+~~~~
 import {Test} from "@raccoons-co/cleanway";
 
 export default class YourTest {
@@ -31,34 +59,26 @@ export default class YourTest {
 
     @Test
     public matters() {
-        // For your code.
+        // For your clean code.
     }
 }
-```
+~~~~
 
-Implement your main `./src/test/EntryPoint.ts`:
-```
-import YourTest from "./YourTest";
-
-try {
-    new YourTest();
-} catch(exception) {
-    console.log(exception);
+Finally paste scripts section to `package.json`:
+~~~~
+"scripts": {
+  "build": "tsc",
+  "pretest": "npm run build",
+  "test": "node dist/test/EntryPoint"
 }
-```
+~~~~
 
-Create empty file `./src/main/YourProgram.ts`.
+Now you are ready to follow clean way while developing your program locally 
+and running test cases with your continuous integration platform. 
 
-Add `test` script to `package.json`:
-```
-  "scripts": {
-    "build": "tsc",
-    "pretest": "npm run build",
-    "test": "node dist/test/EntryPoint"
-  }
-```
-
-Run:
-```shell script
+~~~~shell script
 % npm test
-```
+~~~~
+
+Write `YourTest` cases, fail fast 
+and have a nice journey in the Node.js galaxy.
