@@ -18,12 +18,12 @@ and
 NOTE: Decorators are an experimental feature.
 ```
 
-#### Simple start
+#### Simple auto-start
 
 Create a new repository from [cleanway-skeleton](https://github.com/raccoons-co/cleanway-skeleton)
 template.
 
-#### Add manually
+#### Manual start
 
 To use this library you must enable the 
 experimental support for decorators in your `tsconfig.json` 

@@ -1,12 +1,15 @@
-import TestCaseInventory from "./TestCaseInventory";
+
+import CleanWayPubSub from "./CleanWayPubSub";
+import {CleanWayEvent} from "./CleanWayEvent";
+import TestRunner from "./TestRunner";
 
 export default class CleanWayBuilder  {
 
-    public use(...args: any[]) {
+    public use(o: object) {
         return this;
     }
 
     public build() {
-        TestCaseInventory.instance().summary();
+        CleanWayPubSub.instance().publish(CleanWayEvent.TEST, new TestRunner());
     }
 }

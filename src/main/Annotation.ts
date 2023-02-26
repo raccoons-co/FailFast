@@ -1,3 +1,4 @@
-export default interface Annotation {
-    execute(): (target: object, propertyKey: string, descriptor: PropertyDescriptor) => void;
+export default interface Annotation<T> {
+
+    decorator(): T;
 }

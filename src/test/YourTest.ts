@@ -1,4 +1,4 @@
-import {Test} from "../main/index";
+import {Test} from "../main";
 
 export default class YourTest {
 
