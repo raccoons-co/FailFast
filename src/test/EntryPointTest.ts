@@ -1,7 +1,7 @@
 import {Test} from "../main";
 import {assert} from "chai";
 import YourTest from "./YourTest";
-import FailedTestCaseException from "../main/bugeye/subscriptions/FailedTestCaseException";
+import FailedTestCaseException from "../main/bugeye/handler/FailedTestCaseException";
 import FailedTestCaseTest from "./FailedTestCaseTest";
 
 export default class EntryPointTest {

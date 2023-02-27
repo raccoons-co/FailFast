@@ -1,6 +1,6 @@
 import Annotation from "./Annotation";
 import EventBus from "./bugeye/EventBus";
-import TestCase from "./bugeye/subscriptions/TestCase";
+import TestCase from "./bugeye/handler/TestCase";
 import {TestCaseEvent} from "./bugeye/TestCaseEvent";
 
 class Test implements Annotation<MethodDecorator> {
