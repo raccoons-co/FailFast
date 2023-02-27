@@ -1,12 +1,13 @@
 import Worker from "./Worker";
 import EventBus from "./EventBus";
 import {BugEyeEvent} from "./BugEyeEvent";
-import PassedTestCase from "./PassedTestCase";
-import FailedTestCase from "./FailedTestCase";
+import Passed from "./Passed";
+import Failed from "./Failed";
 import FailedTestCaseException from "./FailedTestCaseException";
 import TestCase from "./TestCase";
 
-export default class StartedTestCase implements Worker {
+//@Immutable
+export default class Started implements Worker {
 
     private testCase: TestCase;
 
@@ -16,13 +17,14 @@ export default class StartedTestCase implements Worker {
 
     public execute() {
         try {
-            this.testCase.method().apply();
+            this.testCase.method()
+                .apply(this.testCase.object());
             EventBus.instance()
-                .subscribe(BugEyeEvent.testCasePassed, new PassedTestCase(this.testCase));
+                .subscribe(BugEyeEvent.testCasePassed, new Passed(this.testCase));
         } catch (e) {
             EventBus.instance()
                 .subscribe(BugEyeEvent.testCaseFailed,
-                    new FailedTestCase(this.testCase, e as FailedTestCaseException));
+                    new Failed(this.testCase, e as FailedTestCaseException));
         }
     }
 }

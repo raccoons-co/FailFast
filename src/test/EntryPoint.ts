@@ -4,8 +4,8 @@ import FailedTestCaseTest from "./FailedTestCaseTest";
 
 try {
     new CleanWayBuilder()
-        .use(YourTest)
-        .use(FailedTestCaseTest)
+        .assign(YourTest)
+        .assign(FailedTestCaseTest)
         .build();
 } catch(exception) {
     console.log(exception);

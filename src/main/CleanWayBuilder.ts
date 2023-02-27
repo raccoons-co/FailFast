@@ -1,14 +1,14 @@
 import EventBus from "./bugeye/EventBus";
 import {BugEyeEvent} from "./bugeye/BugEyeEvent";
 import Report from "./bugeye/Report";
-import AssignedTestClass from "./bugeye/AssignedTestClass";
+import Assigned from "./bugeye/Assigned";
 
 //@Immutable
 export default class CleanWayBuilder  {
 
-    public use(testClass: object) {
+    public assign(testClass: object) {
         EventBus.instance()
-            .subscribe(BugEyeEvent.testClassAssigned, new AssignedTestClass(testClass));
+            .subscribe(BugEyeEvent.testClassAssigned, new Assigned(testClass));
         return this;
     }
 

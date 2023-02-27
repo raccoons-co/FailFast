@@ -2,7 +2,8 @@ import Worker from "./Worker";
 import TestCase from "./TestCase";
 import {TestCaseState} from "./TestCaseState";
 
-export default class PassedTestCase implements Worker {
+//@Immutable
+export default class Passed implements Worker {
 
     private testCase: TestCase;
 
@@ -11,7 +12,7 @@ export default class PassedTestCase implements Worker {
     }
 
     execute(): void {
-        console.log( "%s: %s", TestCaseState.passed, this.testCase);
+        console.log("%s: %s", TestCaseState.passed, this.testCase);
 
     }
 }

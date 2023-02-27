@@ -15,6 +15,10 @@ export default class TestCase {
         return this.descriptor.value;
     }
 
+    public object(): object {
+        return this.target;
+    }
+
     public toString(): string {
         return this.target.constructor.name + "." + this.propertyKey + "()";
     }

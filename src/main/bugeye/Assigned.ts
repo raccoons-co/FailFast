@@ -1,10 +1,11 @@
 import Worker from "./Worker";
 
-export default class AssignedTestClass implements Worker {
+//@Immutable
+export default class Assigned implements Worker {
 
     private testClass: object;
 
-    constructor(testClass : object) {
+    constructor(testClass: object) {
         this.testClass = testClass;
     }
 
