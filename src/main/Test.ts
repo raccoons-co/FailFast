@@ -1,14 +1,16 @@
 import Annotation from "./Annotation";
 import EventBus from "./bugeye/EventBus";
-import TestCase from "./bugeye/handler/TestCase";
-import {TestCaseEvent} from "./bugeye/TestCaseEvent";
+import StartedTestCase from "./bugeye/handler/StartedTestCase";
+import {BugEyeEvent} from "./bugeye/BugEyeEvent";
+import TestCase from "./bugeye/TestCase";
 
 class Test implements Annotation<MethodDecorator> {
 
     public decorator(): MethodDecorator {
         return function (target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor) {
+            const testCase = new TestCase(target, propertyKey, descriptor);
             EventBus.instance()
-                .subscribe(TestCaseEvent.start, new TestCase(target, propertyKey, descriptor));
+                .subscribe(BugEyeEvent.testCaseStarted, new StartedTestCase(testCase));
         }
     }
 }

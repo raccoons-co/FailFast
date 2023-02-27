@@ -1,13 +1,13 @@
-import {TestCaseEvent} from "./TestCaseEvent";
+import {BugEyeEvent} from "./BugEyeEvent";
 import Handler from "./Handler";
 
 export default class EventBus {
 
     private static singleInstance: EventBus;
-    private eventBus: Map<TestCaseEvent, Array<Handler>>;
+    private eventBus: Map<BugEyeEvent, Array<Handler>>;
 
     private constructor() {
-        this.eventBus = new Map<TestCaseEvent, Array<Handler>>();
+        this.eventBus = new Map<BugEyeEvent, Array<Handler>>();
     }
 
     public static instance(): EventBus {
@@ -17,18 +17,21 @@ export default class EventBus {
         return EventBus.singleInstance;
     }
 
-    public subscribe(event: TestCaseEvent, handler: Handler) {
+    public subscribe(event: BugEyeEvent, handler: Handler) {
         this.channel(event).push(handler);
+        return this;
     }
 
-    public publish(event: TestCaseEvent): EventBus {
+    public publish(event: BugEyeEvent): EventBus {
         if (this.eventBus.has(event)) {
-            this.channel(event).forEach((handler) => handler.execute());
+            this.channel(event).forEach((handler) => {
+                handler.execute();
+            });
         }
         return this;
     }
 
-    private channel(event: TestCaseEvent): Array<Handler>{
+    private channel(event: BugEyeEvent): Array<Handler>{
         const channel = this.eventBus.get(event);
         if (channel) {
             return channel;

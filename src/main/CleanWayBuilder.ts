@@ -1,16 +1,20 @@
 import EventBus from "./bugeye/EventBus";
-import {TestCaseEvent} from "./bugeye/TestCaseEvent";
+import {BugEyeEvent} from "./bugeye/BugEyeEvent";
+import Report from "./bugeye/handler/Report";
+import AssignedTestClass from "./bugeye/handler/AssignedTestClass";
 
 export default class CleanWayBuilder  {
 
-    public use(o: object) {
+    public use(testClass: object) {
+        EventBus.instance()
+            .subscribe(BugEyeEvent.testClassAssigned, new AssignedTestClass(testClass));
         return this;
     }
 
     public build() {
         EventBus.instance()
-            .publish(TestCaseEvent.start)
-            .publish(TestCaseEvent.passed)
-            .publish(TestCaseEvent.failed);
+            .subscribe(BugEyeEvent.report, new Report())
+            .publish(BugEyeEvent.testCaseStarted)
+            .publish(BugEyeEvent.report);
     }
 }

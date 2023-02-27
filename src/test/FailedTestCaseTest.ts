@@ -1,4 +1,4 @@
-import {Test} from "../main";
+import {Test} from "../main/index";
 import {assert} from "chai";
 
 export default class FailedTestCaseTest {

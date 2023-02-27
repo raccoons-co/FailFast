@@ -1,9 +1,11 @@
-import EntryPointTest from "./EntryPointTest";
 import {CleanWayBuilder} from "../main/index";
+import YourTest from "./YourTest";
+import FailedTestCaseTest from "./FailedTestCaseTest";
 
 try {
     new CleanWayBuilder()
-        .use(new EntryPointTest())
+        .use(YourTest)
+        .use(FailedTestCaseTest)
         .build();
 } catch(exception) {
     console.log(exception);

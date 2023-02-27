@@ -1,14 +1,17 @@
 import Handler from "../Handler";
+import TestCase from "../TestCase";
+import {TestCaseState} from "../TestCaseState";
 
 export default class PassedTestCase implements Handler {
 
-    private propertyKey: string | symbol;
+    private testCase: TestCase;
 
-    constructor(propertyKey: string | symbol) {
-        this.propertyKey = propertyKey;
+    constructor(testCase: TestCase) {
+        this.testCase = testCase;
     }
 
     execute(): void {
-        console.log("\x1b[32mpassed\x1b[0m: %s", this.propertyKey);
+        console.log( "%s: %s", TestCaseState.passed, this.testCase);
+
     }
 }
