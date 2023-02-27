@@ -1,6 +1,6 @@
-import Handler from "../Handler";
+import Worker from "./Worker";
 
-export default class AssignedTestClass implements Handler {
+export default class AssignedTestClass implements Worker {
 
     private testClass: object;
 

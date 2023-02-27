@@ -1,8 +1,9 @@
 import EventBus from "./bugeye/EventBus";
 import {BugEyeEvent} from "./bugeye/BugEyeEvent";
-import Report from "./bugeye/handler/Report";
-import AssignedTestClass from "./bugeye/handler/AssignedTestClass";
+import Report from "./bugeye/Report";
+import AssignedTestClass from "./bugeye/AssignedTestClass";
 
+//@Immutable
 export default class CleanWayBuilder  {
 
     public use(testClass: object) {

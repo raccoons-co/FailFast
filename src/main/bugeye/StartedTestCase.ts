@@ -1,12 +1,12 @@
-import Handler from "../Handler";
-import EventBus from "../EventBus";
-import {BugEyeEvent} from "../BugEyeEvent";
+import Worker from "./Worker";
+import EventBus from "./EventBus";
+import {BugEyeEvent} from "./BugEyeEvent";
 import PassedTestCase from "./PassedTestCase";
 import FailedTestCase from "./FailedTestCase";
 import FailedTestCaseException from "./FailedTestCaseException";
-import TestCase from "../TestCase";
+import TestCase from "./TestCase";
 
-export default class StartedTestCase implements Handler {
+export default class StartedTestCase implements Worker {
 
     private testCase: TestCase;
 

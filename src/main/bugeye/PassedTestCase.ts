@@ -1,8 +1,8 @@
-import Handler from "../Handler";
-import TestCase from "../TestCase";
-import {TestCaseState} from "../TestCaseState";
+import Worker from "./Worker";
+import TestCase from "./TestCase";
+import {TestCaseState} from "./TestCaseState";
 
-export default class PassedTestCase implements Handler {
+export default class PassedTestCase implements Worker {
 
     private testCase: TestCase;
 

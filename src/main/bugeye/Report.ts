@@ -1,8 +1,8 @@
-import Handler from "../Handler";
-import {BugEyeEvent} from "../BugEyeEvent";
-import EventBus from "../EventBus";
+import Worker from "./Worker";
+import {BugEyeEvent} from "./BugEyeEvent";
+import EventBus from "./EventBus";
 
-export default class Report implements Handler {
+export default class Report implements Worker {
     execute(): void {
         EventBus.instance()
             .publish(BugEyeEvent.testClassAssigned)

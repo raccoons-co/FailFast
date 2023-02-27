@@ -1,9 +1,9 @@
-import Handler from "../Handler";
+import Worker from "./Worker";
 import FailedTestCaseException from "./FailedTestCaseException";
-import TestCase from "../TestCase";
-import {TestCaseState} from "../TestCaseState";
+import TestCase from "./TestCase";
+import {TestCaseState} from "./TestCaseState";
 
-export default class FailedTestCase implements Handler {
+export default class FailedTestCase implements Worker {
 
     private testCase: TestCase;
     private exception: FailedTestCaseException;

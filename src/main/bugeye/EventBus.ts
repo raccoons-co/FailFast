@@ -1,13 +1,14 @@
 import {BugEyeEvent} from "./BugEyeEvent";
-import Handler from "./Handler";
+import Worker from "./Worker";
 
+//@Immutable
 export default class EventBus {
 
     private static singleInstance: EventBus;
-    private eventBus: Map<BugEyeEvent, Array<Handler>>;
+    private events: Map<BugEyeEvent, Array<Worker>>;
 
     private constructor() {
-        this.eventBus = new Map<BugEyeEvent, Array<Handler>>();
+        this.events = new Map<BugEyeEvent, Array<Worker>>();
     }
 
     public static instance(): EventBus {
@@ -17,27 +18,27 @@ export default class EventBus {
         return EventBus.singleInstance;
     }
 
-    public subscribe(event: BugEyeEvent, handler: Handler) {
-        this.channel(event).push(handler);
+    public subscribe(event: BugEyeEvent, worker: Worker) {
+        this.channel(event).push(worker);
         return this;
     }
 
     public publish(event: BugEyeEvent): EventBus {
-        if (this.eventBus.has(event)) {
-            this.channel(event).forEach((handler) => {
-                handler.execute();
+        if (this.events.has(event)) {
+            this.channel(event).forEach((worker) => {
+                worker.execute();
             });
         }
         return this;
     }
 
-    private channel(event: BugEyeEvent): Array<Handler>{
-        const channel = this.eventBus.get(event);
+    private channel(event: BugEyeEvent): Array<Worker> {
+        const channel = this.events.get(event);
         if (channel) {
             return channel;
         } else {
-            const newChannel = new Array<Handler>();
-            this.eventBus.set(event, newChannel);
+            const newChannel = new Array<Worker>();
+            this.events.set(event, newChannel);
             return newChannel;
         }
     }
