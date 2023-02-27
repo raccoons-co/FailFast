@@ -1,8 +1,11 @@
-import {Status} from "./Status";
+import Handler from "../Handler";
+import EventBus from "../EventBus";
+import {TestCaseEvent} from "../TestCaseEvent";
+import PassedTestCase from "./PassedTestCase";
+import FailedTestCase from "./FailedTestCase";
 import FailedTestCaseException from "./FailedTestCaseException";
-import Subscription from "./Subscription";
 
-export default class TestCaseSubscription implements Subscription {
+export default class TestCase implements Handler {
 
     private target: object;
     private propertyKey: string | symbol;
@@ -18,11 +21,12 @@ export default class TestCaseSubscription implements Subscription {
         try {
             const method = this.descriptor.value;
             method.apply(this.target);
-            console.log("%s: %s", Status.PASSED, this.propertyKey);
+            EventBus.instance()
+                .subscribe(TestCaseEvent.passed, new PassedTestCase(this.propertyKey));
         } catch (e) {
-            console.log("%s: %s - %s", Status.FAILED, this.propertyKey,
-                (e as FailedTestCaseException).message);
-            throw new FailedTestCaseException();
+            EventBus.instance()
+                .subscribe(TestCaseEvent.failed,
+                    new FailedTestCase(this.propertyKey, e as FailedTestCaseException));
         }
 
     }

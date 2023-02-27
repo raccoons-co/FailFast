@@ -1,6 +1,5 @@
 import EventBus from "./bugeye/EventBus";
-import TestCaseHandler from "./bugeye/TestCaseHandler";
-import {Event} from "./bugeye/Event";
+import {TestCaseEvent} from "./bugeye/TestCaseEvent";
 
 export default class CleanWayBuilder  {
 
@@ -9,6 +8,9 @@ export default class CleanWayBuilder  {
     }
 
     public build() {
-        EventBus.instance().publish(Event.testRun, new TestCaseHandler());
+        EventBus.instance()
+            .publish(TestCaseEvent.start)
+            .publish(TestCaseEvent.passed)
+            .publish(TestCaseEvent.failed);
     }
 }

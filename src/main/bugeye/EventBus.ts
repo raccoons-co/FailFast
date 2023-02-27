@@ -1,16 +1,13 @@
-import {Event} from "./Event";
+import {TestCaseEvent} from "./TestCaseEvent";
 import Handler from "./Handler";
-import Subscription from "./Subscription";
 
 export default class EventBus {
 
     private static singleInstance: EventBus;
-    private eventQueue: Map<Event, Array<Subscription>>;
-
+    private eventBus: Map<TestCaseEvent, Array<Handler>>;
 
     private constructor() {
-        this.eventQueue = new Map<Event, Array<Subscription>>();
-
+        this.eventBus = new Map<TestCaseEvent, Array<Handler>>();
     }
 
     public static instance(): EventBus {
@@ -20,24 +17,25 @@ export default class EventBus {
         return EventBus.singleInstance;
     }
 
-    public subscribe(event: Event, subscription: Subscription) {
-
-        if (!this.eventQueue.has(event)) {
-            this.eventQueue.set(event, new Array<Subscription>());
-        }
-        const channel = this.eventQueue.get(event);
-        if (channel) {
-            channel.push(subscription);
-        }
+    public subscribe(event: TestCaseEvent, handler: Handler) {
+        this.channel(event).push(handler);
     }
 
-    public publish(event: Event, handler: Handler) {
+    public publish(event: TestCaseEvent): EventBus {
+        if (this.eventBus.has(event)) {
+            this.channel(event).forEach((handler) => handler.execute());
+        }
+        return this;
+    }
 
-        if (this.eventQueue.has(event)) {
-            const channel = this.eventQueue.get(event);
-            if (channel) {
-                channel.forEach((subscription) => handler.accept(subscription));
-            }
+    private channel(event: TestCaseEvent): Array<Handler>{
+        const channel = this.eventBus.get(event);
+        if (channel) {
+            return channel;
+        } else {
+            const newChannel = new Array<Handler>();
+            this.eventBus.set(event, newChannel);
+            return newChannel;
         }
     }
 }
