@@ -1,7 +1,7 @@
 import {Test} from "../main";
 import {assert} from "chai";
 import YourTest from "./YourTest";
-import FailedTestCaseException from "../main/FailedTestCaseException";
+import FailedTestCaseException from "../main/testcase/FailedTestCaseException";
 
 export default class EntryPointTest {
 

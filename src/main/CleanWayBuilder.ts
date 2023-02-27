@@ -1,7 +1,7 @@
 
-import CleanWayPubSub from "./CleanWayPubSub";
-import {CleanWayEvent} from "./CleanWayEvent";
-import TestRunner from "./TestRunner";
+import PubSub from "./pubsub/PubSub";
+import {Event} from "./pubsub/Event";
+import TestCaseRunner from "./testcase/TestCaseRunner";
 
 export default class CleanWayBuilder  {
 
@@ -10,6 +10,6 @@ export default class CleanWayBuilder  {
     }
 
     public build() {
-        CleanWayPubSub.instance().publish(CleanWayEvent.TEST, new TestRunner());
+        PubSub.instance().publish(Event.TEST, new TestCaseRunner());
     }
 }

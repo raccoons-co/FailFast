@@ -1,8 +1,8 @@
 import {Status} from "./Status";
 import FailedTestCaseException from "./FailedTestCaseException";
-import CleanWaySubscriber from "./CleanWaySubscriber";
+import Subscription from "../pubsub/Subscription";
 
-export default class TestCase implements CleanWaySubscriber {
+export default class TestCase implements Subscription {
 
     private target: object;
     private propertyKey: string | symbol;
