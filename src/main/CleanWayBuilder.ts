@@ -1,7 +1,6 @@
-
-import PubSub from "./pubsub/PubSub";
-import {Event} from "./pubsub/Event";
-import TestCaseRunner from "./testcase/TestCaseRunner";
+import EventBus from "./bugeye/EventBus";
+import TestCaseHandler from "./bugeye/TestCaseHandler";
+import {Event} from "./bugeye/Event";
 
 export default class CleanWayBuilder  {
 
@@ -10,6 +9,6 @@ export default class CleanWayBuilder  {
     }
 
     public build() {
-        PubSub.instance().publish(Event.TEST, new TestCaseRunner());
+        EventBus.instance().publish(Event.testRun, new TestCaseHandler());
     }
 }

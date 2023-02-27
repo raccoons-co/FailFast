@@ -1,8 +1,8 @@
 import {Status} from "./Status";
 import FailedTestCaseException from "./FailedTestCaseException";
-import Subscription from "../pubsub/Subscription";
+import Subscription from "./Subscription";
 
-export default class TestCase implements Subscription {
+export default class TestCaseSubscription implements Subscription {
 
     private target: object;
     private propertyKey: string | symbol;

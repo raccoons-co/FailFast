@@ -1,14 +1,14 @@
 import Annotation from "./Annotation";
-import PubSub from "./pubsub/PubSub";
-import TestCase from "./testcase/TestCase";
-import {Event} from "./pubsub/Event";
+import EventBus from "./bugeye/EventBus";
+import TestCaseSubscription from "./bugeye/TestCaseSubscription";
+import {Event} from "./bugeye/Event";
 
 class Test implements Annotation<MethodDecorator> {
 
     public decorator(): MethodDecorator {
         return function (target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor) {
-            PubSub.instance()
-                .subscribe(Event.TEST, new TestCase(target, propertyKey, descriptor));
+            EventBus.instance()
+                .subscribe(Event.testRun, new TestCaseSubscription(target, propertyKey, descriptor));
         }
     }
 }
