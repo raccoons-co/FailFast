@@ -1,8 +1,9 @@
 import Annotation from "./Annotation";
-import EventBus from "./bugeye/EventBus";
-import Started from "./bugeye/Started";
-import {BugEyeEvent} from "./bugeye/BugEyeEvent";
+import Brain from "./bugeye/eventbus/Brain";
+import StartedTestCase from "./bugeye/eventbus/sensor/StartedTestCase";
+import {Signal} from "./bugeye/eventbus/Signal";
 import TestCase from "./bugeye/TestCase";
+import LogRecord from "./bugeye/eventbus/sensor/LogRecord";
 
 class Test implements Annotation<MethodDecorator> {
 
@@ -10,8 +11,9 @@ class Test implements Annotation<MethodDecorator> {
         return function (target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor) {
 
             const testCase = new TestCase(target, propertyKey as string, descriptor);
-            EventBus.instance()
-                .subscribe(BugEyeEvent.testCaseStarted, new Started(testCase));
+            Brain.instance()
+                .learn(Signal.LOG, new LogRecord(testCase.toString()))
+                .learn(Signal.TEST_CASE_STARTED, new StartedTestCase(testCase));
         }
     }
 }

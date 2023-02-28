@@ -5,6 +5,12 @@ export default class FailedTestCaseTest {
 
     @Test
     public intentionallyFails() {
-        assert.fail("That's ok.")
+        assert.fail("This is ok.")
     }
+
+    @Test
+    public intentionallyFailsAlso() {
+        assert.fail("This is also ok.")
+    }
+
 }

@@ -1,0 +1,9 @@
+export enum Signal {
+    TEST_CLASS_ASSIGNED,
+    TEST_CASE_STARTED,
+    TEST_CASE_PASSED,
+    TEST_CASE_FAILED,
+    DIAGNOSE,
+    REPORT,
+    LOG
+}
