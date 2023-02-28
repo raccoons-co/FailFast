@@ -1,7 +1,7 @@
-import CleanWayBuilder from "./CleanWayBuilder";
+import Brain from "./bugeye/eventbus/Brain";
 import Test from "./Test";
 
 export {
-    CleanWayBuilder,
-    Test
+    Test,
+    Brain
 }
