@@ -5,43 +5,48 @@
 The library provides an `EntryPoint` to `@Test`-driven development discipline 
 practice.
 
-Despite the code is 
+Despite the code of the `@Test` annotation has
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/raccoons-co/cleanway/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/raccoons-co/cleanway/tree/master)
-its tests and has 
+its tests and has
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=bugs)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
+,
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
-rating.
+and
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
 
 ```
 NOTE: Decorators are an experimental feature.
 ```
 
-To use this library please 
-enable experimental support for decorators in your `tsconfig.json` 
+#### Simple auto-start
+
+Create a new repository from [cleanway-skeleton](https://github.com/raccoons-co/cleanway-skeleton)
+template.
+
+#### Manual start
+
+To use this library you must enable the 
+experimental support for decorators in your `tsconfig.json` 
 and install package as development dependency.
 
 ```shell script
 % npm i -D @raccoons-co/cleanway
 ```
 
-Then implement `src/test/EntryPoint.ts` as follows:
+Implement `src/test/EntryPoint.ts`:
 ~~~~
 import {CleanWayBuilder} from "@raccoons-co/cleanway";
 import YourTest from "./YourTest";
 
 try {
-    new CleanWayBuilder()
-        .use(YourTest)
+    CleanWayBuilder.instance()
+        .assign(new YourTest())
         .build();
 } catch(exception) {
     console.log(exception);
 }
 ~~~~
-
-Then create an empty file `src/main/YourProgram.ts` 
-and implement `src/test/YourTest.ts`cases:
-
+Implement `src/test/YourTest.ts`:
 ~~~~
 import {Test} from "@raccoons-co/cleanway";
 
@@ -64,6 +69,9 @@ export default class YourTest {
 }
 ~~~~
 
+
+Create `src/main/YourProgram.ts`.
+
 Finally paste scripts section to `package.json`:
 ~~~~
 "scripts": {
@@ -73,8 +81,10 @@ Finally paste scripts section to `package.json`:
 }
 ~~~~
 
-Now you are ready to follow clean way while developing your program locally 
-and running test cases with your continuous integration platform. 
+#### Run
+
+Now you are ready to follow clean way.
+Run test locally and with continuous integration platform. 
 
 ~~~~shell script
 % npm test
@@ -82,3 +92,7 @@ and running test cases with your continuous integration platform.
 
 Write `YourTest` cases, fail fast 
 and have a nice journey in the Node.js galaxy.
+
+[Support us with €1](https://send.monobank.ua/jar/6KuKuBf8ki)
+
+Read the story [Clean Way: A Node.js galaxy adventures](https://bus.raccoons.co/artefacts/cleanway)

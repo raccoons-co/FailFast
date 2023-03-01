@@ -1,9 +1,7 @@
-import CleanWayBuilder from "./CleanWayBuilder";
 import Test from "./Test";
-import TestCaseInventory from "./TestCaseInventory";
+import CleanWayBuilder from "./CleanWayBuilder";
 
 export {
-    CleanWayBuilder,
     Test,
-    TestCaseInventory
+    CleanWayBuilder
 }

@@ -1,23 +1,23 @@
 import Annotation from "./Annotation";
-import TestCaseInventory from "./TestCaseInventory";
-import FailedTestCaseException from "./FailedTestCaseException";
-import {TestCaseStatus} from "./TestCaseStatus";
-import TestCaseRecord from "./TestCaseRecord";
+import Brain from "./bugeye/eventbus/Brain";
+import {Signal} from "./bugeye/eventbus/Signal";
+import LogRecord from "./bugeye/eventbus/sensor/LogRecord";
+import TestCase from "./bugeye/TestCase";
+import StartedTestCase from "./bugeye/eventbus/sensor/StartedTestCase";
 
-class Test implements Annotation {
+class Test implements Annotation<MethodDecorator> {
 
-    public execute() {
-        return function (target: object, propertyKey: string, descriptor: PropertyDescriptor) {
-            try {
-                const method = descriptor.value;
-                method.apply(target);
-                TestCaseInventory.instance().keep(new TestCaseRecord(TestCaseStatus.PASSED, propertyKey));
-            } catch (e) {
-                TestCaseInventory.instance().keep(
-                    new TestCaseRecord(TestCaseStatus.FAILED, propertyKey, (e as FailedTestCaseException).message));
-            }
+    public decorator(): MethodDecorator {
+        Brain.instance()
+            .learn(Signal.LOG, new LogRecord(this.constructor.name));
+        return function (target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor) {
+
+            const testCase = new TestCase(target, propertyKey as string, descriptor);
+            Brain.instance()
+                .learn(Signal.LOG, new LogRecord(testCase.toString()))
+                .learn(Signal.TEST_CASE_STARTED, new StartedTestCase(testCase));
         }
     }
 }
 
-export default new Test().execute();
+export default new Test().decorator();

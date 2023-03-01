@@ -1,12 +1,17 @@
 import {CleanWayBuilder} from "../main/index";
-import TestAnnotationTest from "./TestAnnotationTest";
+import {assert} from "chai";
 import YourTest from "./YourTest";
+import FailedTestCaseTest from "./FailedTestCaseTest";
+import NegativeDiagnoseException from "../main/bugeye/eventbus/sensor/NegativeDiagnoseException";
+import BugeyeTest from "./BugeyeTest";
 
-try {
-    new CleanWayBuilder()
-        .use(TestAnnotationTest)
-        .use(YourTest)
-        .build();
-} catch(exception) {
-    console.log(exception);
-}
+assert.throws(() => {
+        CleanWayBuilder.instance()
+            .assign(new YourTest())
+            .assign(new FailedTestCaseTest())
+            .assign(new BugeyeTest())
+            .build();
+    },
+    NegativeDiagnoseException,
+    "FailedTestCaseTest.intentionallyFails()"
+);
