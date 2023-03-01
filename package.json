@@ -1,7 +1,7 @@
 {
   "name": "@raccoons-co/cleanway",
-  "version": "0.0.3",
-  "description": "`@Test` annotation for TypeScript to support a test-driven development discipline.",
+  "version": "0.0.4",
+  "description": "The library provides an `EntryPoint` to `@Test`-driven development discipline practice.",
   "keywords": [
     "TypeScript",
     "Annotation",
