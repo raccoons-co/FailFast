@@ -1,8 +1,8 @@
 import SensorNeuron from "../SensorNeuron";
 import NegativeDiagnoseException from "./NegativeDiagnoseException";
-import TestCase from "../../TestCase";
+import TestCase from "./TestCase";
 import Brain from "../Brain";
-import {Signal} from "../Signal";
+import TestCaseSignal from "./TestCaseSignal";
 import LogRecord from "./LogRecord";
 
 //@Immutable
@@ -16,7 +16,7 @@ export default class NegativeDiagnose implements SensorNeuron {
 
     activate(): void {
         Brain.instance()
-            .learn(Signal.LOG, new LogRecord(this.constructor.name, this.testCase.toString()));
+            .learn(TestCaseSignal.LOG, new LogRecord(this.constructor.name, this.testCase.toString()));
         throw new NegativeDiagnoseException(this.testCase.toString());
     }
 }

@@ -1,7 +1,7 @@
 import SensorNeuron from "../SensorNeuron";
-import TestCase from "../../TestCase";
+import TestCase from "./TestCase";
 import Brain from "../Brain";
-import {Signal} from "../Signal";
+import TestCaseSignal from "./TestCaseSignal";
 import LogRecord from "./LogRecord";
 
 //@Immutable
@@ -15,6 +15,6 @@ export default class PassedTestCase implements SensorNeuron {
 
     activate(): void {
         Brain.instance()
-            .learn(Signal.LOG, new LogRecord(this.constructor.name, this.testCase.toString()));
+            .learn(TestCaseSignal.LOG, new LogRecord(this.constructor.name, this.testCase.toString()));
     }
 }
