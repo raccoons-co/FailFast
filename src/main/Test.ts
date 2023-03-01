@@ -4,14 +4,12 @@ import {Signal} from "./bugeye/eventbus/Signal";
 import LogRecord from "./bugeye/eventbus/sensor/LogRecord";
 import TestCase from "./bugeye/TestCase";
 import StartedTestCase from "./bugeye/eventbus/sensor/StartedTestCase";
-import BugeyeReport from "./bugeye/eventbus/sensor/BugeyeReport";
 
 class Test implements Annotation<MethodDecorator> {
 
     public decorator(): MethodDecorator {
         Brain.instance()
-            .learn(Signal.LOG, new LogRecord(this.constructor.name))
-            .learn(Signal.BUGEYE_REPORT, new BugeyeReport());
+            .learn(Signal.LOG, new LogRecord(this.constructor.name));
         return function (target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor) {
 
             const testCase = new TestCase(target, propertyKey as string, descriptor);
