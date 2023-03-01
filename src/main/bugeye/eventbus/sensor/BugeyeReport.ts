@@ -12,5 +12,6 @@ export default class BugeyeReport implements SensorNeuron {
             .recognize(Signal.TEST_CASE_PASSED)
             .recognize(Signal.TEST_CASE_FAILED)
             .recognize(Signal.LOG)
+            .recognize(Signal.DIAGNOSE);
     }
 }

@@ -2,8 +2,8 @@ import {CleanWayBuilder} from "../main/index";
 import {assert} from "chai";
 import YourTest from "./YourTest";
 import FailedTestCaseTest from "./FailedTestCaseTest";
-import BugeyeTest from "./BugeyeTest";
 import NegativeDiagnoseException from "../main/bugeye/eventbus/sensor/NegativeDiagnoseException";
+import BugeyeTest from "./BugeyeTest";
 
 assert.throws(() => {
         CleanWayBuilder.instance()
