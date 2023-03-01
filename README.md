@@ -33,11 +33,44 @@ and install package as development dependency.
 % npm i -D @raccoons-co/cleanway
 ```
 
-Then copy files to your project from [cleanway-skeleton](https://github.com/raccoons-co/cleanway-skeleton)
-template:
-- src/test/EntryPoint.ts
-- src/test/YourTest.ts
-- src/main/YourProgram.ts
+Implement `src/test/EntryPoint.ts`:
+~~~~
+import {CleanWayBuilder} from "@raccoons-co/cleanway";
+import YourTest from "./YourTest";
+
+try {
+    CleanWayBuilder.instance()
+        .assign(new YourTest())
+        .build();
+} catch(exception) {
+    console.log(exception);
+}
+~~~~
+Implement `src/test/YourTest.ts`:
+~~~~
+import {Test} from "@raccoons-co/cleanway";
+
+export default class YourTest {
+
+    @Test
+    public nothing() {
+        // But your assertions here.
+    }
+
+    @Test
+    public else() {
+        // More assertions.
+    }
+
+    @Test
+    public matters() {
+        // For your clean code.
+    }
+}
+~~~~
+
+
+Create `src/main/YourProgram.ts`.
 
 Finally paste scripts section to `package.json`:
 ~~~~
@@ -59,3 +92,7 @@ Run test locally and with continuous integration platform.
 
 Write `YourTest` cases, fail fast 
 and have a nice journey in the Node.js galaxy.
+
+[Support us with €1](https://send.monobank.ua/jar/6KuKuBf8ki)
+
+Read the story [Clean Way: A Node.js galaxy adventures](https://bus.raccoons.co/artefacts/cleanway)
