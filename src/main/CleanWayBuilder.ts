@@ -1,7 +1,6 @@
 import Brain from "./bugeye/eventbus/Brain";
-import {Signal} from "./bugeye/eventbus/Signal";
-import BugeyeReport from "./bugeye/eventbus/sensor/BugeyeReport";
-import LogRecord from "./bugeye/eventbus/sensor/LogRecord";
+import TestReport from "./bugeye/eventbus/testcase/TestReport";
+import LogRecord from "./bugeye/eventbus/common/LogRecord";
 
 //@Immutable
 export default class CleanWayBuilder {
@@ -15,17 +14,14 @@ export default class CleanWayBuilder {
         return CleanWayBuilder.singleInstance;
     }
 
-
     public assign(testClass: object): CleanWayBuilder {
         Brain.instance()
-            .learn(Signal.LOG, new LogRecord(testClass.constructor.name));
+            .learn(LogRecord, new LogRecord(testClass.constructor.name));
         return this;
     }
 
     public build() {
         Brain.instance()
-            .learn(Signal.BUGEYE_REPORT, new BugeyeReport())
-            .recognize(Signal.TEST_CASE_STARTED)
-            .recognize(Signal.BUGEYE_REPORT);
+            .recognize(TestReport);
     }
 }

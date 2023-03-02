@@ -1,7 +1,7 @@
-import SensorNeuron from "../SensorNeuron";
+import Neuron from "../Neuron";
 
 //@Immutable
-export default class LogRecord implements SensorNeuron {
+export default class LogRecord implements Neuron {
 
     private readonly date: Date;
     private readonly record: string[];
