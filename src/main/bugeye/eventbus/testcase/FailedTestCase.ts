@@ -2,7 +2,7 @@ import Neuron from "../Neuron";
 import FailedTestCaseException from "./FailedTestCaseException";
 import TestCase from "./TestCase";
 import Brain from "../Brain";
-import NegativeDiagnose from "./NegativeDiagnose";
+import ThrownException from "../common/ThrownException";
 import LogRecord from "../common/LogRecord";
 
 //@Immutable
@@ -19,6 +19,6 @@ export default class FailedTestCase implements Neuron {
     activate(): void {
         Brain.instance()
             .learn(LogRecord, new LogRecord(this.constructor.name, this.testCase.toString()))
-            .learn(NegativeDiagnose, new NegativeDiagnose(this.testCase))
+            .learn(ThrownException, new ThrownException(this.exception))
     }
 }

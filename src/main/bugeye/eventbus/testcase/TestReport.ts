@@ -2,9 +2,9 @@ import Neuron from "../Neuron";
 import Brain from "../Brain";
 import LogRecord from "../common/LogRecord";
 import PassedTestCase from "./PassedTestCase";
-import NegativeDiagnose from "./NegativeDiagnose";
 import FailedTestCase from "./FailedTestCase";
 import StartedTestCase from "./StartedTestCase";
+import ThrownException from "../common/ThrownException";
 
 //@Immutable
 export default class TestReport implements Neuron {
@@ -16,6 +16,6 @@ export default class TestReport implements Neuron {
             .recognize(PassedTestCase)
             .recognize(FailedTestCase)
             .recognize(LogRecord)
-            .recognize(NegativeDiagnose);
+            .recognize(ThrownException);
     }
 }

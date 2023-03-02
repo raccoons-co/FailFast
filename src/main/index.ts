@@ -1,9 +1,9 @@
 import Test from "./Test";
 import CleanWayBuilder from "./CleanWayBuilder";
-import NegativeDiagnoseException from "./bugeye/eventbus/testcase/NegativeDiagnoseException";
+import BrainException from "./bugeye/eventbus/common/BrainException";
 
 export {
     Test,
     CleanWayBuilder,
-    NegativeDiagnoseException
+    BrainException
 }

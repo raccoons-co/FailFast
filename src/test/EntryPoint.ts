@@ -1,4 +1,4 @@
-import {CleanWayBuilder, NegativeDiagnoseException} from "../main/index";
+import {CleanWayBuilder, BrainException} from "../main/index";
 import {assert} from "chai";
 import YourTest from "./YourTest";
 import FailedTestCaseTest from "./FailedTestCaseTest";
@@ -9,6 +9,6 @@ assert.throws(() => {
             .assign(new FailedTestCaseTest())
             .build();
     },
-    NegativeDiagnoseException,
-    "FailedTestCaseTest.intentionallyFails()"
+    BrainException,
+    "This is ok."
 );
