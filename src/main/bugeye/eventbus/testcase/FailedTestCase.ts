@@ -1,12 +1,12 @@
-import SensorNeuron from "../SensorNeuron";
+import Neuron from "../Neuron";
 import FailedTestCaseException from "./FailedTestCaseException";
 import TestCase from "./TestCase";
 import Brain from "../Brain";
 import NegativeDiagnose from "./NegativeDiagnose";
-import LogRecord from "./LogRecord";
+import LogRecord from "../common/LogRecord";
 
 //@Immutable
-export default class FailedTestCase implements SensorNeuron {
+export default class FailedTestCase implements Neuron {
 
     private readonly testCase: TestCase;
     private readonly exception: FailedTestCaseException;
@@ -18,7 +18,7 @@ export default class FailedTestCase implements SensorNeuron {
 
     activate(): void {
         Brain.instance()
-            .learn(LogRecord.name, new LogRecord(this.constructor.name, this.testCase.toString()))
-            .learn(NegativeDiagnose.name, new NegativeDiagnose(this.testCase))
+            .learn(LogRecord, new LogRecord(this.constructor.name, this.testCase.toString()))
+            .learn(NegativeDiagnose, new NegativeDiagnose(this.testCase))
     }
 }

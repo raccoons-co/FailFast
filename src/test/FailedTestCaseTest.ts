@@ -9,6 +9,11 @@ export default class FailedTestCaseTest {
     }
 
     @Test
+    public something() {
+        assert.ok("Something.");
+    }
+
+    @Test
     public intentionallyFailsAlso() {
         assert.fail("This is also ok.")
     }

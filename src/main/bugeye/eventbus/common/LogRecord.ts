@@ -1,4 +1,4 @@
-import SensorNeuron from "../SensorNeuron";
+import SensorNeuron from "../Neuron";
 
 //@Immutable
 export default class LogRecord implements SensorNeuron {

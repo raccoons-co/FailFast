@@ -1,13 +1,13 @@
-import SensorNeuron from "../SensorNeuron";
+import Neuron from "../Neuron";
 import Brain from "../Brain";
 import PassedTestCase from "./PassedTestCase";
 import FailedTestCase from "./FailedTestCase";
 import FailedTestCaseException from "./FailedTestCaseException";
 import TestCase from "./TestCase";
-import LogRecord from "./LogRecord";
+import LogRecord from "../common/LogRecord";
 
 //@Immutable
-export default class StartedTestCase implements SensorNeuron {
+export default class StartedTestCase implements Neuron {
 
     private readonly testCase: TestCase;
 
@@ -18,16 +18,14 @@ export default class StartedTestCase implements SensorNeuron {
     public activate() {
         try {
             Brain.instance()
-                .learn(LogRecord.name, new LogRecord(this.constructor.name , this.testCase.toString()));
-
+                .learn(LogRecord, new LogRecord(this.constructor.name, this.testCase.toString()));
             this.testCase.method()
                 .apply(this.testCase.object());
-
             Brain.instance()
-                .learn(PassedTestCase.name, new PassedTestCase(this.testCase))
+                .learn(PassedTestCase, new PassedTestCase(this.testCase))
         } catch (error) {
             Brain.instance()
-                .learn(FailedTestCase.name, new FailedTestCase(this.testCase, error as FailedTestCaseException));
+                .learn(FailedTestCase, new FailedTestCase(this.testCase, error as FailedTestCaseException));
         }
     }
 }
