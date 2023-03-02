@@ -93,6 +93,6 @@ Run test locally and with continuous integration platform.
 Write `YourTest` cases, fail fast 
 and have a nice journey in the Node.js galaxy.
 
-Read the story [Clean Way: A Node.js galaxy adventures](https://bus.raccoons.co/artefacts/cleanway)
+Read the story [Clean Way: A Node.js galaxy adventures](https://bus.raccoons.co/artefacts/cleanway).
 
 [Support us with €1](https://send.monobank.ua/jar/6KuKuBf8ki)

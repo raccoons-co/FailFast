@@ -1,14 +1,13 @@
-import TestCaseSignal from "./testcase/TestCaseSignal";
 import SensorNeuron from "./SensorNeuron";
 
 //@Immutable
 export default class Brain {
 
     private static singleInstance: Brain;
-    private readonly neurons: Map<TestCaseSignal, Array<SensorNeuron>>;
+    private readonly neurons: Map<string, Array<SensorNeuron>>;
 
     private constructor() {
-        this.neurons = new Map<TestCaseSignal, Array<SensorNeuron>>();
+        this.neurons = new Map<string, Array<SensorNeuron>>();
     }
 
     public static instance(): Brain {
@@ -18,7 +17,7 @@ export default class Brain {
         return Brain.singleInstance;
     }
 
-    private memory(signal: TestCaseSignal): Array<SensorNeuron> {
+    private memory(signal: string): Array<SensorNeuron> {
         const memory = this.neurons.get(signal);
         if (memory) {
             return memory;
@@ -29,12 +28,12 @@ export default class Brain {
         }
     }
 
-    public learn(signal: TestCaseSignal, sensor: SensorNeuron) {
+    public learn(signal: string, sensor: SensorNeuron) {
         this.memory(signal).push(sensor);
         return this;
     }
 
-    public recognize(signal: TestCaseSignal): Brain {
+    public recognize(signal: string): Brain {
         if (this.neurons.has(signal)) {
             this.memory(signal).forEach((sensor) => {
                 sensor.activate();

@@ -2,7 +2,6 @@ import SensorNeuron from "../SensorNeuron";
 import FailedTestCaseException from "./FailedTestCaseException";
 import TestCase from "./TestCase";
 import Brain from "../Brain";
-import TestCaseSignal from "./TestCaseSignal";
 import NegativeDiagnose from "./NegativeDiagnose";
 import LogRecord from "./LogRecord";
 
@@ -19,7 +18,7 @@ export default class FailedTestCase implements SensorNeuron {
 
     activate(): void {
         Brain.instance()
-            .learn(TestCaseSignal.LOG, new LogRecord(this.constructor.name, this.testCase.toString()))
-            .learn(TestCaseSignal.DIAGNOSE, new NegativeDiagnose(this.testCase))
+            .learn(LogRecord.name, new LogRecord(this.constructor.name, this.testCase.toString()))
+            .learn(NegativeDiagnose.name, new NegativeDiagnose(this.testCase))
     }
 }
