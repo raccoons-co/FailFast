@@ -1,4 +1,4 @@
-import {CleanWayBuilder, BrainException} from "../main/index";
+import {BrainException, CleanWayBuilder} from "../main/index";
 import {assert} from "chai";
 import YourTest from "./YourTest";
 import FailedTestCaseTest from "./FailedTestCaseTest";

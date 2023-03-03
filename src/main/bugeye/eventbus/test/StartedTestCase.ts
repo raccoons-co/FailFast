@@ -4,7 +4,7 @@ import PassedTestCase from "./PassedTestCase";
 import FailedTestCase from "./FailedTestCase";
 import FailedTestCaseException from "./FailedTestCaseException";
 import TestCase from "./TestCase";
-import LogRecord from "../common/LogRecord";
+import Log from "../../../Log";
 
 //@Immutable
 export default class StartedTestCase implements Neuron {
@@ -15,10 +15,9 @@ export default class StartedTestCase implements Neuron {
         this.testCase = testCase;
     }
 
+    @Log
     public activate() {
         try {
-            Brain.instance()
-                .learn(LogRecord, new LogRecord(this.constructor.name, this.testCase.toString()));
             this.testCase.method()
                 .apply(this.testCase.object());
             Brain.instance()
