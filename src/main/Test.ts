@@ -1,16 +1,17 @@
 import Annotation from "./Annotation";
 import Brain from "./bugeye/eventbus/Brain";
+import TestCase from "./bugeye/eventbus/test/TestCase";
+import StartedTestCase from "./bugeye/eventbus/test/StartedTestCase";
+import TestReport from "./bugeye/eventbus/test/TestReport";
 import LogRecord from "./bugeye/eventbus/common/LogRecord";
-import TestCase from "./bugeye/eventbus/testcase/TestCase";
-import StartedTestCase from "./bugeye/eventbus/testcase/StartedTestCase";
-import TestReport from "./bugeye/eventbus/testcase/TestReport";
+import Log from "./Log";
 
 class Test implements Annotation<MethodDecorator> {
 
+    @Log
     public decorator(): MethodDecorator {
 
         Brain.instance()
-            .learn(LogRecord, new LogRecord(this.constructor.name))
             .learn(TestReport, new TestReport());
 
         return function (target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor) {
