@@ -6,9 +6,8 @@ import LogRecord from "./bugeye/eventbus/common/LogRecord";
 class Log implements Annotation<MethodDecorator> {
 
     public decorator(): MethodDecorator {
-
         Brain.instance()
-            .learn(LogRecord, new LogRecord(this.constructor.name))
+            .learn(LogRecord, new LogRecord(this.constructor.name));
 
         return function (target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor) {
             const method = descriptor.value;

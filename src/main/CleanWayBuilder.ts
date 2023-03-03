@@ -1,8 +1,10 @@
 import Brain from "./bugeye/eventbus/Brain";
-import TestReport from "./bugeye/eventbus/test/TestReport";
 import LogRecord from "./bugeye/eventbus/common/LogRecord";
 import ThrownException from "./bugeye/eventbus/common/ThrownException";
 import Log from "./Log";
+import StartedTestCase from "./bugeye/eventbus/test/StartedTestCase";
+import PassedTestCase from "./bugeye/eventbus/test/PassedTestCase";
+import FailedTestCase from "./bugeye/eventbus/test/FailedTestCase";
 
 //@Immutable
 export default class CleanWayBuilder {
@@ -30,7 +32,9 @@ export default class CleanWayBuilder {
     @Log
     public build() {
         Brain.instance()
-            .recognize(TestReport)
+            .recognize(StartedTestCase)
+            .recognize(PassedTestCase)
+            .recognize(FailedTestCase)
             .recognize(LogRecord)
             .recognize(ThrownException);
     }

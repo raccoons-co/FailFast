@@ -1,7 +1,7 @@
 import Neuron from "../Neuron";
+import BrainException from "./BrainException";
 import Brain from "../Brain";
 import LogRecord from "./LogRecord";
-import BrainException from "./BrainException";
 import Log from "../../../Log";
 
 //@Immutable
@@ -16,7 +16,7 @@ export default class ThrownException implements Neuron {
     @Log
     activate(): void {
         Brain.instance()
-            .learn(LogRecord, new LogRecord(this.exception.message));
-        throw new BrainException(this.exception.message);
+            .learn(LogRecord, new LogRecord(this.exception.stack as string));
+        throw new BrainException(this.exception.stack);
     }
 }
