@@ -11,7 +11,8 @@ class Test implements Annotation<MethodDecorator> {
     @Log
     public decorator(): MethodDecorator {
 
-        Brain.instance().learn(TestReport, new TestReport());
+        Brain.instance()
+            .learn(TestReport, new TestReport());
 
         return function (target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor) {
             const testCase = new TestCase(target, propertyKey as string, descriptor);
