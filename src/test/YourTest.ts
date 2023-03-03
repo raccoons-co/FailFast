@@ -1,6 +1,4 @@
-import {Test} from "../main/index";
-import Log from "../main/Log";
-
+import {Log, Test} from "../main/index";
 export default class YourTest {
 
     @Log

@@ -1,7 +1,5 @@
-import {Test} from "../main/index";
+import {Log, Test} from "../main/index";
 import {assert} from "chai";
-import Log from "../main/Log";
-
 export default class FailedTestCaseTest {
 
     @Test
