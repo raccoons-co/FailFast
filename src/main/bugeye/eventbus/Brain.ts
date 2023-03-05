@@ -17,7 +17,7 @@ export default class Brain {
         return Brain.singleInstance;
     }
 
-    private memory(signal: object): Array<Neuron> {
+    public memory(signal: object): Array<Neuron> {
         const memory = this.neurons.get(signal);
         if (memory) {
             return memory;
