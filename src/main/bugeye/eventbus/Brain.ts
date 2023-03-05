@@ -17,6 +17,9 @@ export default class Brain {
         return Brain.singleInstance;
     }
 
+    /**
+     * Returns the chain of neurons (memory) associated with the signal.
+     */
     public memory(signal: object): Array<Neuron> {
         const memory = this.neurons.get(signal);
         if (memory) {
@@ -28,11 +31,17 @@ export default class Brain {
         }
     }
 
+    /**
+     * Stores neuron in memory associated with the signal.
+     */
     public learn(signal: object, neuron: Neuron) {
         this.memory(signal).push(neuron);
         return this;
     }
 
+    /**
+     * Activates all neurons in memory associated with the signal.
+     */
     public recognize(signal: object): Brain {
         if (this.neurons.has(signal)) {
             this.memory(signal).forEach((neuron) => {
