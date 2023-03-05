@@ -9,14 +9,15 @@ class Test implements Annotation<MethodDecorator> {
 
     @Log
     public decorator(): MethodDecorator {
-        return function (target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor) {
+        return this.learnStartedTestCase;
+    }
 
-            const testCase = new TestCase(target, propertyKey as string, descriptor);
-
-            Brain.instance()
-                .learn(LogRecord, new LogRecord(testCase.toString()))
-                .learn(StartedTestCase, new StartedTestCase(testCase));
-        }
+    @Log
+    private learnStartedTestCase(target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor) {
+        const testCase = new TestCase(target, propertyKey as string, descriptor);
+        Brain.instance()
+            .learn(LogRecord, new LogRecord(testCase.toString()))
+            .learn(StartedTestCase, new StartedTestCase(testCase));
     }
 }
 
