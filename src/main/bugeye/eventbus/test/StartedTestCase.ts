@@ -18,8 +18,7 @@ export default class StartedTestCase implements Neuron {
     @Log
     public activate() {
         try {
-            this.testCase.method()
-                .apply(this.testCase.object());
+            this.testCase.apply();
             Brain.instance()
                 .learn(PassedTestCase, new PassedTestCase(this.testCase))
         } catch (error) {
