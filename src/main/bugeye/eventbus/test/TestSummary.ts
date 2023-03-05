@@ -8,15 +8,14 @@ import PassedTestCase from "./PassedTestCase";
 //@Immutable
 export default class TestSummary implements Neuron {
 
+    private count(signal: object): string {
+        return Brain.instance()
+            .memory(signal).length.toString();
+    }
+
     @Log
     activate(): void {
-
-        const startedCount = Brain.instance()
-            .memory(StartedTestCase).length.toString();
-        const passedCount = Brain.instance()
-            .memory(PassedTestCase).length.toString();
-
         Brain.instance()
-            .learn(LogRecord, new LogRecord("Tests passed", passedCount, "of", startedCount));
+            .learn(LogRecord, new LogRecord("Passed", this.count(PassedTestCase), "of", this.count(StartedTestCase)));
     }
 }
