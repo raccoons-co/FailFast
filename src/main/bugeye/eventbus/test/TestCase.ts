@@ -11,12 +11,9 @@ export default class TestCase {
         this.descriptor = descriptor;
     }
 
-    public method() {
-        return this.descriptor.value;
-    }
-
-    public object(): object {
-        return this.target;
+    public apply() {
+        const originalMethod = this.descriptor.value;
+        originalMethod.apply(this.target);
     }
 
     public toString(): string {

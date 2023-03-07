@@ -1,5 +1,6 @@
 import {Log, Test} from "../main/index";
 import {assert} from "chai";
+
 export default class FailedTestCaseTest {
 
     @Test
@@ -17,5 +18,4 @@ export default class FailedTestCaseTest {
     public intentionallyFailsAlso() {
         assert.fail("This is also ok.")
     }
-
 }

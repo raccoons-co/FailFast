@@ -8,14 +8,15 @@ class Log implements Annotation<MethodDecorator> {
     public decorator(): MethodDecorator {
         Brain.instance()
             .learn(LogRecord, new LogRecord(this.constructor.name));
+        return this.learnMethodApply;
+    }
 
-        return function (target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor) {
-            const method = descriptor.value;
-            descriptor.value = function () {
-                Brain.instance()
-                    .learn(LogRecord, new LogRecord(target.constructor.name, propertyKey as string));
-                return method.apply(this, arguments);
-            }
+    private learnMethodApply(target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor) {
+        const originalMethod = descriptor.value;
+        descriptor.value = function () {
+            Brain.instance()
+                .learn(LogRecord, new LogRecord(target.constructor.name, propertyKey as string));
+            return originalMethod.apply(this, arguments);
         }
     }
 }

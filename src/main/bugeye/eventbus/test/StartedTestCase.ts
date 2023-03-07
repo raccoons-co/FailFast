@@ -4,7 +4,6 @@ import PassedTestCase from "./PassedTestCase";
 import FailedTestCase from "./FailedTestCase";
 import FailedTestCaseException from "./FailedTestCaseException";
 import TestCase from "./TestCase";
-import Log from "../../../Log";
 
 //@Immutable
 export default class StartedTestCase implements Neuron {
@@ -15,11 +14,9 @@ export default class StartedTestCase implements Neuron {
         this.testCase = testCase;
     }
 
-    @Log
     public activate() {
         try {
-            this.testCase.method()
-                .apply(this.testCase.object());
+            this.testCase.apply();
             Brain.instance()
                 .learn(PassedTestCase, new PassedTestCase(this.testCase))
         } catch (error) {
