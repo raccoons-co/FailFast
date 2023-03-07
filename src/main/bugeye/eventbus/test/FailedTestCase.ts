@@ -20,7 +20,7 @@ export default class FailedTestCase implements Neuron {
     @Log
     activate(): void {
         Brain.instance()
-            .learn(LogRecord, new LogRecord(this.testCase.toString()))
-            .learn(ThrownException, new ThrownException(this.exception))
+            .learn(LogRecord, new LogRecord(this.testCase.toString(), this.exception.message.toString()))
+            .learn(ThrownException, new ThrownException(this.exception));
     }
 }
