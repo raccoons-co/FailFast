@@ -38,13 +38,9 @@ Implement `src/test/EntryPoint.ts`:
 import {CleanWayBuilder} from "@raccoons-co/cleanway";
 import YourTest from "./YourTest";
 
-try {
-    CleanWayBuilder.instance()
-        .assign(new YourTest())
-        .build();
-} catch(exception) {
-    console.log(exception);
-}
+CleanWayBuilder.instance()
+    .assign(new YourTest())
+    .build();
 ~~~~
 Implement `src/test/YourTest.ts`:
 ~~~~
