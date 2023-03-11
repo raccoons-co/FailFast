@@ -5,9 +5,14 @@
 The library provides an `EntryPoint` to `@Test`-driven development discipline 
 practice.
 
-Despite the code of the `@Test` annotation and `@Log` has
+Library can:
+ - Run `@Test` method;
+ - `@Log` method call;
+ - Make class instance `@Immutable`.
+
+Despite the code has
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/raccoons-co/cleanway/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/raccoons-co/cleanway/tree/master)
-their tests and has
+its tests and has
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=bugs)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
 ,
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
@@ -17,6 +22,8 @@ and
 ```
 NOTE: Decorators are an experimental feature.
 ```
+
+
 
 #### Simple auto-start
 
@@ -44,20 +51,24 @@ CleanWayBuilder.instance()
 ~~~~
 Implement `src/test/YourTest.ts`:
 ~~~~
-import {Test} from "@raccoons-co/cleanway";
+import {Immutable, Log, Test} from "@raccoons-co/cleanway";
 
+@Immutable
 export default class YourTest {
 
+    @Log
     @Test
     public nothing() {
         // But your assertions here.
     }
 
+    @Log
     @Test
     public else() {
         // More assertions.
     }
 
+    @Log
     @Test
     public matters() {
         // For your clean code.

@@ -1,4 +1,6 @@
-//@Immutable
+import Immutable from "../../../Immutable";
+
+@Immutable
 export default class TestCase {
 
     private readonly target: object;

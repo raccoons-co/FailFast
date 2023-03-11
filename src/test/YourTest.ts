@@ -1,4 +1,6 @@
-import {Log, Test} from "../main/index";
+import {Immutable, Log, Test} from "../main/index";
+
+@Immutable
 export default class YourTest {
 
     @Log

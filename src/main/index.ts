@@ -24,11 +24,13 @@ import BrainException from "./bugeye/eventbus/common/BrainException";
 import CleanWayBuilder from "./CleanWayBuilder";
 import Log from "./Log";
 import Test from "./Test";
+import Immutable from "./Immutable";
 
 export {
     Brain,
     BrainException,
     CleanWayBuilder,
     Log,
-    Test
+    Test,
+    Immutable
 }

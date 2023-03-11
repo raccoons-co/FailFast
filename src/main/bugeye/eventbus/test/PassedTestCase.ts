@@ -3,8 +3,9 @@ import TestCase from "./TestCase";
 import Brain from "../Brain";
 import LogRecord from "../common/LogRecord";
 import Log from "../../../Log";
+import Immutable from "../../../Immutable";
 
-//@Immutable
+@Immutable
 export default class PassedTestCase implements Neuron {
 
     private readonly testCase: TestCase;

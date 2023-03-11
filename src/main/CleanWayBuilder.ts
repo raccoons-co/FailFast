@@ -4,8 +4,9 @@ import ThrownException from "./bugeye/eventbus/common/ThrownException";
 import StartedTestCase from "./bugeye/eventbus/test/StartedTestCase";
 import FailedTestCase from "./bugeye/eventbus/test/FailedTestCase";
 import TestSummary from "./bugeye/eventbus/test/TestSummary";
+import Immutable from "./Immutable";
 
-//@Immutable
+@Immutable
 export default class CleanWayBuilder {
 
     private static singleInstance: CleanWayBuilder;
@@ -21,14 +22,14 @@ export default class CleanWayBuilder {
         return CleanWayBuilder.singleInstance;
     }
 
+    //eslint-disable-next-line  @typescript-eslint/no-unused-vars
     public assign(testClass: object): CleanWayBuilder {
-        Brain.instance()
-            .learn(LogRecord, new LogRecord(testClass.constructor.name));
         return this;
     }
 
     public build() {
         Brain.instance()
+            .learn(TestSummary, new TestSummary())
             .recognize(StartedTestCase)
             .recognize(FailedTestCase)
             .recognize(TestSummary)

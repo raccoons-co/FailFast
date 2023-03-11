@@ -5,8 +5,9 @@ import Log from "../../../Log";
 import Brain from "../Brain";
 import LogRecord from "../common/LogRecord";
 import ThrownException from "../common/ThrownException";
+import Immutable from "../../../Immutable";
 
-//@Immutable
+@Immutable
 export default class FailedTestCase implements Neuron {
 
     private readonly testCase: TestCase;

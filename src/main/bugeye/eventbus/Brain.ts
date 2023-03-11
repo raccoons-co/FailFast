@@ -1,6 +1,5 @@
 import Neuron from "./Neuron";
 
-//@Immutable
 export default class Brain {
 
     private static singleInstance: Brain;
@@ -32,7 +31,7 @@ export default class Brain {
     }
 
     /**
-     * Returns copy of memory associated with the signal.
+     * Returns new copy of memory associated with the signal.
      */
     public memory(signal: object): Array<Neuron> {
         return this.cerebrumMemory(signal).map(neuron => neuron);

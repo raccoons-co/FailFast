@@ -1,9 +1,10 @@
-import {Brain, BrainException, Log, Test} from "../main/index";
+import {Brain, BrainException, Immutable, Log, Test} from "../main/index";
 import TestSummary from "../main/bugeye/eventbus/test/TestSummary";
 import {assert} from "chai";
 import FailedTestCase from "../main/bugeye/eventbus/test/FailedTestCase";
 import ThrownException from "../main/bugeye/eventbus/common/ThrownException";
 
+@Immutable
 export default class BrainTest {
 
     @Log

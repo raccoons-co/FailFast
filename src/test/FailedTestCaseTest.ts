@@ -1,6 +1,7 @@
-import {Log, Test} from "../main/index";
+import {Immutable, Log, Test} from "../main/index";
 import {assert} from "chai";
 
+@Immutable
 export default class FailedTestCaseTest {
 
     @Test

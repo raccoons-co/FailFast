@@ -2,13 +2,12 @@ import Annotation from "./Annotation";
 import Brain from "./bugeye/eventbus/Brain";
 import TestCase from "./bugeye/eventbus/test/TestCase";
 import StartedTestCase from "./bugeye/eventbus/test/StartedTestCase";
-import TestSummary from "./bugeye/eventbus/test/TestSummary";
+import Log from "./Log";
 
 class Test implements Annotation<MethodDecorator> {
 
+    @Log
     public decorator(): MethodDecorator {
-        Brain.instance()
-            .learn(TestSummary, new TestSummary());
         return this.learnStartedTestCase;
     }
 
