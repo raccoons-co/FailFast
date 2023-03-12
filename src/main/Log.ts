@@ -2,7 +2,9 @@
 import Annotation from "./Annotation";
 import Brain from "./bugeye/eventbus/Brain";
 import LogRecord from "./bugeye/eventbus/common/LogRecord";
+import Immutable from "./Immutable";
 
+@Immutable
 class Log implements Annotation<MethodDecorator> {
 
     public decorator(): MethodDecorator {

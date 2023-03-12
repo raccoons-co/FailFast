@@ -3,7 +3,9 @@ import Brain from "./bugeye/eventbus/Brain";
 import TestCase from "./bugeye/eventbus/test/TestCase";
 import StartedTestCase from "./bugeye/eventbus/test/StartedTestCase";
 import Log from "./Log";
+import Immutable from "./Immutable";
 
+@Immutable
 class Test implements Annotation<MethodDecorator> {
 
     @Log
