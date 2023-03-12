@@ -10,7 +10,7 @@ class Immutable implements Annotation<Function> {
     }
 
     private immutableObject<T extends { new(...args: any[]): object }>(target: T) {
-        return class ImmutableClassDecorator extends target {
+        return class ImmutableObject extends target {
             constructor(...args: any[]) {
                 super(...args);
                 Object.freeze(this);

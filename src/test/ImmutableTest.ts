@@ -4,16 +4,16 @@ import {assert} from "chai";
 @Immutable
 export default class ImmutableTest {
 
-    private mockString = "Mock object";
+    private mutableProperty = "Mock string object";
 
-    public rename(value: string) {
-        this.mockString = value;
+    public setProperty(value: string) {
+        this.mutableProperty = value;
     }
 
     @Log
     @Test
-    public immutableObjectThrowsException() {
-        assert.throws(() => new ImmutableTest().rename("New value"),
+    public immutableObjectThrowsExceptionOnChange() {
+        assert.throws(() => new ImmutableTest().setProperty("New value"),
             "Cannot assign to read only property");
     }
 }
