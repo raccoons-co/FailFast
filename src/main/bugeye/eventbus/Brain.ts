@@ -40,7 +40,7 @@ export default class Brain {
     /**
      * Stores neuron in memory associated with the signal.
      */
-    public learn(signal: object, neuron: Neuron) {
+    public learn(signal: object, neuron: Neuron): Brain {
         this.cerebrumMemory(signal).push(neuron);
         return this;
     }

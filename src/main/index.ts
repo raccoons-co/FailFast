@@ -6,6 +6,7 @@
  *
  * @example
  * ```ts
+ * @Immutable
  * export default class YourTest {
  *
  *     @Log
