@@ -3,8 +3,9 @@ import BrainException from "./BrainException";
 import Brain from "../Brain";
 import LogRecord from "./LogRecord";
 import Log from "../../../Log";
+import Immutable from "../../../Immutable";
 
-//@Immutable
+@Immutable
 export default class ThrownException implements Neuron {
 
     private readonly exception: Error;

@@ -4,8 +4,9 @@ import PassedTestCase from "./PassedTestCase";
 import FailedTestCase from "./FailedTestCase";
 import FailedTestCaseException from "./FailedTestCaseException";
 import TestCase from "./TestCase";
+import Immutable from "../../../Immutable";
 
-//@Immutable
+@Immutable
 export default class StartedTestCase implements Neuron {
 
     private readonly testCase: TestCase;

@@ -1,6 +1,7 @@
 import Neuron from "../Neuron";
+import Immutable from "../../../Immutable";
 
-//@Immutable
+@Immutable
 export default class LogRecord implements Neuron {
 
     private readonly date: Date;

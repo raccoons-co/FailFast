@@ -1,6 +1,5 @@
 import Neuron from "./Neuron";
 
-//@Immutable
 export default class Brain {
 
     private static singleInstance: Brain;
@@ -20,7 +19,7 @@ export default class Brain {
     /**
      * Returns the chain of neurons (memory) associated with the signal.
      */
-    public memory(signal: object): Array<Neuron> {
+    private cerebrumMemory(signal: object): Array<Neuron> {
         const memory = this.neurons.get(signal);
         if (memory) {
             return memory;
@@ -32,10 +31,17 @@ export default class Brain {
     }
 
     /**
+     * Returns new copy of memory associated with the signal.
+     */
+    public memory(signal: object): Array<Neuron> {
+        return this.cerebrumMemory(signal).map(neuron => neuron);
+    }
+
+    /**
      * Stores neuron in memory associated with the signal.
      */
     public learn(signal: object, neuron: Neuron) {
-        this.memory(signal).push(neuron);
+        this.cerebrumMemory(signal).push(neuron);
         return this;
     }
 
@@ -44,7 +50,7 @@ export default class Brain {
      */
     public recognize(signal: object): Brain {
         if (this.neurons.has(signal)) {
-            this.memory(signal).forEach((neuron) => {
+            this.cerebrumMemory(signal).forEach((neuron) => {
                 neuron.activate();
             });
         }

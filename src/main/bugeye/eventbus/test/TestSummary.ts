@@ -4,8 +4,9 @@ import Brain from "../Brain";
 import LogRecord from "../common/LogRecord";
 import StartedTestCase from "./StartedTestCase";
 import PassedTestCase from "./PassedTestCase";
+import Immutable from "../../../Immutable";
 
-//@Immutable
+@Immutable
 export default class TestSummary implements Neuron {
 
     @Log
