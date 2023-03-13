@@ -1,5 +1,7 @@
 import Neuron from "./Neuron";
+import Immutable from "../../Immutable";
 
+@Immutable
 export default class Brain {
 
     private static singleInstance: Brain;
