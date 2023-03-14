@@ -1,10 +1,10 @@
 import Neuron from "../Neuron";
-import Log from "../../../Log";
+import Immutable from "../../../Immutable";
 import Brain from "../Brain";
+import Log from "../../../Log";
 import LogRecord from "../common/LogRecord";
 import StartedTestCase from "./StartedTestCase";
 import PassedTestCase from "./PassedTestCase";
-import Immutable from "../../../Immutable";
 
 @Immutable
 export default class TestSummary implements Neuron {

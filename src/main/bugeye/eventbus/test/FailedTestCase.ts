@@ -1,11 +1,11 @@
 import Neuron from "../Neuron";
-import FailedTestCaseException from "./FailedTestCaseException";
+import Immutable from "../../../Immutable";
 import TestCase from "./TestCase";
-import Log from "../../../Log";
+import FailedTestCaseException from "./FailedTestCaseException";
 import Brain from "../Brain";
+import Log from "../../../Log";
 import LogRecord from "../common/LogRecord";
 import ThrownException from "../common/ThrownException";
-import Immutable from "../../../Immutable";
 
 @Immutable
 export default class FailedTestCase implements Neuron {

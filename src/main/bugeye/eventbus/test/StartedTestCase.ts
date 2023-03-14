@@ -1,10 +1,10 @@
 import Neuron from "../Neuron";
+import Immutable from "../../../Immutable";
+import TestCase from "./TestCase";
 import Brain from "../Brain";
 import PassedTestCase from "./PassedTestCase";
 import FailedTestCase from "./FailedTestCase";
 import FailedTestCaseException from "./FailedTestCaseException";
-import TestCase from "./TestCase";
-import Immutable from "../../../Immutable";
 
 @Immutable
 export default class StartedTestCase implements Neuron {

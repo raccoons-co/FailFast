@@ -1,10 +1,10 @@
+import Immutable from "./Immutable";
 import Brain from "./bugeye/eventbus/Brain";
-import LogRecord from "./bugeye/eventbus/common/LogRecord";
-import ThrownException from "./bugeye/eventbus/common/ThrownException";
 import StartedTestCase from "./bugeye/eventbus/test/StartedTestCase";
 import FailedTestCase from "./bugeye/eventbus/test/FailedTestCase";
 import TestSummary from "./bugeye/eventbus/test/TestSummary";
-import Immutable from "./Immutable";
+import LogRecord from "./bugeye/eventbus/common/LogRecord";
+import ThrownException from "./bugeye/eventbus/common/ThrownException";
 
 @Immutable
 export default class CleanWayBuilder {

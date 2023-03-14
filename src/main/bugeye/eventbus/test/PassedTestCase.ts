@@ -1,9 +1,9 @@
 import Neuron from "../Neuron";
+import Immutable from "../../../Immutable";
 import TestCase from "./TestCase";
+import Log from "../../../Log";
 import Brain from "../Brain";
 import LogRecord from "../common/LogRecord";
-import Log from "../../../Log";
-import Immutable from "../../../Immutable";
 
 @Immutable
 export default class PassedTestCase implements Neuron {
