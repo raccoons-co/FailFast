@@ -1,4 +1,5 @@
 import Immutable from "../../../Immutable";
+import Precondition from "../../ethics/Precondition";
 
 @Immutable
 export default class TestCase {
@@ -8,9 +9,9 @@ export default class TestCase {
     private readonly descriptor: PropertyDescriptor;
 
     constructor(target: object, propertyKey: string, descriptor: PropertyDescriptor) {
-        this.target = target;
-        this.propertyKey = propertyKey;
-        this.descriptor = descriptor;
+        this.target = Precondition.checkNotNull(target);
+        this.propertyKey = Precondition.checkNotNull(propertyKey);
+        this.descriptor = Precondition.checkNotNull(descriptor);
     }
 
     public apply() {
