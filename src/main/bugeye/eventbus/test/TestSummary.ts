@@ -1,5 +1,5 @@
-import Neuron from "../Neuron";
 import Immutable from "../../../Immutable";
+import Neuron from "../Neuron";
 import Brain from "../Brain";
 import Log from "../../../Log";
 import LogRecord from "../common/LogRecord";

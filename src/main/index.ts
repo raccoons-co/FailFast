@@ -1,11 +1,12 @@
 /**
  * © 2023 Raccoons. Developing a simple way to change.
  *
- * The library provides an `EntryPoint` to `@Test`-driven development discipline practice.
- * You can run `@Test`-methods and `@Log` it with annotations for your TypeScrip prose.
+ * The library provides an `EntryPoint` to `@Test`-driven development
+ * discipline practice.
+ * Write `@Test` case method, `@Log` it calls, make all objects `@Immutable`.
  *
  * @example
- * ```ts
+ * ```typescript
  * @Immutable
  * export default class YourTest {
  *

@@ -1,8 +1,9 @@
 import Immutable from "../../../Immutable";
+import Method from "./Method";
 import Check from "../../ethics/Check";
 
 @Immutable
-export default class TestCase {
+export default class TestCase implements Method {
 
     /** See `MethodDecorator` */
     private readonly target: object;
@@ -10,7 +11,7 @@ export default class TestCase {
     private readonly descriptor: PropertyDescriptor;
 
     /**
-     * Initiates class method properties of the test case.
+     * Initiates method properties of the test case.
      *
      * @param target object
      * @param propertyKey name of the member
