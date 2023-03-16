@@ -2,7 +2,7 @@ import Immutable from "../../../Immutable";
 import Neuron from "../Neuron";
 import Method from "./Method";
 import FailedTestCaseException from "./FailedTestCaseException";
-import Check from "../../ethics/Check";
+import Strict from "../../ethic/Strict";
 import Brain from "../Brain";
 import Log from "../../../Log";
 import LogRecord from "../common/LogRecord";
@@ -16,8 +16,8 @@ export default class FailedTestCase implements Neuron {
 
     constructor(testCase: Method,
                 exception: FailedTestCaseException) {
-        this.testCase = Check.notNull(testCase);
-        this.exception = Check.notNull(exception);
+        this.testCase = Strict.notNull(testCase);
+        this.exception = Strict.notNull(exception);
     }
 
     @Log

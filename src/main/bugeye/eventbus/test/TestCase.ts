@@ -1,6 +1,6 @@
 import Immutable from "../../../Immutable";
 import Method from "./Method";
-import Check from "../../ethics/Check";
+import Strict from "../../ethic/Strict";
 
 @Immutable
 export default class TestCase implements Method {
@@ -20,9 +20,9 @@ export default class TestCase implements Method {
     constructor(target: object,
                 propertyKey: string,
                 descriptor: PropertyDescriptor) {
-        this.target = Check.notNull(target);
-        this.propertyKey = Check.notNull(propertyKey);
-        this.descriptor = Check.notNull(descriptor);
+        this.target = Strict.notNull(target);
+        this.propertyKey = Strict.notNull(propertyKey);
+        this.descriptor = Strict.notNull(descriptor);
     }
 
     /**

@@ -4,7 +4,7 @@ import Brain from "../Brain";
 import LogRecord from "./LogRecord";
 import Log from "../../../Log";
 import Immutable from "../../../Immutable";
-import Check from "../../ethics/Check";
+import Strict from "../../ethic/Strict";
 
 @Immutable
 export default class ThrownException implements Neuron {
@@ -12,7 +12,7 @@ export default class ThrownException implements Neuron {
     private readonly exception: Error;
 
     constructor(exception: Error) {
-        this.exception = Check.notNull(exception);
+        this.exception = Strict.notNull(exception);
     }
 
     @Log

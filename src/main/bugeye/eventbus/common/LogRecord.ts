@@ -1,6 +1,6 @@
 import Neuron from "../Neuron";
 import Immutable from "../../../Immutable";
-import Check from "../../ethics/Check";
+import Strict from "../../ethic/Strict";
 
 @Immutable
 export default class LogRecord implements Neuron {
@@ -10,7 +10,7 @@ export default class LogRecord implements Neuron {
 
     constructor(...args: string[]) {
         this.date = new Date();
-        this.record = Check.notNull(args);
+        this.record = Strict.notNull(args);
     }
 
     activate(): void {

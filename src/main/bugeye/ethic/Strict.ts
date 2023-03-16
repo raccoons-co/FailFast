@@ -1,6 +1,9 @@
 import NullPointerException from "./NullPointerException";
 
-export default class Check {
+/**
+ * Static methods to enforce a strict clean code ethic.
+ */
+export default class Strict {
 
     /**
      * Ensures that an object reference passed as a parameter is not null.

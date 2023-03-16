@@ -1,7 +1,7 @@
 import Immutable from "../../../Immutable";
 import Neuron from "../Neuron";
 import Method from "./Method";
-import Check from "../../ethics/Check";
+import Strict from "../../ethic/Strict";
 import Brain from "../Brain";
 import PassedTestCase from "./PassedTestCase";
 import FailedTestCase from "./FailedTestCase";
@@ -13,7 +13,7 @@ export default class StartedTestCase implements Neuron {
     private readonly testCase: Method;
 
     constructor(testCase: Method) {
-        this.testCase = Check.notNull(testCase);
+        this.testCase = Strict.notNull(testCase);
     }
 
     public activate() {

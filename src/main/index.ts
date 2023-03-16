@@ -3,7 +3,10 @@
  *
  * The library provides an `EntryPoint` to `@Test`-driven development
  * discipline practice.
- * Write `@Test` case method, `@Log` it calls, make all objects `@Immutable`.
+ * The library can:
+ *  - Run `@Test` case method;
+ *  - `@Log` method call;
+ *  - Make class instance `@Immutable`.
  *
  * @example
  * ```typescript
@@ -27,8 +30,8 @@ import Test from "./Test";
 import CleanWayBuilder from "./CleanWayBuilder";
 import BrainException from "./bugeye/eventbus/common/BrainException";
 import Brain from "./bugeye/eventbus/Brain";
-import Check from "./bugeye/ethics/Check"
-import NullPointerException from "./bugeye/ethics/NullPointerException";
+import Strict from "./bugeye/ethic/Strict"
+import NullPointerException from "./bugeye/ethic/NullPointerException";
 
 export {
     Immutable,
@@ -37,6 +40,6 @@ export {
     CleanWayBuilder,
     BrainException,
     Brain,
-    Check,
+    Strict,
     NullPointerException
 }
