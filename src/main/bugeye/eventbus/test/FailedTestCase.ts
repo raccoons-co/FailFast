@@ -6,6 +6,7 @@ import Brain from "../Brain";
 import Log from "../../../Log";
 import LogRecord from "../common/LogRecord";
 import ThrownException from "../common/ThrownException";
+import Precondition from "../../ethics/Precondition";
 
 @Immutable
 export default class FailedTestCase implements Neuron {
@@ -14,8 +15,8 @@ export default class FailedTestCase implements Neuron {
     private readonly exception: FailedTestCaseException;
 
     constructor(testCase: TestCase, exception: FailedTestCaseException) {
-        this.testCase = testCase;
-        this.exception = exception;
+        this.testCase = Precondition.checkNotNull(testCase);
+        this.exception = Precondition.checkNotNull(exception);
     }
 
     @Log

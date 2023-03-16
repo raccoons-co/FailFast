@@ -20,18 +20,22 @@
  * @packageDocumentation
  */
 
-import Brain from "./bugeye/eventbus/Brain";
-import BrainException from "./bugeye/eventbus/common/BrainException";
-import CleanWayBuilder from "./CleanWayBuilder";
 import Immutable from "./Immutable";
 import Log from "./Log";
 import Test from "./Test";
+import CleanWayBuilder from "./CleanWayBuilder";
+import BrainException from "./bugeye/eventbus/common/BrainException";
+import Brain from "./bugeye/eventbus/Brain";
+import Precondition from "./bugeye/ethics/Precondition"
+import NullPointerException from "./bugeye/ethics/NullPointerException";
 
 export {
-    Brain,
-    BrainException,
-    CleanWayBuilder,
     Immutable,
     Log,
-    Test
+    Test,
+    CleanWayBuilder,
+    BrainException,
+    Brain,
+    Precondition,
+    NullPointerException
 }
