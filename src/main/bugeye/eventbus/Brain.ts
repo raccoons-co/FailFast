@@ -57,9 +57,7 @@ export default class Brain {
     public recognize(signal: object): Brain {
         Strict.notNull(signal);
         if (this.neurons.has(signal)) {
-            this.cerebrumMemory(signal).forEach((neuron) => {
-                neuron.activate();
-            });
+            this.cerebrumMemory(signal).forEach(neuron => neuron.activate());
         }
         return this;
     }
