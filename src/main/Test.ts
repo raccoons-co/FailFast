@@ -8,11 +8,13 @@ import StartedTestCase from "./bugeye/eventbus/test/StartedTestCase";
 class Test implements Annotation<MethodDecorator> {
 
     public decorator(): MethodDecorator {
-        return this.learnStartedTestCase;
+        return this.learnNewTestCase;
     }
 
-    private learnStartedTestCase(target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor) {
-        const testCase = new TestCase(target, propertyKey as string, descriptor);
+    private learnNewTestCase(target: object,
+                             propertyKey: string | symbol,
+                             descriptor: PropertyDescriptor) {
+        const testCase = new TestCase(target, propertyKey.toString(), descriptor);
         Brain.instance()
             .learn(StartedTestCase, new StartedTestCase(testCase));
     }

@@ -1,6 +1,6 @@
 import {Immutable, Log, Test} from "../main/index";
 import {assert} from "chai";
-import Precondition from "../main/bugeye/ethics/Precondition";
+import Check from "../main/bugeye/ethics/Check";
 import NullPointerException from "../main/bugeye/ethics/NullPointerException";
 
 @Immutable
@@ -10,7 +10,7 @@ export default class PreconditionTest {
     @Test
     public throwsExceptionIfNullPointer() {
         assert.throws(
-            () => Precondition.checkNotNull(null, "Check for null"),
+            () => Check.notNull(null, "Check for null"),
             NullPointerException,
             "Check for null"
         );
@@ -20,7 +20,7 @@ export default class PreconditionTest {
     @Test
     public throwsExceptionIfUndefinedPointer() {
         assert.throws(
-            () => Precondition.checkNotNull(undefined, "Check for undefined"),
+            () => Check.notNull(undefined, "Check for undefined"),
             NullPointerException,
             "Check for undefined"
         );
@@ -30,13 +30,13 @@ export default class PreconditionTest {
     @Test
     public returnsSameObjectReference() {
         const reference = new Object();
-        assert.deepEqual(Precondition.checkNotNull(reference), reference);
+        assert.deepEqual(Check.notNull(reference), reference);
     }
 
     @Log
     @Test
     public referenceNotEqualToAnother() {
-        assert.notEqual(Precondition.checkNotNull(new Object()), new Object());
+        assert.notEqual(Check.notNull(new Object()), new Object());
     }
 
 }

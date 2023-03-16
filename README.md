@@ -5,7 +5,7 @@
 The library provides an `EntryPoint` to `@Test`-driven development discipline 
 practice.
 
-Library can:
+The library can:
  - Run `@Test` method;
  - `@Log` method call;
  - Make class instance `@Immutable`.

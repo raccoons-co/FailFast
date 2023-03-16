@@ -5,7 +5,7 @@ import Brain from "../Brain";
 import PassedTestCase from "./PassedTestCase";
 import FailedTestCase from "./FailedTestCase";
 import FailedTestCaseException from "./FailedTestCaseException";
-import Precondition from "../../ethics/Precondition";
+import Check from "../../ethics/Check";
 
 @Immutable
 export default class StartedTestCase implements Neuron {
@@ -13,7 +13,7 @@ export default class StartedTestCase implements Neuron {
     private readonly testCase: TestCase;
 
     constructor(testCase: TestCase) {
-        this.testCase = Precondition.checkNotNull(testCase);
+        this.testCase = Check.notNull(testCase);
     }
 
     public activate() {

@@ -26,7 +26,7 @@ import Test from "./Test";
 import CleanWayBuilder from "./CleanWayBuilder";
 import BrainException from "./bugeye/eventbus/common/BrainException";
 import Brain from "./bugeye/eventbus/Brain";
-import Precondition from "./bugeye/ethics/Precondition"
+import Check from "./bugeye/ethics/Check"
 import NullPointerException from "./bugeye/ethics/NullPointerException";
 
 export {
@@ -36,6 +36,6 @@ export {
     CleanWayBuilder,
     BrainException,
     Brain,
-    Precondition,
+    Check,
     NullPointerException
 }

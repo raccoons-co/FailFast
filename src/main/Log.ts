@@ -8,14 +8,16 @@ import LogRecord from "./bugeye/eventbus/common/LogRecord";
 class Log implements Annotation<MethodDecorator> {
 
     public decorator(): MethodDecorator {
-        return this.learnMethodApply;
+        return this.learnClassMethodApply;
     }
 
-    private learnMethodApply(target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor) {
+    private learnClassMethodApply(target: object,
+                                  propertyKey: string | symbol,
+                                  descriptor: PropertyDescriptor) {
         const originalMethod = descriptor.value;
         descriptor.value = function () {
             Brain.instance()
-                .learn(LogRecord, new LogRecord(target.constructor.name, propertyKey as string));
+                .learn(LogRecord, new LogRecord(target.constructor.name, propertyKey.toString()));
             return originalMethod.apply(this, arguments);
         }
     }
