@@ -18,7 +18,7 @@ export default class ThrownException implements Neuron {
     @Log
     activate(): void {
         Brain.instance()
-            .learn(LogRecord, new LogRecord(this.exception.stack));
+            .learn(LogRecord, new LogRecord(this.exception.stack as string));
         throw new BrainException(this.exception.stack);
     }
 }
