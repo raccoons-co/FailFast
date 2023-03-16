@@ -14,7 +14,8 @@ export default class FailedTestCase implements Neuron {
     private readonly testCase: TestCase;
     private readonly exception: FailedTestCaseException;
 
-    constructor(testCase: TestCase, exception: FailedTestCaseException) {
+    constructor(testCase: TestCase,
+                exception: FailedTestCaseException) {
         this.testCase = Precondition.checkNotNull(testCase);
         this.exception = Precondition.checkNotNull(exception);
     }

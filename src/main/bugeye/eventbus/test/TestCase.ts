@@ -8,7 +8,9 @@ export default class TestCase {
     private readonly propertyKey: string;
     private readonly descriptor: PropertyDescriptor;
 
-    constructor(target: object, propertyKey: string, descriptor: PropertyDescriptor) {
+    constructor(target: object,
+                propertyKey: string,
+                descriptor: PropertyDescriptor) {
         this.target = Precondition.checkNotNull(target);
         this.propertyKey = Precondition.checkNotNull(propertyKey);
         this.descriptor = Precondition.checkNotNull(descriptor);

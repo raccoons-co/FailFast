@@ -12,7 +12,8 @@ export default class TestSummary implements Neuron {
     @Log
     activate(): void {
         Brain.instance()
-            .learn(LogRecord, new LogRecord("Passed", this.count(PassedTestCase), "of", this.count(StartedTestCase)));
+            .learn(LogRecord, new LogRecord("Passed", this.count(PassedTestCase),
+                "of", this.count(StartedTestCase)));
     }
 
     /**
