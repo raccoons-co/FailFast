@@ -42,5 +42,4 @@ export default class StrictTest {
     public referenceNotEqualToAnother() {
         assert.notEqual(Strict.notNull(new Object()), new Object());
     }
-
 }
