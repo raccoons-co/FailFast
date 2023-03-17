@@ -1,17 +1,18 @@
-import Neuron from "../Neuron";
-import TestCase from "./TestCase";
-import Brain from "../Brain";
-import LogRecord from "../common/LogRecord";
-import Log from "../../../Log";
 import Immutable from "../../../Immutable";
+import Neuron from "../Neuron";
+import Method from "./Method";
+import Strict from "../../ethics/Strict";
+import Brain from "../Brain";
+import Log from "../../../Log";
+import LogRecord from "../common/LogRecord";
 
 @Immutable
 export default class PassedTestCase implements Neuron {
 
-    private readonly testCase: TestCase;
+    private readonly testCase: Method;
 
-    constructor(testCase: TestCase) {
-        this.testCase = testCase;
+    constructor(testCase: Method) {
+        this.testCase = Strict.notNull(testCase);
     }
 
     @Log

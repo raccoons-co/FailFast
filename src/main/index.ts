@@ -1,11 +1,16 @@
 /**
  * © 2023 Raccoons. Developing a simple way to change.
  *
- * The library provides an `EntryPoint` to `@Test`-driven development discipline practice.
- * You can run `@Test`-methods and `@Log` it with annotations for your TypeScrip prose.
+ * The library provides an `EntryPoint` to `@Test`-driven development
+ * discipline practice.
+ * The library can:
+ *  - Run `@Test` case method;
+ *  - `@Log` method call;
+ *  - Make class instance `@Immutable`.
  *
  * @example
- * ```ts
+ * ```typescript
+ * @Immutable
  * export default class YourTest {
  *
  *     @Log
@@ -19,18 +24,22 @@
  * @packageDocumentation
  */
 
-import Brain from "./bugeye/eventbus/Brain";
-import BrainException from "./bugeye/eventbus/common/BrainException";
-import CleanWayBuilder from "./CleanWayBuilder";
+import Immutable from "./Immutable";
 import Log from "./Log";
 import Test from "./Test";
-import Immutable from "./Immutable";
+import CleanWayBuilder from "./CleanWayBuilder";
+import BrainException from "./bugeye/eventbus/common/BrainException";
+import Brain from "./bugeye/eventbus/Brain";
+import Strict from "./bugeye/ethics/Strict"
+import NullPointerException from "./bugeye/ethics/NullPointerException";
 
 export {
-    Brain,
-    BrainException,
-    CleanWayBuilder,
+    Immutable,
     Log,
     Test,
-    Immutable
+    CleanWayBuilder,
+    BrainException,
+    Brain,
+    Strict,
+    NullPointerException
 }

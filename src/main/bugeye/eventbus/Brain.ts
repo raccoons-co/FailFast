@@ -1,5 +1,8 @@
 import Neuron from "./Neuron";
+import Immutable from "../../Immutable";
+import Strict from "../ethics/Strict";
 
+@Immutable
 export default class Brain {
 
     private static singleInstance: Brain;
@@ -34,13 +37,16 @@ export default class Brain {
      * Returns new copy of memory associated with the signal.
      */
     public memory(signal: object): Array<Neuron> {
+        Strict.notNull(signal);
         return this.cerebrumMemory(signal).map(neuron => neuron);
     }
 
     /**
      * Stores neuron in memory associated with the signal.
      */
-    public learn(signal: object, neuron: Neuron) {
+    public learn(signal: object, neuron: Neuron): Brain {
+        Strict.notNull(signal);
+        Strict.notNull(neuron);
         this.cerebrumMemory(signal).push(neuron);
         return this;
     }
@@ -49,10 +55,9 @@ export default class Brain {
      * Activates all neurons in memory associated with the signal.
      */
     public recognize(signal: object): Brain {
+        Strict.notNull(signal);
         if (this.neurons.has(signal)) {
-            this.cerebrumMemory(signal).forEach((neuron) => {
-                neuron.activate();
-            });
+            this.cerebrumMemory(signal).forEach(neuron => neuron.activate());
         }
         return this;
     }

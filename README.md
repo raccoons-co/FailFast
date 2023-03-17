@@ -5,7 +5,7 @@
 The library provides an `EntryPoint` to `@Test`-driven development discipline 
 practice.
 
-Library can:
+The library can:
  - Run `@Test` method;
  - `@Log` method call;
  - Make class instance `@Immutable`.
@@ -52,6 +52,7 @@ CleanWayBuilder.instance()
 Implement `src/test/YourTest.ts`:
 ~~~~
 import {Immutable, Log, Test} from "@raccoons-co/cleanway";
+import {assert} from "chai";
 
 @Immutable
 export default class YourTest {
@@ -59,19 +60,19 @@ export default class YourTest {
     @Log
     @Test
     public nothing() {
-        // But your assertions here.
+        assert.ok("But your assertions here.");
     }
 
     @Log
     @Test
     public else() {
-        // More assertions.
+        assert.ok("More assertions.");
     }
 
     @Log
     @Test
     public matters() {
-        // For your clean code.
+        assert.ok("For your clean code.");
     }
 }
 ~~~~

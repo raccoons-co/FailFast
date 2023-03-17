@@ -1,21 +1,23 @@
+import Immutable from "../../../Immutable";
 import Neuron from "../Neuron";
+import Method from "./Method";
 import FailedTestCaseException from "./FailedTestCaseException";
-import TestCase from "./TestCase";
-import Log from "../../../Log";
+import Strict from "../../ethics/Strict";
 import Brain from "../Brain";
+import Log from "../../../Log";
 import LogRecord from "../common/LogRecord";
 import ThrownException from "../common/ThrownException";
-import Immutable from "../../../Immutable";
 
 @Immutable
 export default class FailedTestCase implements Neuron {
 
-    private readonly testCase: TestCase;
+    private readonly testCase: Method;
     private readonly exception: FailedTestCaseException;
 
-    constructor(testCase: TestCase, exception: FailedTestCaseException) {
-        this.testCase = testCase;
-        this.exception = exception;
+    constructor(testCase: Method,
+                exception: FailedTestCaseException) {
+        this.testCase = Strict.notNull(testCase);
+        this.exception = Strict.notNull(exception);
     }
 
     @Log

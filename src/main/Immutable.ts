@@ -1,10 +1,8 @@
 /* eslint-disable */
-import Log from "./Log";
 import Annotation from "./Annotation";
 
 class Immutable implements Annotation<Function> {
 
-    @Log
     public decorator(): Function {
         return this.immutableObject;
     }

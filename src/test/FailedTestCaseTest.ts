@@ -6,7 +6,7 @@ export default class FailedTestCaseTest {
 
     @Test
     @Log
-    public intentionallyFails() {
+    public failsIntentionally() {
         assert.fail("This is ok.")
     }
 
@@ -16,7 +16,7 @@ export default class FailedTestCaseTest {
     }
 
     @Log @Test
-    public intentionallyFailsAlso() {
+    public failsIntentionallyAlso() {
         assert.fail("This is also ok.")
     }
 }
