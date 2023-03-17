@@ -1,7 +1,7 @@
 import NullPointerException from "./NullPointerException";
 
 /**
- * Static methods to enforce a strict clean code ethic.
+ * Static methods to enforce a strict clean code ethics.
  */
 export default class Strict {
 

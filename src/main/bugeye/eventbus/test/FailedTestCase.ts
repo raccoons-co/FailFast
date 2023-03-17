@@ -2,7 +2,7 @@ import Immutable from "../../../Immutable";
 import Neuron from "../Neuron";
 import Method from "./Method";
 import FailedTestCaseException from "./FailedTestCaseException";
-import Strict from "../../ethic/Strict";
+import Strict from "../../ethics/Strict";
 import Brain from "../Brain";
 import Log from "../../../Log";
 import LogRecord from "../common/LogRecord";

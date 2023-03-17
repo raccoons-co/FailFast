@@ -1,6 +1,6 @@
 import Neuron from "../Neuron";
 import Immutable from "../../../Immutable";
-import Strict from "../../ethic/Strict";
+import Strict from "../../ethics/Strict";
 
 @Immutable
 export default class LogRecord implements Neuron {

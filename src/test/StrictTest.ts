@@ -1,10 +1,14 @@
-import {Immutable, Log, Test} from "../main/index";
+import {
+    Immutable,
+    Log,
+    Test,
+    Strict,
+    NullPointerException
+} from "../main/index";
 import {assert} from "chai";
-import Strict from "../main/bugeye/ethic/Strict";
-import NullPointerException from "../main/bugeye/ethic/NullPointerException";
 
 @Immutable
-export default class PreconditionTest {
+export default class StrictTest {
 
     @Log
     @Test

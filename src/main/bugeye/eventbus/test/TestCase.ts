@@ -1,6 +1,6 @@
 import Immutable from "../../../Immutable";
 import Method from "./Method";
-import Strict from "../../ethic/Strict";
+import Strict from "../../ethics/Strict";
 
 @Immutable
 export default class TestCase implements Method {

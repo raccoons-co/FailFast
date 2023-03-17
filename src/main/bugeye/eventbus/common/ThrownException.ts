@@ -4,7 +4,7 @@ import Brain from "../Brain";
 import LogRecord from "./LogRecord";
 import Log from "../../../Log";
 import Immutable from "../../../Immutable";
-import Strict from "../../ethic/Strict";
+import Strict from "../../ethics/Strict";
 
 @Immutable
 export default class ThrownException implements Neuron {

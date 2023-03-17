@@ -5,6 +5,7 @@ import FailedTestCase from "./bugeye/eventbus/test/FailedTestCase";
 import TestSummary from "./bugeye/eventbus/test/TestSummary";
 import LogRecord from "./bugeye/eventbus/common/LogRecord";
 import ThrownException from "./bugeye/eventbus/common/ThrownException";
+import Strict from "./bugeye/ethics/Strict";
 
 @Immutable
 export default class CleanWayBuilder {
@@ -22,8 +23,8 @@ export default class CleanWayBuilder {
         return CleanWayBuilder.singleInstance;
     }
 
-    //eslint-disable-next-line  @typescript-eslint/no-unused-vars
     public assign(testClass: object): CleanWayBuilder {
+        Strict.notNull(testClass);
         return this;
     }
 

@@ -4,7 +4,7 @@ import YourTest from "./YourTest";
 import FailedTestCaseTest from "./FailedTestCaseTest";
 import BrainTest from "./BrainTest";
 import ImmutableTest from "./ImmutableTest";
-import PreconditionTest from "./PreconditionTest";
+import StrictTest from "./StrictTest";
 
 assert.throws(() => {
         CleanWayBuilder.instance()
@@ -12,7 +12,7 @@ assert.throws(() => {
             .assign(new FailedTestCaseTest())
             .assign(new BrainTest())
             .assign(new ImmutableTest())
-            .assign(new PreconditionTest())
+            .assign(new StrictTest())
             .build();
     },
     BrainException,

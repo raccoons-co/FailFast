@@ -30,8 +30,8 @@ import Test from "./Test";
 import CleanWayBuilder from "./CleanWayBuilder";
 import BrainException from "./bugeye/eventbus/common/BrainException";
 import Brain from "./bugeye/eventbus/Brain";
-import Strict from "./bugeye/ethic/Strict"
-import NullPointerException from "./bugeye/ethic/NullPointerException";
+import Strict from "./bugeye/ethics/Strict"
+import NullPointerException from "./bugeye/ethics/NullPointerException";
 
 export {
     Immutable,
