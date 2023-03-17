@@ -6,6 +6,8 @@ module.exports = {
   rules: {
     "eol-last": ["warn", "always"],
     "quotes": ["warn", "double"],
+      "max-len": ["warn", 120 ],
+      "max-lines": ["warn", 92 ]
   },
   reportUnusedDisableDirectives: true,
   noInlineConfig: false

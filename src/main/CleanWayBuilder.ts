@@ -36,6 +36,5 @@ export default class CleanWayBuilder {
             .recognize(TestSummary)
             .recognize(LogRecord)
             .recognize(ThrownException);
-
     }
 }
