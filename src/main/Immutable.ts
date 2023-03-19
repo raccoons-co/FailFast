@@ -7,10 +7,15 @@ class Immutable implements Annotation<Function> {
         return this.immutableObject;
     }
 
-    private immutableObject<TFunction extends { new(...args: any[]): object }>(target: TFunction): TFunction {
+    private immutableObject<Class extends new (...args: any[]) => any>(
+        target: Class,
+        context: ClassDecoratorContext): Function {
+
         return class ImmutableObject extends target {
+            private readonly parentClass: string;
             constructor(...args: any[]) {
                 super(...args);
+                this.parentClass = String(context.name);
                 Object.freeze(this);
             }
         }

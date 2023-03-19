@@ -7,34 +7,34 @@ import ThrownException from "../main/bugeye/eventbus/common/ThrownException";
 @Immutable
 export default class BrainTest {
 
-    @Log
     @Test
+    @Log
     public memoryExistsAfterLearning() {
         Brain.instance().learn(BrainTest, new TestSummary());
         assert.exists(Brain.instance().memory(BrainTest));
     }
 
-    @Log
     @Test
+    @Log
     public memoryHasNeuronInstance() {
         assert.instanceOf(Brain.instance().memory(BrainTest).pop(), TestSummary);
     }
 
-    @Log
     @Test
+    @Log
     public memorySizeAfterLearningFirstNeuron() {
         assert.equal(Brain.instance().memory(BrainTest).length, 1);
     }
 
-    @Log
     @Test
+    @Log
     public memorySizeAfterLearningSecondNeuron() {
         Brain.instance().learn(BrainTest, new TestSummary());
         assert.equal(Brain.instance().memory(BrainTest).length, 2);
     }
 
-    @Log
     @Test
+    @Log
     public recognizesFailedTestCaseException() {
         assert.throws(
             () => Brain.instance()

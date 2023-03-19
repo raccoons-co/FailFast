@@ -4,9 +4,10 @@ import Method from "./Method";
 import FailedTestCaseException from "./FailedTestCaseException";
 import Strict from "../../ethics/Strict";
 import Brain from "../Brain";
-import Log from "../../../Log";
 import LogRecord from "../common/LogRecord";
 import ThrownException from "../common/ThrownException";
+
+
 
 @Immutable
 export default class FailedTestCase implements Neuron {
@@ -20,10 +21,10 @@ export default class FailedTestCase implements Neuron {
         this.exception = Strict.notNull(exception);
     }
 
-    @Log
+    //@bondParent
     activate(): void {
         Brain.instance()
-            .learn(LogRecord, new LogRecord(this.testCase.toString(), this.exception.message.toString()))
+            .learn(LogRecord, new LogRecord("Failed", this.testCase.toString(), this.exception.message.toString()))
             .learn(ThrownException, new ThrownException(this.exception));
     }
 }

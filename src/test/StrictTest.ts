@@ -10,8 +10,8 @@ import {assert} from "chai";
 @Immutable
 export default class StrictTest {
 
-    @Log
     @Test
+    @Log
     public throwsExceptionIfNullPointer() {
         assert.throws(
             () => Strict.notNull(null, "Strict for null"),
@@ -20,8 +20,8 @@ export default class StrictTest {
         );
     }
 
-    @Log
     @Test
+    @Log
     public throwsExceptionIfUndefinedPointer() {
         assert.throws(
             () => Strict.notNull(undefined, "Strict for undefined"),
@@ -30,15 +30,15 @@ export default class StrictTest {
         );
     }
 
-    @Log
     @Test
+    @Log
     public returnsSameObjectReference() {
         const reference = new Object();
         assert.deepEqual(Strict.notNull(reference), reference);
     }
 
-    @Log
     @Test
+    @Log
     public referenceNotEqualToAnother() {
         assert.notEqual(Strict.notNull(new Object()), new Object());
     }

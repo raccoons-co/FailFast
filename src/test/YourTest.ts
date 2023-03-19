@@ -4,20 +4,21 @@ import {assert} from "chai";
 @Immutable
 export default class YourTest {
 
-    @Log
     @Test
+    @Log
     public nothing() {
         assert.ok("But your assertions here.");
     }
 
-    @Log
     @Test
+    @Log
     public else() {
         assert.ok("More assertions.");
     }
 
-    @Log
+
     @Test
+    @Log
     public matters() {
         assert.ok("For your clean code.");
     }

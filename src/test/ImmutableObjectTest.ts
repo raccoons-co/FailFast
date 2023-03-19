@@ -10,15 +10,15 @@ export default class ImmutableObjectTest {
         this.mutableProperty = value;
     }
 
-    @Log
     @Test
+    @Log
     public throwsExceptionOnChangeProperty() {
         assert.throws(() => new ImmutableObjectTest().setProperty("New value"),
             "Cannot assign to read only property");
     }
 
-    @Log
     @Test
+    @Log
     public throwsExceptionOnCreateProperty() {
         assert.throws(() => {
                 const descriptor = Object.create(null);

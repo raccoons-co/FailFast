@@ -10,12 +10,14 @@ export default class FailedTestCaseTest {
         assert.fail("This is ok.")
     }
 
-    @Test @Log
+    @Test
+    @Log
     public something() {
         assert.ok("Something.");
     }
 
-    @Log @Test
+    @Test
+    @Log
     public failsIntentionallyAlso() {
         assert.fail("This is also ok.")
     }
