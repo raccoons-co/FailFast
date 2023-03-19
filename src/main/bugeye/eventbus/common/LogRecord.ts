@@ -13,7 +13,7 @@ export default class LogRecord implements Neuron {
         this.record = Strict.notNull(args);
     }
 
-    activate(): void {
+    public activate(): void {
         console.log(this.date, this.record);
     }
 }

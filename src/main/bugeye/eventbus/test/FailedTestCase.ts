@@ -22,7 +22,7 @@ export default class FailedTestCase implements Neuron {
     }
 
     //@bondParent
-    activate(): void {
+    public activate(): void {
         Brain.instance()
             .learn(LogRecord, new LogRecord("Failed", this.testCase.toString(), this.exception.message.toString()))
             .learn(ThrownException, new ThrownException(this.exception));

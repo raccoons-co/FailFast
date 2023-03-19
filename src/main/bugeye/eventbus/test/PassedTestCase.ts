@@ -14,7 +14,7 @@ export default class PassedTestCase implements Neuron {
         this.testCase = Strict.notNull(testCase);
     }
 
-    activate(): void {
+    public activate(): void {
         Brain.instance()
             .learn(LogRecord, new LogRecord("Passed", this.testCase.toString()));
     }

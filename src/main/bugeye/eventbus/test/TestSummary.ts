@@ -10,7 +10,7 @@ import Log from "../../../Log";
 export default class TestSummary implements Neuron {
 
     @Log
-    activate(): void {
+    public activate(): void {
         Brain.instance()
             .learn(LogRecord, new LogRecord("Summary", this.count(PassedTestCase),
                 "of", this.count(StartedTestCase)));
