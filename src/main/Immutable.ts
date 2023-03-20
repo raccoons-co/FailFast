@@ -1,19 +1,21 @@
-/* eslint-disable */
 import Annotation from "./Annotation";
+import Any from "./type/Any";
+import Method from "./type/Method";
+import Class from "./type/Class";
 
-class Immutable implements Annotation<Function> {
+class Immutable implements Annotation {
 
-    public decorator(): Function {
-        return this.immutableObject;
+    public decorator(): Method {
+        return this.classDecorator;
     }
 
-    private immutableObject<Class extends new (...args: any[]) => any>(
-        target: Class,
-        context: ClassDecoratorContext): Function {
+    private classDecorator<C extends Class>(
+        target: C,
+        context: ClassDecoratorContext): Class {
 
         return class ImmutableObject extends target {
             private readonly parentClass: string;
-            constructor(...args: any[]) {
+            constructor(...args: Any[]) {
                 super(...args);
                 this.parentClass = String(context.name);
                 Object.freeze(this);

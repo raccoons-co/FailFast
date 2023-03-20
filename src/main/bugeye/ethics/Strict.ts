@@ -1,8 +1,10 @@
 import NullPointerException from "./NullPointerException";
+import Immutable from "../../Immutable";
 
 /**
  * Static method to enforce a strict clean code ethics.
  */
+@Immutable
 export default class Strict {
 
     /**

@@ -1,16 +1,14 @@
 import Immutable from "../../../Immutable";
-import Method from "./Method";
 import Strict from "../../ethics/Strict";
+import Method from "../../../type/Method";
 
 @Immutable
-export default class TestCase implements Method {
+export default class TestCase{
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    private readonly originalMethod: any;
+    private readonly originalMethod: Method;
     private readonly context: ClassMethodDecoratorContext;
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    constructor(target: any,
+    constructor(target: Method,
                 context: ClassMethodDecoratorContext) {
         this.originalMethod = Strict.notNull(target);
         this.context = Strict.notNull(context);
@@ -20,7 +18,7 @@ export default class TestCase implements Method {
      * Execute test case method.
      */
     public apply() {
-        this.originalMethod.call();
+        this.originalMethod.call(this.originalMethod);
     }
 
     /**

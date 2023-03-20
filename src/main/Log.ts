@@ -1,23 +1,25 @@
-/* eslint-disable */
 import Immutable from "./Immutable";
 import Brain from "./bugeye/eventbus/Brain";
 import LogRecord from "./bugeye/eventbus/common/LogRecord";
 import Annotation from "./Annotation";
+import Any from "./type/Any";
+import Class from "./type/Class";
+import Method from "./type/Method";
 
 @Immutable
-class Log implements Annotation<Function> {
+class Log implements Annotation {
 
-    public decorator(): Function {
-        return this.loggedMethod;
+    public decorator(): Method {
+        return this.methodDecorator;
     }
 
-    private loggedMethod<This, Args extends any[], Return>(
-        target: (this: This, ...args: Args) => Return,
-        context: ClassMethodDecoratorContext<This, (this: This, ...args: Args) => Return>): Function {
+    private methodDecorator(
+        target: Method,
+        context: ClassMethodDecoratorContext): Method {
 
-        return function learnMethodCall(this: This, ...args: Args): Return {
+        return function loggedMethod(this: Class, ...args: Any[]): Any {
             Brain.instance()
-                .learn(LogRecord, new LogRecord(this as string, String(context.name), ...args));
+                .learn(LogRecord, new LogRecord(this.constructor.name, String(context.name), ...args));
             return target.call(this, ...args);
         }
     }

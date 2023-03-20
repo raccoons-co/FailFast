@@ -1,23 +1,20 @@
-import {Immutable, Log, Test} from "../main/index";
+import {Immutable, Test} from "../main/index";
 import {assert} from "chai";
 
 @Immutable
 export default class FailedTestCaseTest {
 
     @Test
-    @Log
     public failsIntentionally() {
         assert.fail("This is ok.")
     }
 
     @Test
-    @Log
     public something() {
         assert.ok("Something.");
     }
 
     @Test
-    @Log
     public failsIntentionallyAlso() {
         assert.fail("This is also ok.")
     }
