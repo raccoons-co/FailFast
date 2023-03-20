@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Immutable from "../../../Immutable";
 import Method from "./Method";
 import Strict from "../../ethics/Strict";
@@ -5,11 +6,9 @@ import Strict from "../../ethics/Strict";
 @Immutable
 export default class TestCase implements Method {
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private readonly originalMethod: any;
     private readonly context: ClassMethodDecoratorContext;
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     constructor(target: any,
                 context: ClassMethodDecoratorContext) {
         this.originalMethod = Strict.notNull(target);

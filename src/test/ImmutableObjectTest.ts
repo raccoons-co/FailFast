@@ -1,4 +1,4 @@
-import {Immutable, Log, Test} from "../main/index";
+import {Immutable, Test} from "../main/index";
 import {assert} from "chai";
 
 @Immutable
@@ -11,14 +11,12 @@ export default class ImmutableObjectTest {
     }
 
     @Test
-    @Log
     public throwsExceptionOnChangeProperty() {
         assert.throws(() => new ImmutableObjectTest().setProperty("New value"),
             "Cannot assign to read only property");
     }
 
     @Test
-    @Log
     public throwsExceptionOnCreateProperty() {
         assert.throws(() => {
                 const descriptor = Object.create(null);
@@ -26,5 +24,10 @@ export default class ImmutableObjectTest {
                 Object.defineProperty(new ImmutableObjectTest(), "newPropertyKey", descriptor);
             },
             "Cannot define property");
+    }
+
+    @Test
+    public hasCorrectInstanceType() {
+        assert.instanceOf(new ImmutableObjectTest(), ImmutableObjectTest);
     }
 }

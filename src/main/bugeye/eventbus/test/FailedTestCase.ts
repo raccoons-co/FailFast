@@ -7,8 +7,6 @@ import Brain from "../Brain";
 import LogRecord from "../common/LogRecord";
 import ThrownException from "../common/ThrownException";
 
-
-
 @Immutable
 export default class FailedTestCase implements Neuron {
 
@@ -21,7 +19,6 @@ export default class FailedTestCase implements Neuron {
         this.exception = Strict.notNull(exception);
     }
 
-    //@bondParent
     public activate(): void {
         Brain.instance()
             .learn(LogRecord, new LogRecord("Failed", this.testCase.toString(), this.exception.message.toString()))

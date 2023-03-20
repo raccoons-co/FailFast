@@ -11,13 +11,13 @@ class Log implements Annotation<Function> {
         return this.loggedMethod;
     }
 
-    private loggedMethod<This, Args extends any[], Return>(
+    private loggedMethod<This extends new (...args: any[]) => any, Args extends any[], Return>(
         target: (this: This, ...args: Args) => Return,
         context: ClassMethodDecoratorContext<This, (this: This, ...args: Args) => Return>): Function {
 
         return function learnMethodCall(this: This, ...args: Args): Return {
             Brain.instance()
-                .learn(LogRecord, new LogRecord(this as string, String(context.name), ...args));
+                .learn(LogRecord, new LogRecord(this.constructor.name, String(context.name), ...args));
             return target.call(this, ...args);
         }
     }
