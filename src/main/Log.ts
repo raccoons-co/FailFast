@@ -10,17 +10,17 @@ import Method from "./type/Method";
 class Log implements Annotation {
 
     public decorator(): Method {
-        return this.methodDecorator;
+        return this.replacementMethod;
     }
 
-    private methodDecorator(
-        target: Method,
+    private replacementMethod(
+        originalMethod: Method,
         context: ClassMethodDecoratorContext): Method {
 
-        return function loggedMethod(this: Class, ...args: Any[]): Any {
+        return function learnMethodCall(this: Class, ...args: Any[]): Any {
             Brain.instance()
                 .learn(LogRecord, new LogRecord(this.constructor.name, String(context.name), ...args));
-            return target.call(this, ...args);
+            return originalMethod.call(this, ...args);
         }
     }
 }

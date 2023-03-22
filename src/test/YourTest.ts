@@ -14,7 +14,6 @@ export default class YourTest {
         assert.ok("More assertions.");
     }
 
-
     @Test
     public matters() {
         assert.ok("For your clean code.");

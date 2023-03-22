@@ -9,12 +9,12 @@ import Method from "./type/Method";
 class Test implements Annotation {
 
     public decorator(): Method {
-        return this.methodDecorator;
+        return this.learnNewTestCase;
     }
 
-    private methodDecorator(target: Method,
+    private learnNewTestCase(originalMethod: Method,
                           context: ClassMethodDecoratorContext): void {
-        const testCase = new TestCase(target, context);
+        const testCase = new TestCase(originalMethod, context);
         Brain.instance()
             .learn(StartedTestCase, new StartedTestCase(testCase));
     }

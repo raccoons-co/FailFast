@@ -12,18 +12,18 @@ export default class StrictTest {
     @Test
     public throwsExceptionIfNullPointer() {
         assert.throws(
-            () => Strict.notNull(null, "Strict for null"),
+            () => Strict.notNull(null, "Null is prohibited"),
             NullPointerException,
-            "Strict for null"
+            "Null is prohibited"
         );
     }
 
     @Test
     public throwsExceptionIfUndefinedPointer() {
         assert.throws(
-            () => Strict.notNull(undefined, "Strict for undefined"),
+            () => Strict.notNull(undefined, "Undefined is prohibited"),
             NullPointerException,
-            "Strict for undefined"
+            "Undefined is prohibited"
         );
     }
 
