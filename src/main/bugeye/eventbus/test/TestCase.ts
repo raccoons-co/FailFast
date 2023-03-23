@@ -1,9 +1,9 @@
+import {Strict} from "@raccoons-co/ethics";
 import Immutable from "../../../Immutable";
-import Strict from "../../ethics/Strict";
 import Method from "../../../type/Method";
 
 @Immutable
-export default class TestCase{
+export default class TestCase {
 
     private readonly originalMethod: Method;
     private readonly context: ClassMethodDecoratorContext;

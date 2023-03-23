@@ -1,5 +1,5 @@
 {
-  "name": "@raccoons-co/cleanway",
+  "name": "@raccoons/cleanway",
   "version": "0.2.1",
   "description": "The library provides an `EntryPoint` to `@Test`-driven development discipline practice.",
   "keywords": [
@@ -31,6 +31,7 @@
     "test": "node lib/test/EntryPoint"
   },
   "devDependencies": {
+    "@raccoons-co/ethics": "^0.0.4",
     "@types/chai": "^4.3.4",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@typescript-eslint/parser": "^5.55.0",

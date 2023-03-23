@@ -3,7 +3,6 @@ import {assert} from "chai";
 import YourTest from "./YourTest";
 import FailedTestCaseTest from "./FailedTestCaseTest";
 import ImmutableObjectTest from "./ImmutableObjectTest";
-import StrictTest from "./StrictTest";
 import BrainTest from "./BrainTest";
 
 assert.throws(() => {
@@ -12,7 +11,6 @@ assert.throws(() => {
             .assign(new FailedTestCaseTest())
             .assign(new BrainTest())
             .assign(new ImmutableObjectTest())
-            .assign(new StrictTest())
             .build();
     },
     BrainException,
