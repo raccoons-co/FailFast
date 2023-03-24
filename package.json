@@ -1,7 +1,7 @@
 {
   "name": "@raccoons/cleanway",
   "version": "0.2.1",
-  "description": "The library provides an `EntryPoint` to `@Test`-driven development discipline practice.",
+  "description": "`@Test`-driven development discipline practice.",
   "keywords": [
     "TypeScript",
     "Annotation",
