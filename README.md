@@ -11,9 +11,8 @@ The library
 provides an `EntryPoint` to `@Test`-driven development discipline 
 practice.
 
- - Run `@Test` method;
- - Make class instances `@Immutable`;
- - `@Log` method call while debugging.
+`@Test` case annotation will call your class method to test the correct
+behaviour/functionality, features of an application.
 
 #### Simple auto-start
 
