@@ -1,7 +1,7 @@
 {
-  "name": "@raccoons-co/cleanway",
-  "version": "0.2.1",
-  "description": "The library provides an `EntryPoint` to `@Test`-driven development discipline practice.",
+  "name": "@raccoons/cleanway",
+  "version": "1.0.0",
+  "description": "`@Test`-driven development discipline practice.",
   "keywords": [
     "TypeScript",
     "Annotation",
@@ -16,7 +16,8 @@
   "files": [
     "lib/"
   ],
-  "main": "lib/main/index",
+  "main": "lib/main/index.js",
+  "types": "lib/main/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/raccoons-co/cleanway.git"
@@ -30,10 +31,13 @@
     "pretest": "npm run build",
     "test": "node lib/test/EntryPoint"
   },
+  "dependencies": {
+    "@raccoons-co/ethics": "^0.1.1"
+  },
   "devDependencies": {
     "@types/chai": "^4.3.4",
-    "@typescript-eslint/eslint-plugin": "^5.55.0",
-    "@typescript-eslint/parser": "^5.55.0",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
     "chai": "^4.3.7",
     "eslint": "^8.36.0",
     "npm-package-json-lint": "^6.4.0",

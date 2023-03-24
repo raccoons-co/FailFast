@@ -1,42 +1,30 @@
+import {Strict} from "@raccoons-co/ethics";
 import Immutable from "../../../Immutable";
-import Method from "./Method";
-import Strict from "../../ethics/Strict";
+import Method from "../../../type/Method";
 
 @Immutable
-export default class TestCase implements Method {
+export default class TestCase {
 
-    /** See `MethodDecorator` */
-    private readonly target: object;
-    private readonly propertyKey: string;
-    private readonly descriptor: PropertyDescriptor;
+    private readonly originalMethod: Method;
+    private readonly context: ClassMethodDecoratorContext;
 
-    /**
-     * Initiates method properties of the test case.
-     *
-     * @param target object
-     * @param propertyKey name of the member
-     * @param descriptor for the member
-     */
-    constructor(target: object,
-                propertyKey: string,
-                descriptor: PropertyDescriptor) {
-        this.target = Strict.notNull(target);
-        this.propertyKey = Strict.notNull(propertyKey);
-        this.descriptor = Strict.notNull(descriptor);
+    constructor(originalMethod: Method,
+                context: ClassMethodDecoratorContext) {
+        this.originalMethod = Strict.notNull(originalMethod);
+        this.context = Strict.notNull(context);
     }
 
     /**
      * Execute test case method.
      */
     public apply() {
-        const originalMethod = this.descriptor.value;
-        originalMethod.apply(this.target);
+        this.originalMethod.call(this.originalMethod);
     }
 
     /**
      * Returns string representation of the test case
      */
     public toString(): string {
-        return this.target.constructor.name + "." + this.propertyKey + "()";
+        return String(this.context.name) + "()";
     }
 }

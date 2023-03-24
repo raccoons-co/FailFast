@@ -1,3 +1,5 @@
-export default interface Annotation<T> {
-    decorator(): T;
+import Method from "./type/Method";
+
+export default interface Annotation {
+    decorator(): Method;
 }

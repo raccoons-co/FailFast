@@ -1,24 +1,26 @@
-/*eslint prefer-rest-params: "off"*/
-import Annotation from "./Annotation";
 import Immutable from "./Immutable";
 import Brain from "./bugeye/eventbus/Brain";
 import LogRecord from "./bugeye/eventbus/common/LogRecord";
+import Annotation from "./Annotation";
+import Any from "./type/Any";
+import Class from "./type/Class";
+import Method from "./type/Method";
 
 @Immutable
-class Log implements Annotation<MethodDecorator> {
+class Log implements Annotation {
 
-    public decorator(): MethodDecorator {
-        return this.learnClassMethodApply;
+    public decorator(): Method {
+        return this.replacementMethod;
     }
 
-    private learnClassMethodApply(target: object,
-                                  propertyKey: string | symbol,
-                                  descriptor: PropertyDescriptor) {
-        const originalMethod = descriptor.value;
-        descriptor.value = function () {
+    private replacementMethod(
+        originalMethod: Method,
+        context: ClassMethodDecoratorContext): Method {
+
+        return function learnMethodCall(this: Class, ...args: Any[]): Any {
             Brain.instance()
-                .learn(LogRecord, new LogRecord(target.constructor.name, propertyKey.toString()));
-            return originalMethod.apply(this, arguments);
+                .learn(LogRecord, new LogRecord(this.constructor.name, String(context.name), ...args));
+            return originalMethod.call(this, ...args);
         }
     }
 }

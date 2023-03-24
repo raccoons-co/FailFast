@@ -1,24 +1,24 @@
 import Immutable from "../../../Immutable";
 import Neuron from "../Neuron";
-import Method from "./Method";
-import Strict from "../../ethics/Strict";
+import {Strict} from "@raccoons-co/ethics";
 import Brain from "../Brain";
 import PassedTestCase from "./PassedTestCase";
 import FailedTestCase from "./FailedTestCase";
 import FailedTestCaseException from "./FailedTestCaseException";
+import TestCase from "./TestCase";
 
 @Immutable
 export default class StartedTestCase implements Neuron {
 
-    private readonly testCase: Method;
+    private readonly testCase: TestCase;
 
-    constructor(testCase: Method) {
+    constructor(testCase: TestCase) {
         this.testCase = Strict.notNull(testCase);
     }
 
     public activate() {
         try {
-            this.testCase.apply();
+           this.testCase.apply();
             Brain.instance()
                 .learn(PassedTestCase, new PassedTestCase(this.testCase))
         } catch (error) {

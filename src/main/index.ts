@@ -1,22 +1,18 @@
 /**
  * © 2023 Raccoons. Developing a simple way to change.
  *
- * The library provides an `EntryPoint` to `@Test`-driven development
- * discipline practice.
- * The library can:
- *  - Run `@Test` case method;
- *  - `@Log` method call;
- *  - Make class instance `@Immutable`.
+ * The library provides an EntryPoint to @Test-driven development discipline practice.
+ *
+ * @Test case annotation will call your class method to test the correct
+ * behaviour/functionality, features of an application.
  *
  * @example
  * ```typescript
- * @Immutable
  * export default class YourTest {
  *
- *     @Log
  *     @Test
  *     public nothing() {
- *         // But your assertions here.
+ *         assert.ok("But your assertions here.");
  *     }
  * }
  * ```
@@ -30,16 +26,12 @@ import Test from "./Test";
 import CleanWayBuilder from "./CleanWayBuilder";
 import BrainException from "./bugeye/eventbus/common/BrainException";
 import Brain from "./bugeye/eventbus/Brain";
-import Strict from "./bugeye/ethics/Strict"
-import NullPointerException from "./bugeye/ethics/NullPointerException";
 
 export {
-    Immutable,
-    Log,
-    Test,
-    CleanWayBuilder,
-    BrainException,
-    Brain,
-    Strict,
-    NullPointerException
+        Immutable,
+        Log,
+        Test,
+        CleanWayBuilder,
+        BrainException,
+        Brain,
 }

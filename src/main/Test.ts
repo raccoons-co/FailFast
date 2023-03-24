@@ -1,20 +1,20 @@
-import Annotation from "./Annotation";
 import Immutable from "./Immutable";
 import TestCase from "./bugeye/eventbus/test/TestCase";
 import Brain from "./bugeye/eventbus/Brain";
 import StartedTestCase from "./bugeye/eventbus/test/StartedTestCase";
+import Annotation from "./Annotation";
+import Method from "./type/Method";
 
 @Immutable
-class Test implements Annotation<MethodDecorator> {
+class Test implements Annotation {
 
-    public decorator(): MethodDecorator {
+    public decorator(): Method {
         return this.learnNewTestCase;
     }
 
-    private learnNewTestCase(target: object,
-                             propertyKey: string | symbol,
-                             descriptor: PropertyDescriptor) {
-        const testCase = new TestCase(target, propertyKey.toString(), descriptor);
+    private learnNewTestCase(originalMethod: Method,
+                          context: ClassMethodDecoratorContext): void {
+        const testCase = new TestCase(originalMethod, context);
         Brain.instance()
             .learn(StartedTestCase, new StartedTestCase(testCase));
     }

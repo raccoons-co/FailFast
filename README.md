@@ -1,29 +1,18 @@
+[![npm version](https://badge.fury.io/js/@raccoons-co%2Fcleanway.svg)](https://badge.fury.io/js/@raccoons-co%2Fcleanway)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/raccoons-co/cleanway/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/raccoons-co/cleanway/tree/master)
+
 >*A clean way to well-written TypeScript prose in the Node.js galaxy.*
-
-#### Clean Way
-
-The library provides an `EntryPoint` to `@Test`-driven development discipline 
+```
+TypeScript 5.0 have implemented the new decorators standard!
+```
+#### Clean Way 
+The library
+provides an `EntryPoint` to `@Test`-driven development discipline 
 practice.
 
-The library can:
- - Run `@Test` method;
- - `@Log` method call;
- - Make class instance `@Immutable`.
-
-Despite the code has
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/raccoons-co/cleanway/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/raccoons-co/cleanway/tree/master)
-its tests and has
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=bugs)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
-,
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
-and
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
-
-```
-NOTE: Decorators are an experimental feature.
-```
-
-
+`@Test` case annotation will call your class method to test the correct
+behaviour/functionality, features of an application.
 
 #### Simple auto-start
 
@@ -32,9 +21,7 @@ template.
 
 #### Manual start
 
-To use this library you must enable the 
-experimental support for decorators in your `tsconfig.json` 
-and install package as development dependency.
+Install package as development dependency.
 
 ```shell script
 % npm i -D @raccoons-co/cleanway
@@ -51,25 +38,22 @@ CleanWayBuilder.instance()
 ~~~~
 Implement `src/test/YourTest.ts`:
 ~~~~
-import {Immutable, Log, Test} from "@raccoons-co/cleanway";
+import {Immutable, Test} from "@raccoons-co/cleanway";
 import {assert} from "chai";
 
 @Immutable
 export default class YourTest {
 
-    @Log
     @Test
     public nothing() {
         assert.ok("But your assertions here.");
     }
 
-    @Log
     @Test
     public else() {
         assert.ok("More assertions.");
     }
 
-    @Log
     @Test
     public matters() {
         assert.ok("For your clean code.");

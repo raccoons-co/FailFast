@@ -1,6 +1,6 @@
 import Neuron from "../Neuron";
 import Immutable from "../../../Immutable";
-import Strict from "../../ethics/Strict";
+import {Strict} from "@raccoons-co/ethics";
 
 @Immutable
 export default class LogRecord implements Neuron {
@@ -13,7 +13,7 @@ export default class LogRecord implements Neuron {
         this.record = Strict.notNull(args);
     }
 
-    activate(): void {
+    public activate(): void {
         console.log(this.date, this.record);
     }
 }

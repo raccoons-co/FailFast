@@ -1,7 +1,6 @@
 import Immutable from "../../../Immutable";
 import Neuron from "../Neuron";
 import Brain from "../Brain";
-import Log from "../../../Log";
 import LogRecord from "../common/LogRecord";
 import StartedTestCase from "./StartedTestCase";
 import PassedTestCase from "./PassedTestCase";
@@ -9,10 +8,9 @@ import PassedTestCase from "./PassedTestCase";
 @Immutable
 export default class TestSummary implements Neuron {
 
-    @Log
-    activate(): void {
+    public activate(): void {
         Brain.instance()
-            .learn(LogRecord, new LogRecord("Passed", this.count(PassedTestCase),
+            .learn(LogRecord, new LogRecord("Summary", this.count(PassedTestCase),
                 "of", this.count(StartedTestCase)));
     }
 
