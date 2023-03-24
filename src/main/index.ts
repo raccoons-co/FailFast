@@ -4,16 +4,15 @@
  * The library provides an `EntryPoint` to `@Test`-driven development
  * discipline practice.
  * The library can:
- *  - Run `@Test` case method;
- *  - `@Log` method call;
- *  - Make class instance `@Immutable`.
+ * - Run `@Test` method;
+ * - Make class instances `@Immutable`;
+ * - `@Log` method call while debugging.
  *
  * @example
  * ```typescript
  * @Immutable
  * export default class YourTest {
  *
- *     @Log
  *     @Test
  *     public nothing() {
  *         // But your assertions here.
