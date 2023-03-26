@@ -1,6 +1,5 @@
+import {Immutable, Strict} from "@raccoons-co/ethics";
 import Neuron from "../Neuron";
-import Immutable from "../../../Immutable";
-import {Strict} from "@raccoons-co/ethics";
 
 @Immutable
 export default class LogRecord implements Neuron {

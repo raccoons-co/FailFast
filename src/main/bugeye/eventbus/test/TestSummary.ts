@@ -1,4 +1,4 @@
-import Immutable from "../../../Immutable";
+import {Immutable} from "@raccoons-co/ethics";
 import Neuron from "../Neuron";
 import Brain from "../Brain";
 import LogRecord from "../common/LogRecord";

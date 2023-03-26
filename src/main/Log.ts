@@ -1,10 +1,7 @@
-import Immutable from "./Immutable";
+import {Immutable} from "@raccoons-co/ethics";
+import {Annotation, Any, Class, Method} from "@raccoons-co/genera";
 import Brain from "./bugeye/eventbus/Brain";
 import LogRecord from "./bugeye/eventbus/common/LogRecord";
-import Annotation from "./Annotation";
-import Any from "./type/Any";
-import Class from "./type/Class";
-import Method from "./type/Method";
 
 @Immutable
 class Log implements Annotation {

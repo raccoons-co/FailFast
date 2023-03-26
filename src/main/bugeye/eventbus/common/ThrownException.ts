@@ -1,9 +1,8 @@
+import {Immutable, Strict} from "@raccoons-co/ethics";
 import Neuron from "../Neuron";
 import BrainException from "./BrainException";
 import Brain from "../Brain";
 import LogRecord from "./LogRecord";
-import Immutable from "../../../Immutable";
-import {Strict} from "@raccoons-co/ethics";
 
 @Immutable
 export default class ThrownException implements Neuron {

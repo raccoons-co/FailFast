@@ -1,9 +1,8 @@
-import Immutable from "./Immutable";
+import {Immutable} from "@raccoons-co/ethics";
+import {Annotation, Method} from "@raccoons-co/genera";
 import TestCase from "./bugeye/eventbus/test/TestCase";
 import Brain from "./bugeye/eventbus/Brain";
 import StartedTestCase from "./bugeye/eventbus/test/StartedTestCase";
-import Annotation from "./Annotation";
-import Method from "./type/Method";
 
 @Immutable
 class Test implements Annotation {
@@ -13,7 +12,7 @@ class Test implements Annotation {
     }
 
     private learnNewTestCase(originalMethod: Method,
-                          context: ClassMethodDecoratorContext): void {
+                             context: ClassMethodDecoratorContext): void {
         const testCase = new TestCase(originalMethod, context);
         Brain.instance()
             .learn(StartedTestCase, new StartedTestCase(testCase));
