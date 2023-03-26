@@ -1,4 +1,5 @@
-import {Brain, BrainException, Immutable, Test} from "../main/index";
+import {Immutable} from "@raccoons-co/ethics";
+import {Brain, BrainException, Test} from "../main/index";
 import {assert} from "chai";
 import TestSummary from "../main/bugeye/eventbus/test/TestSummary";
 import FailedTestCase from "../main/bugeye/eventbus/test/FailedTestCase";

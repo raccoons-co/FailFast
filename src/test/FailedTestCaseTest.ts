@@ -1,4 +1,5 @@
-import {Immutable, Test} from "../main/index";
+import {Immutable} from "@raccoons-co/ethics";
+import {Test} from "../main/index";
 import {assert} from "chai";
 
 @Immutable

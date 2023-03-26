@@ -1,6 +1,6 @@
 {
   "name": "@raccoons-co/cleanway",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "`@Test`-driven development discipline practice.",
   "keywords": [
     "TypeScript",
@@ -32,7 +32,8 @@
     "test": "node lib/test/EntryPoint"
   },
   "dependencies": {
-    "@raccoons-co/ethics": "^0.1.1"
+    "@raccoons-co/ethics": "^0.2.0",
+    "@raccoons-co/genera": "^0.0.2"
   },
   "devDependencies": {
     "@types/chai": "^4.3.4",

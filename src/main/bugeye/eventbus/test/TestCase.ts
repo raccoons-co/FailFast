@@ -1,6 +1,5 @@
-import {Strict} from "@raccoons-co/ethics";
-import Immutable from "../../../Immutable";
-import Method from "../../../type/Method";
+import {Immutable, Strict} from "@raccoons-co/ethics";
+import {Method} from "@raccoons-co/genera";
 
 @Immutable
 export default class TestCase {
