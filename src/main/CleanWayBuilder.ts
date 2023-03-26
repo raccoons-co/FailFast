@@ -23,6 +23,11 @@ export default class CleanWayBuilder {
         return CleanWayBuilder.singleInstance;
     }
 
+    /**
+     * Assigns instance of class with test cases.
+     *
+     * @param testClass instance
+     */
     public assign(testClass: object): CleanWayBuilder {
         Strict.notNull(testClass);
         return this;
