@@ -1,6 +1,5 @@
 import {Immutable, Strict} from "@raccoons-co/ethics";
 import {Method} from "@raccoons-co/genera";
-import {performance} from "perf_hooks";
 import Neuron from "../Neuron";
 import Brain from "../Brain";
 import PassedTestCase from "./PassedTestCase";
