@@ -5,32 +5,33 @@ import Brain from "../Brain";
 import PassedTestCase from "./PassedTestCase";
 import FailedTestCase from "./FailedTestCase";
 import FailedTestCaseException from "./FailedTestCaseException";
+import DurationBuilder from "./DurationBuilder";
 
 @Immutable
 export default class TestCase implements Neuron {
 
     private readonly originalMethod: Method;
     private readonly context: ClassMethodDecoratorContext;
-    private readonly timestamps: Array<number>;
-
+    private readonly durationBuilder: DurationBuilder;
 
     constructor(originalMethod: Method,
                 context: ClassMethodDecoratorContext) {
         this.originalMethod = Strict.notNull(originalMethod);
         this.context = Strict.notNull(context);
-        this.timestamps = new Array<number>;
+        this.durationBuilder = new DurationBuilder();
     }
 
     public activate() {
         try {
-            this.timestamps.push(-performance.now());
+            this.durationBuilder.start();
+
             this.originalMethod.call(this.originalMethod);
-            this.timestamps.push(performance.now());
+            this.durationBuilder.finish();
 
             Brain.instance()
                 .learn(PassedTestCase, new PassedTestCase(this))
         } catch (error) {
-            this.timestamps.push(performance.now());
+            this.durationBuilder.finish();
 
             Brain.instance()
                 .learn(FailedTestCase, new FailedTestCase(this, error as FailedTestCaseException));
@@ -44,11 +45,10 @@ export default class TestCase implements Neuron {
         return String(this.context.name) + "()";
     }
 
-
     /**
-     * Returns the number of milliseconds elapsed during the test case execution.
+     * Returns duration of the test case execution.
      */
     public duration(): number {
-        return this.timestamps.reduce((a, b) => a + b, 0);
+        return this.durationBuilder.build();
     }
 }
