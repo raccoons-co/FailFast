@@ -3,14 +3,14 @@ import {assert} from "chai";
 import YourTest from "./YourTest";
 import FailedTestCaseTest from "./FailedTestCaseTest";
 import BrainTest from "./BrainTest";
-import DurationBuilderTest from "./DurationBuilderTest";
+import StopwatchTest from "./StopwatchTest";
 
 assert.throws(() => {
         CleanWayBuilder.instance()
             .assign(new YourTest())
             .assign(new FailedTestCaseTest())
             .assign(new BrainTest())
-            .assign(new DurationBuilderTest())
+            .assign(new StopwatchTest())
             .build();
     },
     BrainException,
