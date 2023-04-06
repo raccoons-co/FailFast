@@ -20,14 +20,12 @@
  * @packageDocumentation
  */
 
-import Log from "./Log";
 import Test from "./Test";
 import CleanWayBuilder from "./CleanWayBuilder";
 import BrainException from "./bugeye/eventbus/common/BrainException";
 import Brain from "./bugeye/eventbus/Brain";
 
 export {
-    Log,
     Test,
     CleanWayBuilder,
     BrainException,

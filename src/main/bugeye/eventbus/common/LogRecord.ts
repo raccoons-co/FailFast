@@ -4,15 +4,13 @@ import Neuron from "../Neuron";
 @Immutable
 export default class LogRecord implements Neuron {
 
-    private readonly date: Date;
-    private readonly record: string[];
+    private readonly record: Array<string>;
 
-    constructor(...args: string[]) {
-        this.date = new Date();
-        this.record = Strict.notNull(args);
+    constructor(record: Array<string>) {
+        this.record = Strict.notNull(record);
     }
 
     public activate(): void {
-        console.log(this.date, this.record);
+        console.log(this.record);
     }
 }

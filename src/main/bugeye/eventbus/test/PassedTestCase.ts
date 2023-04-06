@@ -3,6 +3,7 @@ import Neuron from "../Neuron";
 import Brain from "../Brain";
 import LogRecord from "../common/LogRecord";
 import TestCase from "./TestCase";
+import LogRecordBuilder from "../common/LogRecordBuilder";
 
 @Immutable
 export default class PassedTestCase implements Neuron {
@@ -14,7 +15,13 @@ export default class PassedTestCase implements Neuron {
     }
 
     public activate(): void {
+        const logRecord =  new LogRecordBuilder()
+            .addField("Passed")
+            .addField(this.testCase.duration().toFixed(3))
+            .addField(this.testCase.toString())
+            .build();
+
         Brain.instance()
-            .learn(LogRecord, new LogRecord("Passed", this.testCase.toString()));
+            .learn(LogRecord, logRecord);
     }
 }

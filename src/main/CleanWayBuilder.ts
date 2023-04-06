@@ -1,6 +1,6 @@
 import {Immutable, Strict} from "@raccoons-co/ethics";
 import Brain from "./bugeye/eventbus/Brain";
-import StartedTestCase from "./bugeye/eventbus/test/StartedTestCase";
+import TestCase from "./bugeye/eventbus/test/TestCase";
 import FailedTestCase from "./bugeye/eventbus/test/FailedTestCase";
 import TestSummary from "./bugeye/eventbus/test/TestSummary";
 import LogRecord from "./bugeye/eventbus/common/LogRecord";
@@ -36,7 +36,7 @@ export default class CleanWayBuilder {
     public build() {
         Brain.instance()
             .learn(TestSummary, new TestSummary())
-            .recognize(StartedTestCase)
+            .recognize(TestCase)
             .recognize(PassedTestCase)
             .recognize(FailedTestCase)
             .recognize(TestSummary)
