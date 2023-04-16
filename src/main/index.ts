@@ -24,10 +24,12 @@ import Test from "./Test";
 import CleanWayBuilder from "./CleanWayBuilder";
 import BrainException from "./bugeye/eventbus/common/BrainException";
 import Brain from "./bugeye/eventbus/Brain";
+import NullProbe from "./NullProbe";
 
 export {
     Test,
     CleanWayBuilder,
     BrainException,
     Brain,
+    NullProbe
 }

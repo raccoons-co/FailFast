@@ -4,6 +4,7 @@ import YourTest from "./YourTest";
 import FailedTestCaseTest from "./FailedTestCaseTest";
 import BrainTest from "./BrainTest";
 import StopwatchTest from "./StopwatchTest";
+import ParticleTest from "./ParticleTest";
 
 assert.throws(() => {
         CleanWayBuilder.instance()
@@ -11,6 +12,8 @@ assert.throws(() => {
             .assign(new FailedTestCaseTest())
             .assign(new BrainTest())
             .assign(new StopwatchTest())
+            .assign(new ParticleTest())
+            // .assign(new NullProbeTest())
             .build();
     },
     BrainException,
