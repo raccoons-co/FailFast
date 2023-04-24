@@ -5,32 +5,32 @@ import Brain from "../Brain";
 import PassedTestCase from "./PassedTestCase";
 import FailedTestCase from "./FailedTestCase";
 import FailedTestCaseException from "./FailedTestCaseException";
-import Stopwatch from "../../../util/Stopwatch";
+import ElapsedTime from "../../elapsedtime/ElapsedTime";
 
 @Immutable
 export default class TestCase implements Neuron {
 
     private readonly originalMethod: Method;
     private readonly context: ClassMethodDecoratorContext;
-    private readonly stopwatch: Stopwatch;
+    private readonly elapsedTime: ElapsedTime;
 
     constructor(originalMethod: Method,
                 context: ClassMethodDecoratorContext) {
         this.originalMethod = Strict.notNull(originalMethod);
         this.context = Strict.notNull(context);
-        this.stopwatch = new Stopwatch();
+        this.elapsedTime = new ElapsedTime();
     }
 
     public activate() {
         try {
-            this.stopwatch.start();
+            this.elapsedTime.addTimepoint();
             this.originalMethod.call(this.originalMethod);
-            this.stopwatch.stop();
+            this.elapsedTime.addTimepoint();
 
             Brain.instance()
                 .learn(PassedTestCase, new PassedTestCase(this))
         } catch (error) {
-            this.stopwatch.stop();
+            this.elapsedTime.addTimepoint();
 
             Brain.instance()
                 .learn(FailedTestCase, new FailedTestCase(this, error as FailedTestCaseException));
@@ -48,6 +48,6 @@ export default class TestCase implements Neuron {
      * Returns duration of the test case execution.
      */
     public duration(): number {
-        return this.stopwatch.elapsedTime();
+        return this.elapsedTime.value();
     }
 }
