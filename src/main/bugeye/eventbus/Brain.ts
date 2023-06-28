@@ -19,20 +19,6 @@ export default class Brain {
     }
 
     /**
-     * Returns the chain of neurons (memory) associated with the signal.
-     */
-    private cerebrumMemory(signal: object): Array<Neuron> {
-        const memory = this.neurons.get(signal);
-        if (memory) {
-            return memory;
-        } else {
-            const newMemory = new Array<Neuron>();
-            this.neurons.set(signal, newMemory);
-            return newMemory;
-        }
-    }
-
-    /**
      * Returns new copy of memory associated with the signal.
      */
     public memory(signal: object): Array<Neuron> {
@@ -59,5 +45,28 @@ export default class Brain {
             this.cerebrumMemory(signal).forEach(neuron => neuron.activate());
         }
         return this;
+    }
+
+    /**
+     * Removes memory associated with the signal.
+     */
+    public forget(signal: object): Brain {
+        Strict.notNull(signal);
+        this.neurons.delete(signal);
+        return this;
+    }
+
+    /**
+     * Returns the chain of neurons (memory) associated with the signal.
+     */
+    private cerebrumMemory(signal: object): Array<Neuron> {
+        const memory = this.neurons.get(signal);
+        if (memory) {
+            return memory;
+        } else {
+            const newMemory = new Array<Neuron>();
+            this.neurons.set(signal, newMemory);
+            return newMemory;
+        }
     }
 }

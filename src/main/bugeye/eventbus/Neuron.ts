@@ -1,3 +1,5 @@
+import {Any} from "@raccoons-co/genera";
+
 export default interface Neuron {
-    activate(): void;
+    activate(...args: Any[]): void;
 }

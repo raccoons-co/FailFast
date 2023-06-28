@@ -8,23 +8,25 @@ import FailedTestCaseException from "./FailedTestCaseException";
 import Stopwatch from "../../../util/Stopwatch";
 
 @Immutable
-export default class TestCase implements Neuron {
+export default class AssignedTestCase implements Neuron {
 
-    private readonly originalMethod: Method;
-    private readonly context: ClassMethodDecoratorContext;
+    private readonly method: Method;
+    private readonly methodContext: ClassMethodDecoratorContext;
     private readonly stopwatch: Stopwatch;
 
-    constructor(originalMethod: Method,
-                context: ClassMethodDecoratorContext) {
-        this.originalMethod = Strict.notNull(originalMethod);
-        this.context = Strict.notNull(context);
+    constructor(method: Method,
+                methodContext: ClassMethodDecoratorContext) {
+        this.method = Strict.notNull(method);
+        this.methodContext = Strict.notNull(methodContext);
         this.stopwatch = new Stopwatch();
     }
 
-    public activate() {
+    public activate(testClassInstance: object) {
         try {
+            Strict.notNull(testClassInstance);
+
             this.stopwatch.start();
-            this.originalMethod.call(this.originalMethod);
+            this.method.call(testClassInstance);
             this.stopwatch.stop();
 
             Brain.instance()
@@ -41,7 +43,7 @@ export default class TestCase implements Neuron {
      * Returns string representation of the test case.
      */
     public toString(): string {
-        return String(this.context.name) + "()";
+        return String(this.methodContext.name) + "()";
     }
 
     /**

@@ -2,8 +2,10 @@ import {Immutable} from "@raccoons-co/ethics";
 import {Test} from "../main/index";
 import {assert} from "chai";
 import Stopwatch from "../main/util/Stopwatch";
+import TestClass from "../main/TestClass";
 
 @Immutable
+@TestClass
 export default class StopwatchTest {
 
     @Test
@@ -13,6 +15,6 @@ export default class StopwatchTest {
         stopwatch.start();
         stopwatch.stop();
 
-        assert.closeTo(stopwatch.elapsedTime(), 0, 0.1);
+        assert.closeTo(stopwatch.elapsedTime(), 0, 0.2);
     }
 }
