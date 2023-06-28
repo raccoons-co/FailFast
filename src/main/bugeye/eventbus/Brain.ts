@@ -25,7 +25,7 @@ export default class Brain {
     }
 
     /** Stores neuron in memory associated with the signal. */
-    public learn(signal: object, neuron: Neuron): Brain {
+    public learn(signal: object, neuron: Neuron): this {
         Strict.notNull(signal);
         Strict.notNull(neuron);
         this.cerebrumMemory(signal).push(neuron);
@@ -33,7 +33,7 @@ export default class Brain {
     }
 
     /** Activates all neurons in memory associated with the signal. */
-    public recognize(signal: object): Brain {
+    public recognize(signal: object): this {
         Strict.notNull(signal);
         if (this.neurons.has(signal)) {
             this.cerebrumMemory(signal).forEach(neuron => neuron.activate());
@@ -42,7 +42,7 @@ export default class Brain {
     }
 
     /** Removes memory associated with the signal. */
-    public forget(signal: object): Brain {
+    public forget(signal: object): this {
         Strict.notNull(signal);
         this.neurons.delete(signal);
         return this;

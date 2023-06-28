@@ -24,7 +24,7 @@ export default class CleanWayBuilder {
     }
 
     /** Assigns a class with test cases. */
-    public use(testClass: Class): CleanWayBuilder {
+    public use(testClass: Class): this {
         Strict.notNull(testClass);
         return this;
     }
