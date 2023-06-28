@@ -6,18 +6,18 @@ import PassedTestCase from "./PassedTestCase";
 import FailedTestCase from "./FailedTestCase";
 import FailedTestCaseException from "./FailedTestCaseException";
 import Stopwatch from "../../../util/Stopwatch";
+import LogRecordBuilder from "../common/LogRecordBuilder";
+import ThrownException from "../common/ThrownException";
+import LogRecord from "../common/LogRecord";
 
 @Immutable
 export default class AssignedTestCase implements Neuron {
 
     private readonly method: Method;
-    private readonly methodContext: ClassMethodDecoratorContext;
     private readonly stopwatch: Stopwatch;
 
-    constructor(method: Method,
-                methodContext: ClassMethodDecoratorContext) {
+    constructor(method: Method) {
         this.method = Strict.notNull(method);
-        this.methodContext = Strict.notNull(methodContext);
         this.stopwatch = new Stopwatch();
     }
 
@@ -29,27 +29,25 @@ export default class AssignedTestCase implements Neuron {
             this.method.call(testClassInstance);
             this.stopwatch.stop();
 
+            const logRecord = this.logRecord("Passed", testClassInstance.constructor.name);
             Brain.instance()
-                .learn(PassedTestCase, new PassedTestCase(this))
+                .learn(PassedTestCase, new PassedTestCase(logRecord))
         } catch (error) {
             this.stopwatch.stop();
 
+            const logRecord = this.logRecord("Failed", testClassInstance.constructor.name);
             Brain.instance()
-                .learn(FailedTestCase, new FailedTestCase(this, error as FailedTestCaseException));
+                .learn(FailedTestCase, new FailedTestCase(logRecord))
+                .learn(ThrownException, new ThrownException(error as FailedTestCaseException));
         }
     }
 
-    /**
-     * Returns string representation of the test case.
-     */
-    public toString(): string {
-        return String(this.methodContext.name) + "()";
-    }
-
-    /**
-     * Returns duration of the test case execution.
-     */
-    public duration(): number {
-        return this.stopwatch.elapsedTime();
+    private logRecord(testStatus: string, testClassName: string): LogRecord {
+        return new LogRecordBuilder()
+            .addField(testStatus)
+            .addField(this.stopwatch.elapsedTime().toFixed(3))
+            .addField(testClassName)
+            .addField(this.method.name)
+            .build();
     }
 }

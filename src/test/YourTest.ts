@@ -1,8 +1,6 @@
 import {Immutable} from "@raccoons-co/ethics";
-import Test from "../main/Test";
 import {assert} from "chai";
-import TestClass from "../main/TestClass";
-
+import {Test, TestClass} from "../main";
 
 @Immutable
 @TestClass

@@ -1,27 +1,21 @@
-import {Immutable, Strict} from "@raccoons-co/ethics";
+import {Immutable} from "@raccoons-co/ethics";
 import {Annotation, Class, Method} from "@raccoons-co/genera";
 import Brain from "./bugeye/eventbus/Brain";
-import AssignedTestCase from "./bugeye/eventbus/test/AssignedTestCase";
+import AssignedTestClass from "./bugeye/eventbus/test/AssignedTestClass";
 
 @Immutable
 class TestClass implements Annotation {
+
     public decorator(): Method {
-        return this.replacementClass;
+        return this.handleAssignedTestClass;
     }
 
-    private replacementClass<C extends Class>(
-        originalClass: C,
-        context: ClassDecoratorContext): Class {
-
-        Strict.notNull(context);
-
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    private handleAssignedTestClass(originalClass: Class, context: ClassDecoratorContext): Class {
         Brain.instance()
-            .memory(AssignedTestCase)
-            .forEach((neuron) => neuron.activate(new originalClass));
-
-        Brain.instance()
-            .forget(AssignedTestCase);
-
+            .learn(AssignedTestClass, new AssignedTestClass(originalClass))
+            .recognize(AssignedTestClass)
+            .forget(AssignedTestClass);
         return originalClass;
     }
 }

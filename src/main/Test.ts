@@ -7,14 +7,13 @@ import AssignedTestCase from "./bugeye/eventbus/test/AssignedTestCase";
 class Test implements Annotation {
 
     public decorator(): Method {
-        return this.learnNewTestCase;
+        return this.learnAssignedTestCase;
     }
 
-    private learnNewTestCase(originalMethod: Method,
-                             context: ClassMethodDecoratorContext): void {
-
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    private learnAssignedTestCase(originalMethod: Method, context: ClassMethodDecoratorContext): void {
         Brain.instance()
-            .learn(AssignedTestCase, new AssignedTestCase(originalMethod, context));
+            .learn(AssignedTestCase, new AssignedTestCase(originalMethod));
     }
 }
 

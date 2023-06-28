@@ -17,6 +17,7 @@ export default class TestSummary implements Neuron {
             .addField(passedCount.toString())
             .addField("of")
             .addField(totalCount.toString())
+            .addField("test cases")
             .build();
 
         Brain.instance()

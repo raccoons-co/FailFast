@@ -1,20 +1,24 @@
-import {BrainException, CleanWayBuilder} from "../main/index";
+import {BrainException, CleanWayBuilder} from "../main";
 import {assert} from "chai";
 import YourTest from "./YourTest";
 import FailedTestCaseTest from "./FailedTestCaseTest";
 import BrainTest from "./BrainTest";
 import StopwatchTest from "./StopwatchTest";
-import PropertyTest from "./PropertyTest";
+import CurrentInstanceReferenceTest from "./CurrentInstanceReferenceTest";
+import Brain from "../main/bugeye/eventbus/Brain";
+import FailedTestCase from "../main/bugeye/eventbus/test/FailedTestCase";
 
 assert.throws(() => {
         CleanWayBuilder.instance()
-            .assign(YourTest)
-            .assign(FailedTestCaseTest)
-            .assign(BrainTest)
-            .assign(StopwatchTest)
-            .assign(PropertyTest)
+            .use(YourTest)
+            .use(FailedTestCaseTest)
+            .use(BrainTest)
+            .use(StopwatchTest)
+            .use(CurrentInstanceReferenceTest)
             .build();
     },
     BrainException,
     "This is ok."
 );
+
+assert.equal(Brain.instance().memory(FailedTestCase).length, 2);

@@ -18,17 +18,13 @@ export default class Brain {
         return Brain.singleInstance;
     }
 
-    /**
-     * Returns new copy of memory associated with the signal.
-     */
+    /** Returns new copy of memory associated with the signal. */
     public memory(signal: object): Array<Neuron> {
         Strict.notNull(signal);
         return this.cerebrumMemory(signal).map(neuron => neuron);
     }
 
-    /**
-     * Stores neuron in memory associated with the signal.
-     */
+    /** Stores neuron in memory associated with the signal. */
     public learn(signal: object, neuron: Neuron): Brain {
         Strict.notNull(signal);
         Strict.notNull(neuron);
@@ -36,9 +32,7 @@ export default class Brain {
         return this;
     }
 
-    /**
-     * Activates all neurons in memory associated with the signal.
-     */
+    /** Activates all neurons in memory associated with the signal. */
     public recognize(signal: object): Brain {
         Strict.notNull(signal);
         if (this.neurons.has(signal)) {
@@ -47,18 +41,14 @@ export default class Brain {
         return this;
     }
 
-    /**
-     * Removes memory associated with the signal.
-     */
+    /** Removes memory associated with the signal. */
     public forget(signal: object): Brain {
         Strict.notNull(signal);
         this.neurons.delete(signal);
         return this;
     }
 
-    /**
-     * Returns the chain of neurons (memory) associated with the signal.
-     */
+    /** Returns the chain of neurons (memory) associated with the signal.*/
     private cerebrumMemory(signal: object): Array<Neuron> {
         const memory = this.neurons.get(signal);
         if (memory) {

@@ -1,10 +1,10 @@
 import {Immutable} from "@raccoons-co/ethics";
-import {Brain, BrainException, Test} from "../main/index";
+import {BrainException, Test, TestClass} from "../main";
 import {assert} from "chai";
+import Brain from "../main/bugeye/eventbus/Brain";
 import TestSummary from "../main/bugeye/eventbus/test/TestSummary";
 import FailedTestCase from "../main/bugeye/eventbus/test/FailedTestCase";
 import ThrownException from "../main/bugeye/eventbus/common/ThrownException";
-import TestClass from "../main/TestClass";
 
 @Immutable
 @TestClass
@@ -33,6 +33,12 @@ export default class BrainTest {
     }
 
     @Test
+    public forgetsMemory(): void {
+        Brain.instance().forget(BrainTest);
+        assert.equal(Brain.instance().memory(BrainTest).length, 0);
+    }
+
+    @Test
     public recognizesFailedTestCaseException(): void {
         assert.throws(
             () => Brain.instance()
@@ -41,11 +47,5 @@ export default class BrainTest {
             BrainException,
             "This is ok"
         );
-    }
-
-    @Test
-    public forgetsSignal(): void {
-        Brain.instance().forget(BrainTest);
-        assert.equal(Brain.instance().memory(BrainTest).length, 0);
     }
 }

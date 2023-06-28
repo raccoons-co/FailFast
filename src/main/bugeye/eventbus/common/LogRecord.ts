@@ -11,6 +11,6 @@ export default class LogRecord implements Neuron {
     }
 
     public activate(): void {
-        console.log(this.record);
+        console.log(this.record.toString());
     }
 }

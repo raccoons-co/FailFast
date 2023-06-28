@@ -1,7 +1,6 @@
 import {Immutable, Strict} from "@raccoons-co/ethics";
 import {Class} from "@raccoons-co/genera";
 import Brain from "./bugeye/eventbus/Brain";
-import AssignedTestCase from "./bugeye/eventbus/test/AssignedTestCase";
 import FailedTestCase from "./bugeye/eventbus/test/FailedTestCase";
 import TestSummary from "./bugeye/eventbus/test/TestSummary";
 import LogRecord from "./bugeye/eventbus/common/LogRecord";
@@ -24,12 +23,8 @@ export default class CleanWayBuilder {
         return CleanWayBuilder.singleInstance;
     }
 
-    /**
-     * Assigns instance of class with test cases.
-     *
-     * @param testClass instance
-     */
-    public assign(testClass: Class): CleanWayBuilder {
+    /** Assigns a class with test cases. */
+    public use(testClass: Class): CleanWayBuilder {
         Strict.notNull(testClass);
         return this;
     }
@@ -37,7 +32,6 @@ export default class CleanWayBuilder {
     public build() {
         Brain.instance()
             .learn(TestSummary, new TestSummary())
-            .recognize(AssignedTestCase)
             .recognize(PassedTestCase)
             .recognize(FailedTestCase)
             .recognize(TestSummary)
