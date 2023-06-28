@@ -1,6 +1,6 @@
 {
   "name": "@raccoons-co/cleanway",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "`@Test`-driven development discipline practice.",
   "keywords": [
     "TypeScript",
