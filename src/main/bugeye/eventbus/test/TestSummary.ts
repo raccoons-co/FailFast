@@ -2,19 +2,22 @@ import {Immutable} from "@raccoons-co/ethics";
 import Neuron from "../Neuron";
 import Brain from "../Brain";
 import LogRecord from "../common/LogRecord";
-import TestCase from "./TestCase";
 import PassedTestCase from "./PassedTestCase";
 import LogRecordBuilder from "../common/LogRecordBuilder";
+import FailedTestCase from "./FailedTestCase";
 
 @Immutable
 export default class TestSummary implements Neuron {
 
     public activate(): void {
+        const passedCount = this.count(PassedTestCase);
+        const totalCount = passedCount + this.count(FailedTestCase);
         const logRecord = new LogRecordBuilder()
             .addField("Summary")
-            .addField(this.count(PassedTestCase).toString())
+            .addField(passedCount.toString())
             .addField("of")
-            .addField(this.count(TestCase).toString())
+            .addField(totalCount.toString())
+            .addField("test cases")
             .build();
 
         Brain.instance()

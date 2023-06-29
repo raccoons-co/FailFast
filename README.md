@@ -12,7 +12,8 @@ provides an `EntryPoint` to `@Test`-driven development discipline
 practice.
 
 `@Test` case annotation will call your class method to test the correct
-behaviour/functionality, features of an application.
+behaviour/functionality, features of an application. It works in cooperation with `@TestClass` 
+annotation.
 
 #### Simple auto-start
 
@@ -33,16 +34,17 @@ import {CleanWayBuilder} from "@raccoons-co/cleanway";
 import YourTest from "./YourTest";
 
 CleanWayBuilder.instance()
-    .assign(new YourTest())
+    .use(YourTest)
     .build();
 ~~~~
 Implement `src/test/YourTest.ts`:
 ~~~~
 import {Immutable} from "@raccoons-co/ethics";
-import {Test} from "@raccoons-co/cleanway";
+import {Test, TestClass} from "@raccoons-co/cleanway";
 import {assert} from "chai";
 
 @Immutable
+@TestClass
 export default class YourTest {
 
     @Test
@@ -61,7 +63,6 @@ export default class YourTest {
     }
 }
 ~~~~
-
 
 Create `src/main/YourProgram.ts`.
 

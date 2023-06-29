@@ -8,6 +8,7 @@
  *
  * @example
  * ```typescript
+ * @TestClass
  * export default class YourTest {
  *
  *     @Test
@@ -21,13 +22,13 @@
  */
 
 import Test from "./Test";
+import TestClass from "./TestClass";
 import CleanWayBuilder from "./CleanWayBuilder";
 import BrainException from "./bugeye/eventbus/common/BrainException";
-import Brain from "./bugeye/eventbus/Brain";
 
 export {
     Test,
+    TestClass,
     CleanWayBuilder,
-    BrainException,
-    Brain,
+    BrainException
 }

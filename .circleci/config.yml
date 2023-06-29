@@ -37,4 +37,4 @@ workflows:
           matrix:
             parameters:
               os: [docker, linux, macos]
-              node-version: ["19.8", "lts"]
+              node-version: ["20.3", "lts"]
