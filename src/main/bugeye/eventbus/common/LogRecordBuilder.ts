@@ -6,7 +6,7 @@ export default class LogRecordBuilder {
 
     private readonly record = new Array<string>();
 
-    public addField(value: string): LogRecordBuilder {
+    public addField(value: string): this {
         Strict.notNull(value);
         this.record.push(value);
         return this;
