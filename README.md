@@ -4,16 +4,20 @@
 
 >*A clean way to well-written TypeScript prose in the Node.js galaxy.*
 ```
-TypeScript 5.0 have implemented the new decorators standard!
+TypeScript 5.0 have implemented the new decorators standard! 
+It's not required to enable experimental support for decorators any more.
 ```
 #### Clean Way 
-The library
-provides an `EntryPoint` to `@Test`-driven development discipline 
-practice.
+The library provides an `EntryPoint` to `@Test`-driven development discipline practice 
+with Typescript.
 
-`@Test` case annotation will call your class method to test the correct
-behaviour/functionality, features of an application. It works in cooperation with `@TestClass` 
-annotation.
+- `@TestClass` is used to annotate a class that contains *@Test* methods.
+- `@Test` is used to annotate a method as test method to check the correct behaviour/functionality, 
+features of an application.
+*@Test* methods must not be private or static and must not return a value.
+Each *@Test* is executed separately with own object of a test class.
+- `@AfterEach` is used to annotate a method that will be executed after each *@Test* method 
+in the current test class.
 
 #### Simple auto-start
 
@@ -37,32 +41,8 @@ CleanWayBuilder.instance()
     .use(YourTest)
     .build();
 ~~~~
-Implement `src/test/YourTest.ts`:
-~~~~
-import {Immutable} from "@raccoons-co/ethics";
-import {Test, TestClass} from "@raccoons-co/cleanway";
-import {assert} from "chai";
-
-@Immutable
-@TestClass
-export default class YourTest {
-
-    @Test
-    public nothing() {
-        assert.ok("But your assertions here.");
-    }
-
-    @Test
-    public else() {
-        assert.ok("More assertions.");
-    }
-
-    @Test
-    public matters() {
-        assert.ok("For your clean code.");
-    }
-}
-~~~~
+Implement `src/test/YourTest.ts` in accordance to this
+[example](https://github.com/raccoons-co/cleanway/blob/master/src/test/YourTest.ts:)
 
 Create `src/main/YourProgram.ts`.
 

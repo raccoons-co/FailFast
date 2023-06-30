@@ -3,6 +3,15 @@ import {Annotation, Method} from "@raccoons-co/genera";
 import Brain from "./bugeye/eventbus/Brain";
 import AssignedTestCase from "./bugeye/eventbus/test/AssignedTestCase";
 
+/**
+ * `@Test` is used to annotate a method as test method to test the correct behaviour/functionality,
+ * features of an application.
+ *
+ * `@Test` methods must not be private or static and must not return a value.
+ * Each `@Test` is executed separately with own object of a test class.
+ *
+ * @public
+ */
 @Immutable
 class Test implements Annotation {
 

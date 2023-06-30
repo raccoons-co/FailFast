@@ -7,6 +7,11 @@ import LogRecord from "./bugeye/eventbus/common/LogRecord";
 import ThrownException from "./bugeye/eventbus/common/ThrownException";
 import PassedTestCase from "./bugeye/eventbus/test/PassedTestCase";
 
+/**
+ * Handles test classes with test methods.
+ *
+ * @public
+ */
 @Immutable
 export default class CleanWayBuilder {
 

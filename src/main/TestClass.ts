@@ -3,6 +3,11 @@ import {Annotation, Class, Method} from "@raccoons-co/genera";
 import Brain from "./bugeye/eventbus/Brain";
 import AssignedTestClass from "./bugeye/eventbus/test/AssignedTestClass";
 
+/**
+ * `@TestClass` is used to annotate a class that contains `@Test` methods.
+ *
+ * @public
+ */
 @Immutable
 class TestClass implements Annotation {
 
