@@ -7,18 +7,21 @@ import StopwatchTest from "./StopwatchTest";
 import CurrentInstanceReferenceTest from "./CurrentInstanceReferenceTest";
 import Brain from "../main/bugeye/eventbus/Brain";
 import FailedTestCase from "../main/bugeye/eventbus/test/FailedTestCase";
+import AfterEachTest from "./AfterEachTest";
 
-assert.throws(() => {
+assert.throws(
+    () => {
         CleanWayBuilder.instance()
             .use(YourTest)
             .use(FailedTestCaseTest)
             .use(BrainTest)
             .use(StopwatchTest)
             .use(CurrentInstanceReferenceTest)
+            .use(AfterEachTest)
             .build();
     },
     BrainException,
     "This is ok."
 );
 
-assert.equal(Brain.instance().memory(FailedTestCase).length, 2);
+assert.equal(Brain.instance().memorySize(FailedTestCase), 2);

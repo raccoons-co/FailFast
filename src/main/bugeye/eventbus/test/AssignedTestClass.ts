@@ -3,6 +3,8 @@ import {Class} from "@raccoons-co/genera";
 import Neuron from "../Neuron";
 import Brain from "../Brain";
 import AssignedTestCase from "./AssignedTestCase";
+import AfterEachTestCase from "./AfterEachTestCase";
+import RecognitionPayload from "../RecognitionPayload";
 
 @Immutable
 export default class AssignedTestClass implements Neuron {
@@ -15,10 +17,8 @@ export default class AssignedTestClass implements Neuron {
 
     activate(): void {
         Brain.instance()
-            .memory(AssignedTestCase)
-            .forEach((neuron) => neuron.activate(new this.testClass));
-
-        Brain.instance()
-            .forget(AssignedTestCase);
+            .recognize(AssignedTestCase, new RecognitionPayload(this.testClass))
+            .forget(AssignedTestCase)
+            .forget(AfterEachTestCase);
     }
 }

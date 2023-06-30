@@ -10,25 +10,17 @@ import FailedTestCase from "./FailedTestCase";
 export default class TestSummary implements Neuron {
 
     public activate(): void {
-        const passedCount = this.count(PassedTestCase);
-        const totalCount = passedCount + this.count(FailedTestCase);
+        const passedCount = Brain.instance().memorySize(PassedTestCase);
+        const totalCount = passedCount + Brain.instance().memorySize(FailedTestCase);
+
         const logRecord = new LogRecordBuilder()
             .addField("Summary")
             .addField(passedCount.toString())
             .addField("of")
             .addField(totalCount.toString())
-            .addField("test cases")
             .build();
 
         Brain.instance()
             .learn(LogRecord, logRecord);
-    }
-
-    /**
-     * Returns count of neurons in memory associated with the signal.
-     */
-    private count(signal: object): number {
-        return Brain.instance()
-            .memory(signal).length;
     }
 }

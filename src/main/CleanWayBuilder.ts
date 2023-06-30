@@ -7,6 +7,11 @@ import LogRecord from "./bugeye/eventbus/common/LogRecord";
 import ThrownException from "./bugeye/eventbus/common/ThrownException";
 import PassedTestCase from "./bugeye/eventbus/test/PassedTestCase";
 
+/**
+ * Handles test classes with test methods.
+ *
+ * @public
+ */
 @Immutable
 export default class CleanWayBuilder {
 
@@ -23,7 +28,7 @@ export default class CleanWayBuilder {
         return CleanWayBuilder.singleInstance;
     }
 
-    /** Assigns a class with test cases. */
+    /** Use imported class with test cases. */
     public use(testClass: Class): this {
         Strict.notNull(testClass);
         return this;

@@ -6,7 +6,7 @@ import {Test, TestClass} from "../main";
 @TestClass
 export default class CurrentInstanceReferenceTest {
 
-    private readonly property: string;
+    private property: string;
     private readonly magicNumber = 7;
 
     constructor() {
@@ -20,6 +20,12 @@ export default class CurrentInstanceReferenceTest {
 
     @Test
     public objectPropertyAccessibleByTest(): void {
+        assert.equal(this.property, "Test property");
+        this.property = "";
+    }
+
+    @Test
+    public objectIsNewForEachTest(): void {
         assert.equal(this.property, "Test property");
     }
 

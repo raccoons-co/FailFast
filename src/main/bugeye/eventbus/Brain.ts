@@ -1,5 +1,6 @@
 import {Immutable, Strict} from "@raccoons-co/ethics";
 import Neuron from "./Neuron";
+import RecognitionPayload from "./RecognitionPayload";
 
 @Immutable
 export default class Brain {
@@ -18,12 +19,6 @@ export default class Brain {
         return Brain.singleInstance;
     }
 
-    /** Returns new copy of memory associated with the signal. */
-    public memory(signal: object): Array<Neuron> {
-        Strict.notNull(signal);
-        return this.cerebrumMemory(signal).map(neuron => neuron);
-    }
-
     /** Stores neuron in memory associated with the signal. */
     public learn(signal: object, neuron: Neuron): this {
         Strict.notNull(signal);
@@ -32,11 +27,11 @@ export default class Brain {
         return this;
     }
 
-    /** Activates all neurons in memory associated with the signal. */
-    public recognize(signal: object): this {
+    /** Activates all neurons in memory associated with the signal with optional payload. */
+    public recognize(signal: object, payload?: RecognitionPayload): this {
         Strict.notNull(signal);
         if (this.neurons.has(signal)) {
-            this.cerebrumMemory(signal).forEach(neuron => neuron.activate());
+            this.cerebrumMemory(signal).forEach(neuron => neuron.activate(payload));
         }
         return this;
     }
@@ -46,6 +41,12 @@ export default class Brain {
         Strict.notNull(signal);
         this.neurons.delete(signal);
         return this;
+    }
+
+    /** Returns count of neurons in memory associated with the signal.*/
+    public memorySize(signal: object): number {
+        Strict.notNull(signal);
+        return Brain.instance().cerebrumMemory(signal).length;
     }
 
     /** Returns the chain of neurons (memory) associated with the signal.*/

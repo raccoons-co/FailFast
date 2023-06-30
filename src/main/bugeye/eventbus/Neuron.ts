@@ -1,5 +1,5 @@
-import {Any} from "@raccoons-co/genera";
+import RecognitionPayload from "./RecognitionPayload";
 
 export default interface Neuron {
-    activate(...args: Any[]): void;
+    activate(payload?: RecognitionPayload): void;
 }

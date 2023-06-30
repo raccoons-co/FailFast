@@ -1,5 +1,5 @@
 import {Immutable, Strict} from "@raccoons-co/ethics";
-import {Method} from "@raccoons-co/genera";
+import {Class, Method} from "@raccoons-co/genera";
 import Neuron from "../Neuron";
 import Brain from "../Brain";
 import PassedTestCase from "./PassedTestCase";
@@ -9,6 +9,8 @@ import Stopwatch from "../../../util/Stopwatch";
 import LogRecordBuilder from "../common/LogRecordBuilder";
 import ThrownException from "../common/ThrownException";
 import LogRecord from "../common/LogRecord";
+import AfterEachTestCase from "./AfterEachTestCase";
+import RecognitionPayload from "../RecognitionPayload";
 
 @Immutable
 export default class AssignedTestCase implements Neuron {
@@ -21,25 +23,35 @@ export default class AssignedTestCase implements Neuron {
         this.stopwatch = new Stopwatch();
     }
 
-    public activate(testClassInstance: object) {
+    public activate(payload: RecognitionPayload) {
         try {
-            Strict.notNull(testClassInstance);
+            const testClass: Class = Strict.notNull(payload).valueOf();
+            const testClassInstance = new testClass;
 
             this.stopwatch.start();
             this.method.call(testClassInstance);
             this.stopwatch.stop();
 
-            const logRecord = this.logRecord("Passed", testClassInstance.constructor.name);
-            Brain.instance()
-                .learn(PassedTestCase, new PassedTestCase(logRecord))
+            this.handlePassedTestCase(testClassInstance);
         } catch (error) {
             this.stopwatch.stop();
 
-            const logRecord = this.logRecord("Failed", testClassInstance.constructor.name);
-            Brain.instance()
-                .learn(FailedTestCase, new FailedTestCase(logRecord))
-                .learn(ThrownException, new ThrownException(error as FailedTestCaseException));
+            this.handleFailedTestCase(payload.valueOf(), error as FailedTestCaseException);
         }
+    }
+
+    private handlePassedTestCase(testClassInstance: object): void {
+        const logRecord = this.logRecord("Passed", testClassInstance.constructor.name);
+        Brain.instance()
+            .learn(PassedTestCase, new PassedTestCase(logRecord))
+            .recognize(AfterEachTestCase, new RecognitionPayload(testClassInstance));
+    }
+
+    private handleFailedTestCase(testClass: Class, exception: FailedTestCaseException): void {
+        const logRecord = this.logRecord("Failed", testClass.name);
+        Brain.instance()
+            .learn(FailedTestCase, new FailedTestCase(logRecord))
+            .learn(ThrownException, new ThrownException(exception));
     }
 
     private logRecord(testStatus: string, testClassName: string): LogRecord {
