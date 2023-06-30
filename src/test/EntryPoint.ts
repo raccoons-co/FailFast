@@ -7,6 +7,7 @@ import StopwatchTest from "./StopwatchTest";
 import CurrentInstanceReferenceTest from "./CurrentInstanceReferenceTest";
 import Brain from "../main/bugeye/eventbus/Brain";
 import FailedTestCase from "../main/bugeye/eventbus/test/FailedTestCase";
+import AfterEachTest from "./AfterEachTest";
 
 assert.throws(() => {
         CleanWayBuilder.instance()
@@ -15,6 +16,7 @@ assert.throws(() => {
             .use(BrainTest)
             .use(StopwatchTest)
             .use(CurrentInstanceReferenceTest)
+            .use(AfterEachTest)
             .build();
     },
     BrainException,

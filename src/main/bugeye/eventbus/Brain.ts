@@ -1,5 +1,6 @@
 import {Immutable, Strict} from "@raccoons-co/ethics";
 import Neuron from "./Neuron";
+import RecognitionPayload from "./RecognitionPayload";
 
 @Immutable
 export default class Brain {
@@ -32,11 +33,11 @@ export default class Brain {
         return this;
     }
 
-    /** Activates all neurons in memory associated with the signal. */
-    public recognize(signal: object): this {
+    /** Activates all neurons in memory associated with the signal with optional payload. */
+    public recognize(signal: object, payload?: RecognitionPayload): this {
         Strict.notNull(signal);
         if (this.neurons.has(signal)) {
-            this.cerebrumMemory(signal).forEach(neuron => neuron.activate());
+            this.cerebrumMemory(signal).forEach(neuron => neuron.activate(payload));
         }
         return this;
     }
