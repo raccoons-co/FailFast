@@ -9,7 +9,8 @@ import Brain from "../main/bugeye/eventbus/Brain";
 import FailedTestCase from "../main/bugeye/eventbus/test/FailedTestCase";
 import AfterEachTest from "./AfterEachTest";
 
-assert.throws(() => {
+assert.throws(
+    () => {
         CleanWayBuilder.instance()
             .use(YourTest)
             .use(FailedTestCaseTest)

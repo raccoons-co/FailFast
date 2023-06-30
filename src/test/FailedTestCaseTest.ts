@@ -7,17 +7,17 @@ import {assert} from "chai";
 export default class FailedTestCaseTest {
 
     @Test
-    public failsIntentionally() {
-        assert.fail("This is ok.")
+    public failsIntentionally(): void {
+        assert.fail("This is ok.");
     }
 
     @Test
-    public something() {
+    public something(): void {
         assert.ok("Something.");
     }
 
     @Test
-    public failsIntentionallyAlso() {
-        assert.fail("This is also ok.")
+    public failsIntentionallyAlso(): void {
+        assert.fail("This is also ok.");
     }
 }

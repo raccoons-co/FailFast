@@ -14,6 +14,6 @@ export default class FailedTestCase implements Neuron {
 
     public activate(): void {
         Brain.instance()
-            .learn(LogRecord, this.logRecord)
+            .learn(LogRecord, this.logRecord);
     }
 }

@@ -1,7 +1,6 @@
 import {Immutable} from "@raccoons-co/ethics";
 import {assert} from "chai";
-import {Test, TestClass} from "../main";
-import AfterEach from "../main/AfterEach";
+import {AfterEach, Test, TestClass} from "../main";
 
 @Immutable
 @TestClass
@@ -24,5 +23,12 @@ export default class AfterEachTest {
     @AfterEach
     public executesWithPropertyValueSetByTestCase(): void {
         assert.equal(this.property, "New value");
+        this.property = "Another value";
     }
+
+    @AfterEach
+    public executesMultipleAfterEach(): void {
+        assert.equal(this.property, "Another value");
+    }
+
 }

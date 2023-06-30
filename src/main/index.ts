@@ -23,12 +23,14 @@
 
 import Test from "./Test";
 import TestClass from "./TestClass";
+import AfterEach from "./AfterEach";
 import CleanWayBuilder from "./CleanWayBuilder";
 import BrainException from "./bugeye/eventbus/common/BrainException";
 
 export {
     Test,
     TestClass,
+    AfterEach,
     CleanWayBuilder,
     BrainException
-}
+};

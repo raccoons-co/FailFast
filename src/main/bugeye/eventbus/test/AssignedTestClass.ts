@@ -17,7 +17,7 @@ export default class AssignedTestClass implements Neuron {
 
     activate(): void {
         Brain.instance()
-            .recognize(AssignedTestCase, new RecognitionPayload(new this.testClass))
+            .recognize(AssignedTestCase, new RecognitionPayload(this.testClass))
             .forget(AssignedTestCase)
             .forget(AfterEachTestCase);
     }
