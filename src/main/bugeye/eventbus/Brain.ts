@@ -19,12 +19,6 @@ export default class Brain {
         return Brain.singleInstance;
     }
 
-    /** Returns new copy of memory associated with the signal. */
-    public memory(signal: object): Array<Neuron> {
-        Strict.notNull(signal);
-        return this.cerebrumMemory(signal).map(neuron => neuron);
-    }
-
     /** Stores neuron in memory associated with the signal. */
     public learn(signal: object, neuron: Neuron): this {
         Strict.notNull(signal);
@@ -47,6 +41,12 @@ export default class Brain {
         Strict.notNull(signal);
         this.neurons.delete(signal);
         return this;
+    }
+
+    /** Returns count of neurons in memory associated with the signal.*/
+    public memorySize(signal: object): number {
+        Strict.notNull(signal);
+        return Brain.instance().cerebrumMemory(signal).length;
     }
 
     /** Returns the chain of neurons (memory) associated with the signal.*/

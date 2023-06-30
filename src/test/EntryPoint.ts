@@ -24,4 +24,4 @@ assert.throws(
     "This is ok."
 );
 
-assert.equal(Brain.instance().memory(FailedTestCase).length, 2);
+assert.equal(Brain.instance().memorySize(FailedTestCase), 2);

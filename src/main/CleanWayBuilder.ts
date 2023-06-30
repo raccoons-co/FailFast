@@ -23,7 +23,7 @@ export default class CleanWayBuilder {
         return CleanWayBuilder.singleInstance;
     }
 
-    /** Assigns a class with test cases. */
+    /** Use imported class with test cases. */
     public use(testClass: Class): this {
         Strict.notNull(testClass);
         return this;
