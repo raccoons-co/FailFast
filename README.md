@@ -42,7 +42,7 @@ CleanWayBuilder.instance()
     .build();
 ~~~~
 Implement `src/test/YourTest.ts` in accordance to this
-[example](https://github.com/raccoons-co/cleanway/blob/master/src/test/YourTest.ts:)
+[example](https://github.com/raccoons-co/cleanway/blob/master/src/test/YourTest.ts).
 
 Create `src/main/YourProgram.ts`.
 

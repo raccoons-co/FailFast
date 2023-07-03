@@ -1,4 +1,5 @@
 import {Immutable} from "@raccoons-co/ethics";
+import {Any} from "@raccoons-co/genera";
 import {assert} from "chai";
 import {Test, TestClass} from "../main";
 
@@ -8,6 +9,7 @@ export default class CurrentInstanceReferenceTest {
 
     private property: string;
     private readonly magicNumber = 7;
+    private controller: Any;
 
     constructor() {
         this.property = "Test property";
@@ -37,6 +39,12 @@ export default class CurrentInstanceReferenceTest {
     @Test
     public objectPrivateMethodAccessibleByTest(): void {
         assert.equal(this.privateMethod(), 7);
+    }
+
+    @Test
+    public objectHasNoInitialValuefForProperty(): void {
+        this.controller = new AbortController();
+        assert.instanceOf(this.controller, AbortController);
     }
 
     public publicMethod(): string {
