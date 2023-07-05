@@ -1,5 +1,5 @@
 import {Immutable, Strict} from "@raccoons-co/ethics";
-import {Class, Method} from "@raccoons-co/genera";
+import {Any, Class, Method} from "@raccoons-co/genera";
 import Neuron from "../Neuron";
 import Brain from "../Brain";
 import PassedTestCase from "./PassedTestCase";
@@ -17,9 +17,11 @@ export default class AssignedTestCase implements Neuron {
 
     private readonly method: Method;
     private readonly stopwatch: Stopwatch;
+    private readonly args: Any[];
 
-    constructor(method: Method) {
+    constructor(method: Method, ...args: Any[]) {
         this.method = Strict.notNull(method);
+        this.args = Strict.notNull(args);
         this.stopwatch = new Stopwatch();
     }
 
@@ -29,7 +31,7 @@ export default class AssignedTestCase implements Neuron {
             const testClassInstance = new testClass;
 
             this.stopwatch.start();
-            this.method.call(testClassInstance);
+            this.method.call(testClassInstance, ...this.args);
             this.stopwatch.stop();
 
             this.handlePassedTestCase(testClassInstance);
