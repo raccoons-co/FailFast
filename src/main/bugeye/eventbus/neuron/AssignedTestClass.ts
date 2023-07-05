@@ -3,7 +3,7 @@ import {Class} from "@raccoons-co/genera";
 import Neuron from "../Neuron";
 import Brain from "../Brain";
 import AssignedTestCase from "./AssignedTestCase";
-import AssignedAfterEachMethod from "./AssignedAfterEachMethod";
+import AssignedAfterEach from "./AssignedAfterEach";
 import RecognitionPayload from "../RecognitionPayload";
 
 @Immutable
@@ -19,6 +19,6 @@ export default class AssignedTestClass implements Neuron {
         Brain.instance()
             .recognize(AssignedTestCase, new RecognitionPayload(this.testClass))
             .forget(AssignedTestCase)
-            .forget(AssignedAfterEachMethod);
+            .forget(AssignedAfterEach);
     }
 }

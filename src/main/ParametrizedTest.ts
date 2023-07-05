@@ -1,20 +1,28 @@
 import {Immutable} from "@raccoons-co/ethics";
 import {Annotation, Method} from "@raccoons-co/genera";
 import Brain from "./bugeye/eventbus/Brain";
-import AssignedValueSource from "./bugeye/eventbus/neuron/AssignedValueSource";
+import AssignedSource from "./bugeye/eventbus/neuron/AssignedSource";
 
+/**
+ * `@ParametrizedTest` is used to annotate a method as parameterized test method.
+ *
+ * Such methods must not be private or static and must not return a value.
+ * `@ParameterizedTest` methods must specify at least one `@ArgumentsSource`.
+ *
+ * @public
+ */
 @Immutable
 class ParametrizedTest implements Annotation {
 
     public decorator(): Method {
-        return this.handleParametrizedTestCase;
+        return this.handleParametrizedTest;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    private handleParametrizedTestCase(originalMethod: Method, context: ClassMethodDecoratorContext): void {
+    private handleParametrizedTest(originalMethod: Method, context: ClassMethodDecoratorContext): void {
         Brain.instance()
-            .recognize(AssignedValueSource)
-            .forget(AssignedValueSource);
+            .recognize(AssignedSource)
+            .forget(AssignedSource);
     }
 }
 

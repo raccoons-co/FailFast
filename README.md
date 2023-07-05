@@ -12,12 +12,23 @@ The library provides an `EntryPoint` to `@Test`-driven development discipline pr
 with Typescript.
 
 - `@TestClass` is used to annotate a class that contains *@Test* methods.
+
 - `@Test` is used to annotate a method as test method to check the correct behaviour/functionality, 
 features of an application.
-*@Test* methods must not be private or static and must not return a value.
-Each *@Test* is executed separately with own object of a test class.
-- `@AfterEach` is used to annotate a method that will be executed after each *@Test* method 
+
+- `@ParametrizedTest` is used to annotate a method as parameterized test method. 
+`@ParameterizedTest` methods must specify at least one `@ArgumentsSource`.
+
+- `@ArgumentsSource` is a repeatable annotation that is used to provide an *Array* of *Arguments* 
+that will be used to invoke the parameterized test method.
+
+- `@AfterEach` is used to annotate a method that will be executed after each test method 
 in the current test class.
+
+*@Test* and *@ParametrizedTest* methods must not be private or static and must not return a value.
+
+Each test is executed separately with own object of a test class.
+  
 
 #### Simple auto-start
 

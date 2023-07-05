@@ -7,8 +7,8 @@ import AssignedTestCase from "./bugeye/eventbus/neuron/AssignedTestCase";
  * `@Test` is used to annotate a method as test method to test the correct behaviour/functionality,
  * features of an application.
  *
- * `@Test` methods must not be private or static and must not return a value.
- * Each `@Test` is executed separately with own object of a test class.
+ * Test methods must not be private or static and must not return a value.
+ * Each test is executed separately with own object of a test class.
  *
  * @public
  */

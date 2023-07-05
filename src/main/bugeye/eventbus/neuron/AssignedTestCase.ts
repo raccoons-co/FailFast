@@ -7,9 +7,9 @@ import FailedTestCase from "./FailedTestCase";
 import FailedTestCaseException from "./FailedTestCaseException";
 import Stopwatch from "../../../util/Stopwatch";
 import LogRecordBuilder from "./LogRecordBuilder";
-import ThrownException from "./ThrownException";
 import LogRecord from "./LogRecord";
-import AssignedAfterEachMethod from "./AssignedAfterEachMethod";
+import ThrownException from "./ThrownException";
+import AssignedAfterEach from "./AssignedAfterEach";
 import RecognitionPayload from "../RecognitionPayload";
 
 @Immutable
@@ -46,7 +46,7 @@ export default class AssignedTestCase implements Neuron {
         const logRecord = this.logRecord("Passed", testClassInstance.constructor.name);
         Brain.instance()
             .learn(PassedTestCase, new PassedTestCase(logRecord))
-            .recognize(AssignedAfterEachMethod, new RecognitionPayload(testClassInstance));
+            .recognize(AssignedAfterEach, new RecognitionPayload(testClassInstance));
     }
 
     private handleFailedTestCase(testClass: Class, exception: FailedTestCaseException): void {
