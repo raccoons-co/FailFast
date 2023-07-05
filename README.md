@@ -11,7 +11,7 @@ It's not required to enable experimental support for decorators any more.
 The library provides an `EntryPoint` to `@Test`-driven development discipline practice 
 with Typescript.
 
-- `@TestClass` is used to annotate a class that contains *@Test* methods.
+- `@TestClass` is used to annotate a class that contains test methods.
 
 - `@Test` is used to annotate a method as test method to check the correct behaviour/functionality, 
 features of an application.
