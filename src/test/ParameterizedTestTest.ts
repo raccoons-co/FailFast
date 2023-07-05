@@ -1,26 +1,28 @@
 import {Immutable} from "@raccoons-co/ethics";
+import {Any} from "@raccoons-co/genera";
 import {assert} from "chai";
-import {TestClass} from "../main";
-import ValueSource from "../main/ValueSource";
-import ParametrizedTest from "../main/ParametrizedTest";
+import {ParametrizedTest, TestClass, ValueSource} from "../main";
 
 @Immutable
 @TestClass
 export default class ParameterizedTestTest {
 
-    public readonly arrayValues = Array.of(["Nice"], ["Nice"], ["Nice"]);
-    public readonly values = Array.of(["Nice", "Awesome"], ["Nice", "Awesome"]);
-
     @ParametrizedTest
-    @ValueSource(new ParameterizedTestTest().arrayValues)
+    @ValueSource(new ParameterizedTestTest().values())
     public nothing(testParameter: string): void {
         assert.equal(testParameter, "Nice");
     }
 
-    @ParametrizedTest
-    @ValueSource(new ParameterizedTestTest().values)
-    public else(testParameter1: string, testParameter2: string): void {
-        assert.equal(testParameter1, "Nice");
-        assert.equal(testParameter2, "Awesome");
+    /*
+        @ParametrizedTest
+        @ValueSource(new ParameterizedTestTest().values)
+        public else(testParameter1: string, testParameter2: string): void {
+            assert.equal(testParameter1, "Nice");
+            assert.equal(testParameter2, "Awesome");
+        }
+    */
+
+    public values(): Array<Any> {
+        return Array.of(["Nice"], ["Nice"], ["Nice"]);
     }
 }

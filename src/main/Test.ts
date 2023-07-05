@@ -1,7 +1,7 @@
 import {Immutable} from "@raccoons-co/ethics";
 import {Annotation, Method} from "@raccoons-co/genera";
 import Brain from "./bugeye/eventbus/Brain";
-import AssignedTestCase from "./bugeye/eventbus/test/AssignedTestCase";
+import AssignedTestCase from "./bugeye/eventbus/neuron/AssignedTestCase";
 
 /**
  * `@Test` is used to annotate a method as test method to test the correct behaviour/functionality,

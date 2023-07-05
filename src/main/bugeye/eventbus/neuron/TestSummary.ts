@@ -1,9 +1,9 @@
 import {Immutable} from "@raccoons-co/ethics";
 import Neuron from "../Neuron";
 import Brain from "../Brain";
-import LogRecord from "../common/LogRecord";
+import LogRecord from "./LogRecord";
 import PassedTestCase from "./PassedTestCase";
-import LogRecordBuilder from "../common/LogRecordBuilder";
+import LogRecordBuilder from "./LogRecordBuilder";
 import FailedTestCase from "./FailedTestCase";
 
 @Immutable

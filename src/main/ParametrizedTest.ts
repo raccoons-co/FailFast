@@ -1,7 +1,7 @@
 import {Immutable} from "@raccoons-co/ethics";
 import {Annotation, Method} from "@raccoons-co/genera";
 import Brain from "./bugeye/eventbus/Brain";
-import AssignedValueSource from "./bugeye/eventbus/test/AssignedValueSource";
+import AssignedValueSource from "./bugeye/eventbus/neuron/AssignedValueSource";
 
 @Immutable
 class ParametrizedTest implements Annotation {

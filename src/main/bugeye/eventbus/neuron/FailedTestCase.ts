@@ -1,10 +1,10 @@
 import {Immutable, Strict} from "@raccoons-co/ethics";
 import Neuron from "../Neuron";
 import Brain from "../Brain";
-import LogRecord from "../common/LogRecord";
+import LogRecord from "./LogRecord";
 
 @Immutable
-export default class PassedTestCase implements Neuron {
+export default class FailedTestCase implements Neuron {
 
     private readonly logRecord: LogRecord;
 

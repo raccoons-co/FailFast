@@ -21,13 +21,17 @@
 import Test from "./Test";
 import TestClass from "./TestClass";
 import AfterEach from "./AfterEach";
+import ParametrizedTest from "./ParametrizedTest";
+import ValueSource from "./ValueSource";
 import CleanWayBuilder from "./CleanWayBuilder";
-import BrainException from "./bugeye/eventbus/common/BrainException";
+import BrainException from "./bugeye/eventbus/neuron/BrainException";
 
 export {
     Test,
     TestClass,
     AfterEach,
+    ParametrizedTest,
+    ValueSource,
     CleanWayBuilder,
     BrainException
 };
