@@ -27,7 +27,7 @@ export default class Brain {
         return this;
     }
 
-    /** Activates all neuron in memory associated with the signal with optional payload. */
+    /** Activates all neurons in memory associated with the signal with optional payload. */
     public recognize(signal: object, payload?: RecognitionPayload): this {
         Strict.notNull(signal);
         if (this.neurons.has(signal)) {
@@ -43,13 +43,13 @@ export default class Brain {
         return this;
     }
 
-    /** Returns count of neuron in memory associated with the signal.*/
+    /** Returns count of neurons in memory associated with the signal.*/
     public memorySize(signal: object): number {
         Strict.notNull(signal);
         return Brain.instance().cerebrumMemory(signal).length;
     }
 
-    /** Returns the chain of neuron (memory) associated with the signal.*/
+    /** Returns the chain of neurons (memory) associated with the signal.*/
     private cerebrumMemory(signal: object): Array<Neuron> {
         const memory = this.neurons.get(signal);
         if (memory) {

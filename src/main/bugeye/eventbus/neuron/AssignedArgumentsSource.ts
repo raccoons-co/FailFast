@@ -6,18 +6,18 @@ import AssignedTestCase from "./AssignedTestCase";
 import Arguments from "../../../util/Arguments";
 
 @Immutable
-export default class AssignedSource implements Neuron {
+export default class AssignedArgumentsSource implements Neuron {
 
     private readonly method: Method;
-    private readonly parametersSource: Array<Arguments>;
+    private readonly argumentsSource: Array<Arguments>;
 
-    constructor(method: Method, parametersSource: Array<Arguments>) {
+    constructor(method: Method, argumentsSource: Array<Arguments>) {
         this.method = Strict.notNull(method);
-        this.parametersSource = Strict.notNull(parametersSource);
+        this.argumentsSource = Strict.notNull(argumentsSource);
     }
 
     activate(): void {
-        this.parametersSource.forEach(
+        this.argumentsSource.forEach(
             (rest: Arguments) => {
                 Brain.instance()
                     .learn(AssignedTestCase, new AssignedTestCase(this.method, ...rest));

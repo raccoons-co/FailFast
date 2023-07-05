@@ -7,20 +7,20 @@ import {Arguments, ArgumentsSource, ParametrizedTest, TestClass} from "../main";
 export default class ParameterizedTestTest {
 
     @ParametrizedTest
-    @ArgumentsSource(ParameterizedTestTest.monadicValues())
+    @ArgumentsSource(ParameterizedTestTest.monadicArguments())
     public acceptsSingleParameter(parameter: string): void {
         assert.equal(parameter, "Nice");
     }
 
     @ParametrizedTest
-    @ArgumentsSource(ParameterizedTestTest.dyadicValues())
+    @ArgumentsSource(ParameterizedTestTest.dyadicArguments())
     public acceptsDoubleParameters(parameter1: string, parameter2: string): void {
         assert.equal(parameter1, "Nice");
         assert.equal(parameter2, "Awesome");
     }
 
     @ParametrizedTest
-    @ArgumentsSource(ParameterizedTestTest.triadicValues())
+    @ArgumentsSource(ParameterizedTestTest.triadicArguments())
     @ArgumentsSource(Array.of(
         new Arguments("Nice", "Awesome", 7),
         new Arguments("Nice", "Awesome", 7)
@@ -31,21 +31,21 @@ export default class ParameterizedTestTest {
         assert.equal(parameter3, 7);
     }
 
-    public static monadicValues(): Array<Arguments> {
+    public static monadicArguments(): Array<Arguments> {
         return Array.of(
             new Arguments("Nice"),
             new Arguments("Nice")
         );
     }
 
-    public static dyadicValues(): Array<Arguments> {
+    public static dyadicArguments(): Array<Arguments> {
         return Array.of(
             new Arguments("Nice", "Awesome"),
             new Arguments("Nice", "Awesome")
         );
     }
 
-    public static triadicValues(): Array<Arguments> {
+    public static triadicArguments(): Array<Arguments> {
         return Array.of(
             new Arguments("Nice", "Awesome", 7),
             new Arguments("Nice", "Awesome", 7)

@@ -1,7 +1,7 @@
 import {Immutable} from "@raccoons-co/ethics";
 import {Annotation, Method} from "@raccoons-co/genera";
 import Brain from "./bugeye/eventbus/Brain";
-import AssignedSource from "./bugeye/eventbus/neuron/AssignedSource";
+import AssignedArgumentsSource from "./bugeye/eventbus/neuron/AssignedArgumentsSource";
 
 /**
  * `@ParametrizedTest` is used to annotate a method as parameterized test method.
@@ -21,8 +21,8 @@ class ParametrizedTest implements Annotation {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     private handleParametrizedTest(originalMethod: Method, context: ClassMethodDecoratorContext): void {
         Brain.instance()
-            .recognize(AssignedSource)
-            .forget(AssignedSource);
+            .recognize(AssignedArgumentsSource)
+            .forget(AssignedArgumentsSource);
     }
 }
 
