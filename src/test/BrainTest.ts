@@ -2,9 +2,9 @@ import {Immutable} from "@raccoons-co/ethics";
 import {BrainException, Test, TestClass} from "../main";
 import {assert} from "chai";
 import Brain from "../main/bugeye/eventbus/Brain";
-import TestSummary from "../main/bugeye/eventbus/test/TestSummary";
-import FailedTestCase from "../main/bugeye/eventbus/test/FailedTestCase";
-import ThrownException from "../main/bugeye/eventbus/common/ThrownException";
+import TestSummary from "../main/bugeye/eventbus/neuron/TestSummary";
+import FailedTestCase from "../main/bugeye/eventbus/neuron/FailedTestCase";
+import ThrownException from "../main/bugeye/eventbus/neuron/ThrownException";
 
 @Immutable
 @TestClass

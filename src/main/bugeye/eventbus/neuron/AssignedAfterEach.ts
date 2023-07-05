@@ -4,7 +4,7 @@ import Neuron from "../Neuron";
 import RecognitionPayload from "../RecognitionPayload";
 
 @Immutable
-export default class AfterEachTestCase implements Neuron {
+export default class AssignedAfterEach implements Neuron {
 
     private readonly method: Method;
 

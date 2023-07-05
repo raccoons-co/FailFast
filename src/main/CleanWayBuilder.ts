@@ -1,11 +1,11 @@
 import {Immutable, Strict} from "@raccoons-co/ethics";
 import {Class} from "@raccoons-co/genera";
 import Brain from "./bugeye/eventbus/Brain";
-import FailedTestCase from "./bugeye/eventbus/test/FailedTestCase";
-import TestSummary from "./bugeye/eventbus/test/TestSummary";
-import LogRecord from "./bugeye/eventbus/common/LogRecord";
-import ThrownException from "./bugeye/eventbus/common/ThrownException";
-import PassedTestCase from "./bugeye/eventbus/test/PassedTestCase";
+import FailedTestCase from "./bugeye/eventbus/neuron/FailedTestCase";
+import TestSummary from "./bugeye/eventbus/neuron/TestSummary";
+import LogRecord from "./bugeye/eventbus/neuron/LogRecord";
+import ThrownException from "./bugeye/eventbus/neuron/ThrownException";
+import PassedTestCase from "./bugeye/eventbus/neuron/PassedTestCase";
 
 /**
  * Handles test classes with test methods.

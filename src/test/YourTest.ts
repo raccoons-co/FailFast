@@ -1,6 +1,6 @@
 import {Immutable} from "@raccoons-co/ethics";
 import {assert} from "chai";
-import {AfterEach, Test, TestClass} from "../main";
+import {AfterEach, Arguments, ArgumentsSource, ParametrizedTest, Test, TestClass} from "../main";
 
 @Immutable
 @TestClass
@@ -13,9 +13,14 @@ export default class YourTest {
         assert.ok("But your assertions here.");
     }
 
-    @Test
-    public else(): void {
-        assert.equal(this.method(), "More assertions.");
+    @ParametrizedTest
+    @ArgumentsSource(Array.of(
+        new Arguments("More assertions.", 1)
+    ))
+    @ArgumentsSource(YourTest.values())
+    public else(parameter1: string, parameter2: number): void {
+        assert.equal(this.method(), parameter1);
+        assert.isNumber(parameter2);
     }
 
     @Test
@@ -26,6 +31,13 @@ export default class YourTest {
     @AfterEach
     public tearDown(): void {
         this.property = "";
+    }
+
+    public static values(): Array<Arguments> {
+        return Array.of(
+            new Arguments("More assertions.", 2),
+            new Arguments("More assertions.", 3)
+        );
     }
 
     private method(): string {

@@ -6,8 +6,9 @@ import BrainTest from "./BrainTest";
 import StopwatchTest from "./StopwatchTest";
 import CurrentInstanceReferenceTest from "./CurrentInstanceReferenceTest";
 import Brain from "../main/bugeye/eventbus/Brain";
-import FailedTestCase from "../main/bugeye/eventbus/test/FailedTestCase";
+import FailedTestCase from "../main/bugeye/eventbus/neuron/FailedTestCase";
 import AfterEachTest from "./AfterEachTest";
+import ParameterizedTestTest from "./ParameterizedTestTest";
 
 assert.throws(
     () => {
@@ -18,6 +19,7 @@ assert.throws(
             .use(StopwatchTest)
             .use(CurrentInstanceReferenceTest)
             .use(AfterEachTest)
+            .use(ParameterizedTestTest)
             .build();
     },
     BrainException,

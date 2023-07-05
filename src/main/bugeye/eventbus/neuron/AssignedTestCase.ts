@@ -1,15 +1,15 @@
 import {Immutable, Strict} from "@raccoons-co/ethics";
-import {Class, Method} from "@raccoons-co/genera";
+import {Any, Class, Method} from "@raccoons-co/genera";
 import Neuron from "../Neuron";
 import Brain from "../Brain";
 import PassedTestCase from "./PassedTestCase";
 import FailedTestCase from "./FailedTestCase";
 import FailedTestCaseException from "./FailedTestCaseException";
 import Stopwatch from "../../../util/Stopwatch";
-import LogRecordBuilder from "../common/LogRecordBuilder";
-import ThrownException from "../common/ThrownException";
-import LogRecord from "../common/LogRecord";
-import AfterEachTestCase from "./AfterEachTestCase";
+import LogRecordBuilder from "./LogRecordBuilder";
+import LogRecord from "./LogRecord";
+import ThrownException from "./ThrownException";
+import AssignedAfterEach from "./AssignedAfterEach";
 import RecognitionPayload from "../RecognitionPayload";
 
 @Immutable
@@ -17,9 +17,11 @@ export default class AssignedTestCase implements Neuron {
 
     private readonly method: Method;
     private readonly stopwatch: Stopwatch;
+    private readonly args: Any[];
 
-    constructor(method: Method) {
+    constructor(method: Method, ...args: Any[]) {
         this.method = Strict.notNull(method);
+        this.args = Strict.notNull(args);
         this.stopwatch = new Stopwatch();
     }
 
@@ -29,7 +31,7 @@ export default class AssignedTestCase implements Neuron {
             const testClassInstance = new testClass;
 
             this.stopwatch.start();
-            this.method.call(testClassInstance);
+            this.method.call(testClassInstance, ...this.args);
             this.stopwatch.stop();
 
             this.handlePassedTestCase(testClassInstance);
@@ -44,7 +46,7 @@ export default class AssignedTestCase implements Neuron {
         const logRecord = this.logRecord("Passed", testClassInstance.constructor.name);
         Brain.instance()
             .learn(PassedTestCase, new PassedTestCase(logRecord))
-            .recognize(AfterEachTestCase, new RecognitionPayload(testClassInstance));
+            .recognize(AssignedAfterEach, new RecognitionPayload(testClassInstance));
     }
 
     private handleFailedTestCase(testClass: Class, exception: FailedTestCaseException): void {
