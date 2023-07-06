@@ -1,7 +1,7 @@
 import {Immutable} from "@raccoons-co/ethics";
 import {Annotation, Method} from "@raccoons-co/genera";
 import Brain from "./bugeye/eventbus/Brain";
-import AssignRepeatedTest from "./bugeye/eventbus/neuron/AssignRepeatedTest";
+import AssignedRepeatedTest from "./bugeye/eventbus/neuron/AssignedRepeatedTest";
 
 
 /**
@@ -19,9 +19,9 @@ class RepeatedTest implements Annotation {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         return function handleRepeatedTest(originalMethod: Method, context: ClassMethodDecoratorContext): void {
             Brain.instance()
-                .learn(AssignRepeatedTest, new AssignRepeatedTest(originalMethod, repetitions))
-                .recognize(AssignRepeatedTest)
-                .forget(AssignRepeatedTest);
+                .learn(AssignedRepeatedTest, new AssignedRepeatedTest(originalMethod, repetitions))
+                .recognize(AssignedRepeatedTest)
+                .forget(AssignedRepeatedTest);
         };
     }
 }

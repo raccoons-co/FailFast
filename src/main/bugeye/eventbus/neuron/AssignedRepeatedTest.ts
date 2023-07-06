@@ -5,7 +5,7 @@ import Brain from "../Brain";
 import AssignedTestCase from "./AssignedTestCase";
 
 @Immutable
-export default class AssignRepeatedTest implements Neuron {
+export default class AssignedRepeatedTest implements Neuron {
 
     private readonly method: Method;
     private readonly repetitions: number;
