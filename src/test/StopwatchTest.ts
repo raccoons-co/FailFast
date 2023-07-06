@@ -1,13 +1,13 @@
 import {Immutable} from "@raccoons-co/ethics";
 import {assert} from "chai";
-import {Test, TestClass} from "../main";
+import {RepeatedTest, TestClass} from "../main";
 import Stopwatch from "../main/util/Stopwatch";
 
 @Immutable
 @TestClass
 export default class StopwatchTest {
 
-    @Test
+    @RepeatedTest(100)
     public noMeasurementDurationCloseToZero() {
         const stopwatch = new Stopwatch();
 
