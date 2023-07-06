@@ -1,6 +1,6 @@
 import {Immutable} from "@raccoons-co/ethics";
 import {assert} from "chai";
-import {AfterEach, Arguments, ArgumentsSource, ParametrizedTest, Test, TestClass} from "../main";
+import {AfterEach, Arguments, ArgumentsSource, ParametrizedTest, RepeatedTest, Test, TestClass} from "../main";
 
 @Immutable
 @TestClass
@@ -23,7 +23,7 @@ export default class YourTest {
         assert.isNumber(parameter2);
     }
 
-    @Test
+    @RepeatedTest(3)
     public matters() {
         assert.equal(this.property, "For your clean code.");
     }
