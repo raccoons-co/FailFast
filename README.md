@@ -64,11 +64,12 @@ Create `src/main/YourProgram.ts`.
 Finally paste scripts section to `package.json`:
 ~~~~
 "scripts": {
-  "build": "tsc",
-  "pretest": "npm run build",
-  "test": "node dist/test/EntryPoint"
+  "test": "nyc ts-node src/test/EntryPoint"
 }
 ~~~~
+Do not forget to install *istanbul, ts-node* as development dependencies and review 
+[.nycrc.json](https://github.com/raccoons-co/cleanway/blob/master/.nycrc.json) as well.
+
 
 #### Run
 

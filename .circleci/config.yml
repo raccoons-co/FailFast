@@ -9,10 +9,10 @@ executors:
       - image: cimg/node:lts
   linux:
     machine:
-      image: ubuntu-2004:2023.02.1
+      image: ubuntu-2004:2023.04.2
   macos:
     macos:
-      xcode: 14.2.0
+      xcode: 14.3.1
 
 jobs:
   test-node:
@@ -37,4 +37,4 @@ workflows:
           matrix:
             parameters:
               os: [docker, linux, macos]
-              node-version: ["20.3", "lts"]
+              node-version: ["20.4", "lts"]
