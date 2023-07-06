@@ -16,11 +16,11 @@ import AssignedTestCase from "./bugeye/eventbus/neuron/AssignedTestCase";
 class Test implements Annotation {
 
     public decorator(): Method {
-        return this.learnAssignedTestCase;
+        return this.learnTestCase;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    private learnAssignedTestCase(originalMethod: Method, context: ClassMethodDecoratorContext): void {
+    private learnTestCase(originalMethod: Method, context: ClassMethodDecoratorContext): void {
         Brain.instance()
             .learn(AssignedTestCase, new AssignedTestCase(originalMethod));
     }
