@@ -13,11 +13,11 @@ import AssignedAfterEach from "./bugeye/eventbus/neuron/AssignedAfterEach";
 class AfterEach implements Annotation {
 
     public decorator(): Method {
-        return this.learnAfterEachTestCase;
+        return this.learnAfterEach;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    private learnAfterEachTestCase(originalMethod: Method, context: ClassMethodDecoratorContext): void {
+    private learnAfterEach(originalMethod: Method, context: ClassMethodDecoratorContext): void {
         Brain.instance()
             .learn(AssignedAfterEach, new AssignedAfterEach(originalMethod));
     }

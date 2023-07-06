@@ -24,6 +24,7 @@ import AfterEach from "./AfterEach";
 import ParametrizedTest from "./ParametrizedTest";
 import ArgumentsSource from "./ArgumentsSource";
 import Arguments from "./util/Arguments";
+import RepeatedTest from "./RepeatedTest";
 import CleanWayBuilder from "./CleanWayBuilder";
 import BrainException from "./bugeye/eventbus/neuron/BrainException";
 
@@ -34,6 +35,7 @@ export {
     ParametrizedTest,
     ArgumentsSource,
     Arguments,
+    RepeatedTest,
     CleanWayBuilder,
     BrainException
 };

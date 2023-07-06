@@ -6,8 +6,8 @@ import AssignedArgumentsSource from "./bugeye/eventbus/neuron/AssignedArgumentsS
 /**
  * `@ParametrizedTest` is used to annotate a method as parameterized test method.
  *
- * Such methods must not be private or static and must not return a value.
  * `@ParameterizedTest` methods must specify at least one `@ArgumentsSource`.
+ * Parameterized test behaves like a regular `@Test` method.
  *
  * @public
  */

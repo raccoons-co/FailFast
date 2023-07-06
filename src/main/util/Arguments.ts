@@ -2,7 +2,7 @@ import {Immutable, Strict} from "@raccoons-co/ethics";
 import {Any} from "@raccoons-co/genera";
 
 @Immutable
-export default class Arguments {
+export default class Arguments implements Iterable<Any> {
 
     private readonly items: Any[];
 
@@ -10,7 +10,7 @@ export default class Arguments {
         this.items = Strict.notNull(items);
     }
 
-    public* [Symbol.iterator]() {
+    public* [Symbol.iterator](): Iterator<Any> {
         for (const item of this.items) {
             yield item;
         }
