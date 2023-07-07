@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.1.0
+  codecov: codecov/codecov@3.2.5
 
 executors:
   docker:
@@ -23,12 +24,12 @@ jobs:
          type: string
     executor: << parameters.os >>
     steps:
-       - checkout
-       - node/install:
-            node-version: << parameters.node-version >>
-       - run: npm ci
-       - run: npm test
-       - run: npm pack
+      - checkout
+      - node/install:
+          node-version: << parameters.node-version >>
+      - run: npm ci
+      - run: npm test
+      - run: npm pack
 
 workflows:
   simple:
@@ -38,3 +39,7 @@ workflows:
             parameters:
               os: [docker, linux, macos]
               node-version: ["20.4", "lts"]
+      - node/test:
+          name: upload-codecov
+          post-steps:
+            - codecov/upload
