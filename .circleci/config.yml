@@ -15,7 +15,6 @@ executors:
     macos:
       xcode: 14.3.1
 
-
 jobs:
   multiple-test:
     parameters:
