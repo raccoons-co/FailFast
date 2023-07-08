@@ -7,21 +7,21 @@ orbs:
 executors:
   docker:
     docker:
-      - image: cimg/node:lts
+      - image: cimg/base:current
   linux:
     machine:
-      image: ubuntu-2004:2023.04.2
+      image: ubuntu-2004:current
   macos:
     macos:
       xcode: 14.3.1
 
 jobs:
-  test-node:
+  multiple-test:
     parameters:
       os:
         type: executor
       node-version:
-         type: string
+        type: string
     executor: << parameters.os >>
     steps:
       - checkout
@@ -34,12 +34,13 @@ jobs:
 workflows:
   simple:
     jobs:
-      - test-node:
+      - multiple-test:
+          name: test-node-<< matrix.node-version >>-<< matrix.os >>
           matrix:
             parameters:
               os: [docker, linux, macos]
-              node-version: ["20.4", "lts"]
+              node-version: ["latest", "lts"]
       - node/test:
-          name: upload-codecov
+          name: upload-code-coverage
           post-steps:
             - codecov/upload

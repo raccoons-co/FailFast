@@ -5,7 +5,11 @@
   "keywords": [
     "TypeScript",
     "TDD",
-    "Annotations"
+    "Annotations",
+    "Test",
+    "Framework",
+    "Chai",
+    "Istanbul"
   ],
   "homepage": "https://github.com/raccoons-co/cleanway#readme",
   "bugs": {
