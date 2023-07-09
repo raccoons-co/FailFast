@@ -6,8 +6,8 @@ import TestSummary from "../main/bugeye/eventbus/neuron/TestSummary";
 import FailedTestCase from "../main/bugeye/eventbus/neuron/FailedTestCase";
 import ThrownException from "../main/bugeye/eventbus/neuron/ThrownException";
 
-@Immutable
 @TestClass
+@Immutable
 export default class BrainTest {
 
     @Test

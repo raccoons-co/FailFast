@@ -4,7 +4,7 @@ import Brain from "./bugeye/eventbus/Brain";
 import AssignedArgumentsSource from "./bugeye/eventbus/neuron/AssignedArgumentsSource";
 
 /**
- * `@ParametrizedTest` is used to annotate a method as parameterized test method.
+ * `@ParameterizedTest` is used to annotate a method as parameterized test method.
  *
  * `@ParameterizedTest` methods must specify at least one `@ArgumentsSource`.
  * Parameterized test behaves like a regular `@Test` method.
@@ -12,7 +12,7 @@ import AssignedArgumentsSource from "./bugeye/eventbus/neuron/AssignedArgumentsS
  * @public
  */
 @Immutable
-class ParametrizedTest implements Annotation {
+class ParameterizedTest implements Annotation {
 
     public decorator(): Method {
         return this.handleParametrizedTest;
@@ -26,4 +26,4 @@ class ParametrizedTest implements Annotation {
     }
 }
 
-export default new ParametrizedTest().decorator();
+export default new ParameterizedTest().decorator();

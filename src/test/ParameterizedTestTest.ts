@@ -1,25 +1,25 @@
 import {Immutable} from "@raccoons-co/ethics";
 import {assert} from "chai";
-import {Arguments, ArgumentsSource, ParametrizedTest, TestClass} from "../main";
+import {Arguments, ArgumentsSource, ParameterizedTest, TestClass} from "../main";
 
-@Immutable
 @TestClass
+@Immutable
 export default class ParameterizedTestTest {
 
-    @ParametrizedTest
+    @ParameterizedTest
     @ArgumentsSource(ParameterizedTestTest.monadicArguments())
     public acceptsSingleParameter(parameter: string): void {
         assert.equal(parameter, "Nice");
     }
 
-    @ParametrizedTest
+    @ParameterizedTest
     @ArgumentsSource(ParameterizedTestTest.dyadicArguments())
     public acceptsDoubleParameters(parameter1: string, parameter2: string): void {
         assert.equal(parameter1, "Nice");
         assert.equal(parameter2, "Awesome");
     }
 
-    @ParametrizedTest
+    @ParameterizedTest
     @ArgumentsSource(ParameterizedTestTest.triadicArguments())
     @ArgumentsSource(Array.of(
         new Arguments("Nice", "Awesome", 7),

@@ -1,9 +1,7 @@
-import {Immutable} from "@raccoons-co/ethics";
 import {Any} from "@raccoons-co/genera";
 import {assert} from "chai";
 import {Test, TestClass} from "../main";
 
-@Immutable
 @TestClass
 export default class CurrentInstanceReferenceTest {
 

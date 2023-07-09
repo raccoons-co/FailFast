@@ -5,6 +5,7 @@ import Brain from "../Brain";
 import AssignedTestCase from "./AssignedTestCase";
 import AssignedAfterEach from "./AssignedAfterEach";
 import RecognitionPayload from "../RecognitionPayload";
+import AssignedBeforeEach from "./AssignedBeforeEach";
 
 @Immutable
 export default class AssignedTestClass implements Neuron {
@@ -19,6 +20,7 @@ export default class AssignedTestClass implements Neuron {
         Brain.instance()
             .recognize(AssignedTestCase, new RecognitionPayload(this.testClass))
             .forget(AssignedTestCase)
+            .forget(AssignedBeforeEach)
             .forget(AssignedAfterEach);
     }
 }

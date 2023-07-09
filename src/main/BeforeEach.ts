@@ -1,16 +1,16 @@
 import {Immutable} from "@raccoons-co/ethics";
 import {Annotation, Method} from "@raccoons-co/genera";
 import Brain from "./bugeye/eventbus/Brain";
-import AssignedAfterEach from "./bugeye/eventbus/neuron/AssignedAfterEach";
+import AssignedBeforeEach from "./bugeye/eventbus/neuron/AssignedBeforeEach";
 
 /**
- * `@AfterEach` is used to annotate a transition method that will be executed after each
+ * `@BeforeEach` is used to annotate a transition method that will be executed before each
  * test method in the current test class.
  *
  * @public
  */
 @Immutable
-class AfterEach implements Annotation {
+class BeforeEach implements Annotation {
 
     public decorator(): Method {
         return this.learnAfterEach;
@@ -19,8 +19,8 @@ class AfterEach implements Annotation {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     private learnAfterEach(originalMethod: Method, context: ClassMethodDecoratorContext): void {
         Brain.instance()
-            .learn(AssignedAfterEach, new AssignedAfterEach(originalMethod));
+            .learn(AssignedBeforeEach, new AssignedBeforeEach(originalMethod));
     }
 }
 
-export default new AfterEach().decorator();
+export default new BeforeEach().decorator();

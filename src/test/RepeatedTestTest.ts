@@ -4,8 +4,8 @@ import {RepeatedTest, Test, TestClass} from "../main";
 import Brain from "../main/bugeye/eventbus/Brain";
 import TestSummary from "../main/bugeye/eventbus/neuron/TestSummary";
 
-@Immutable
 @TestClass
+@Immutable
 export default class RepeatedTestTest {
 
     @RepeatedTest(7)
