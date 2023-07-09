@@ -1,19 +1,33 @@
 import {Immutable} from "@raccoons-co/ethics";
 import {assert} from "chai";
-import {AfterEach, Arguments, ArgumentsSource, ParametrizedTest, RepeatedTest, Test, TestClass} from "../main";
+import {
+    AfterEach,
+    Arguments,
+    ArgumentsSource,
+    BeforeEach,
+    ParameterizedTest,
+    RepeatedTest,
+    Test,
+    TestClass
+} from "../main";
 
 @Immutable
 @TestClass
 export default class YourTest {
 
-    private property = "For your clean code.";
+    private property = "";
+
+    @BeforeEach
+    public setUp(): void {
+        this.property = "For your clean code.";
+    }
 
     @Test
     public nothing(): void {
         assert.ok("But your assertions here.");
     }
 
-    @ParametrizedTest
+    @ParameterizedTest
     @ArgumentsSource(Array.of(
         new Arguments("More assertions.", 1)
     ))

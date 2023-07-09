@@ -10,6 +10,7 @@ import FailedTestCase from "../main/bugeye/eventbus/neuron/FailedTestCase";
 import AfterEachTest from "./AfterEachTest";
 import ParameterizedTestTest from "./ParameterizedTestTest";
 import RepeatedTestTest from "./RepeatedTestTest";
+import BeforeEachTest from "./BeforeEachTest";
 
 assert.throws(
     () => {
@@ -22,6 +23,7 @@ assert.throws(
             .use(AfterEachTest)
             .use(ParameterizedTestTest)
             .use(RepeatedTestTest)
+            .use(BeforeEachTest)
             .build();
     },
     BrainException,

@@ -21,7 +21,8 @@
 import Test from "./Test";
 import TestClass from "./TestClass";
 import AfterEach from "./AfterEach";
-import ParametrizedTest from "./ParametrizedTest";
+import BeforeEach from "./BeforeEach";
+import ParameterizedTest from "./ParameterizedTest";
 import ArgumentsSource from "./ArgumentsSource";
 import Arguments from "./util/Arguments";
 import RepeatedTest from "./RepeatedTest";
@@ -31,8 +32,9 @@ import BrainException from "./bugeye/eventbus/neuron/BrainException";
 export {
     Test,
     TestClass,
+    BeforeEach,
     AfterEach,
-    ParametrizedTest,
+    ParameterizedTest,
     ArgumentsSource,
     Arguments,
     RepeatedTest,

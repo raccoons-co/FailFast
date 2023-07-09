@@ -11,6 +11,7 @@ import LogRecord from "./LogRecord";
 import ThrownException from "./ThrownException";
 import AssignedAfterEach from "./AssignedAfterEach";
 import RecognitionPayload from "../RecognitionPayload";
+import AssignedBeforeEach from "./AssignedBeforeEach";
 
 @Immutable
 export default class AssignedTestCase implements Neuron {
@@ -29,6 +30,9 @@ export default class AssignedTestCase implements Neuron {
         try {
             const testClass: Class = Strict.notNull(payload).valueOf();
             const testClassInstance = new testClass;
+
+            Brain.instance()
+                .recognize(AssignedBeforeEach,new RecognitionPayload(testClassInstance));
 
             this.stopwatch.start();
             this.method.call(testClassInstance, ...this.args);
