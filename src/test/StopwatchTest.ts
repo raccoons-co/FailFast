@@ -3,8 +3,8 @@ import {assert} from "chai";
 import {RepeatedTest, TestClass} from "../main";
 import Stopwatch from "../main/util/Stopwatch";
 
-@Immutable
 @TestClass
+@Immutable
 export default class StopwatchTest {
 
     @RepeatedTest(100)

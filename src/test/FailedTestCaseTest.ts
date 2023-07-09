@@ -2,8 +2,8 @@ import {Immutable} from "@raccoons-co/ethics";
 import {Test, TestClass} from "../main";
 import {assert} from "chai";
 
-@Immutable
 @TestClass
+@Immutable
 export default class FailedTestCaseTest {
 
     @Test

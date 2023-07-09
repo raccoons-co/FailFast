@@ -1,8 +1,6 @@
-import {Immutable} from "@raccoons-co/ethics";
 import {assert} from "chai";
 import {AfterEach, Test, TestClass} from "../main";
 
-@Immutable
 @TestClass
 export default class AfterEachTest {
 

@@ -1,7 +1,7 @@
 [![npm version](https://badge.fury.io/js/@raccoons-co%2Fcleanway.svg)](https://badge.fury.io/js/@raccoons-co%2Fcleanway)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=raccoons-co_cleanway&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=raccoons-co_cleanway)
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/raccoons-co/cleanway/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/raccoons-co/cleanway/tree/master)
 [![codecov](https://codecov.io/gh/raccoons-co/cleanway/branch/master/graph/badge.svg?token=0HLQ76KY8E)](https://codecov.io/gh/raccoons-co/cleanway)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/raccoons-co/cleanway/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/raccoons-co/cleanway/tree/master)
 
 >*A clean way to well-written TypeScript prose in the Node.js galaxy.*
 ```
@@ -10,7 +10,7 @@ It's not required to enable experimental support for decorators any more.
 ```
 #### Clean Way 
 The library provides an `EntryPoint` to `@Test`-driven development discipline practice 
-with Typescript.
+with Typescript. 
 
 - `@TestClass` is used to annotate a class that contains test methods.
 

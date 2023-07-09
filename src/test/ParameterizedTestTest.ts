@@ -2,8 +2,8 @@ import {Immutable} from "@raccoons-co/ethics";
 import {assert} from "chai";
 import {Arguments, ArgumentsSource, ParameterizedTest, TestClass} from "../main";
 
-@Immutable
 @TestClass
+@Immutable
 export default class ParameterizedTestTest {
 
     @ParameterizedTest
