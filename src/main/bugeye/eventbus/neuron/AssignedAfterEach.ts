@@ -4,4 +4,3 @@ import TestCaseTransition from "./TestCaseTransition";
 @Immutable
 export default class AssignedAfterEach extends TestCaseTransition {
 }
-

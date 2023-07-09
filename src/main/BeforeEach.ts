@@ -4,8 +4,8 @@ import Brain from "./bugeye/eventbus/Brain";
 import AssignedBeforeEach from "./bugeye/eventbus/neuron/AssignedBeforeEach";
 
 /**
- * `@BeforeEach` is used to annotate a method that will be executed before each test method
- * in the current test class.
+ * `@BeforeEach` is used to annotate a transition method that will be executed before each
+ * test method in the current test class.
  *
  * @public
  */

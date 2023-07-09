@@ -4,8 +4,8 @@ import Brain from "./bugeye/eventbus/Brain";
 import AssignedAfterEach from "./bugeye/eventbus/neuron/AssignedAfterEach";
 
 /**
- * `@AfterEach` is used to annotate a method that will be executed after each test method
- * in the current test class.
+ * `@AfterEach` is used to annotate a transition method that will be executed after each
+ * test method in the current test class.
  *
  * @public
  */

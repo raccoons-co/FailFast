@@ -26,16 +26,17 @@ that will be used to invoke the parameterized test method.
 -  `@RepeatedTest` is used to annotate a method as test *template* method that should be repeated 
 a specified number of times. Repeated test behaves like a regular `@Test` method.
 
-- `@BeforeEach` is used to annotate a method that will be executed before each test method 
-in the current test class.
+- `@BeforeEach` is used to annotate a transition method that will be executed before each test 
+method in the current test class.
 
-- `@AfterEach` is used to annotate a method that will be executed after each test method 
-in the current test class.
+- `@AfterEach` is used to annotate a transition method that will be executed after each test 
+method in the current test class.
 
-*@Test*, *@ParameterizedTest*, *@RepeatedTest* and *@AfterEach* methods must not be private 
-or static and must not return a value.
+Test methods, transition methods must not be private or static and must not return a value.
 
 Each test is executed separately with own object of a test class.
+
+Cleanway is friendly to [Istanbul](https://istanbul.js.org/) test coverage tool.
   
 #### Simple auto-start
 
