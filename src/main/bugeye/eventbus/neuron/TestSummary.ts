@@ -3,7 +3,6 @@ import Neuron from "../Neuron";
 import Brain from "../Brain";
 import LogRecord from "./LogRecord";
 import PassedTestCase from "./PassedTestCase";
-import LogRecordBuilder from "./LogRecordBuilder";
 import FailedTestCase from "./FailedTestCase";
 
 @Immutable
@@ -13,7 +12,7 @@ export default class TestSummary implements Neuron {
         const passedCount = Brain.instance().memorySize(PassedTestCase);
         const totalCount = passedCount + Brain.instance().memorySize(FailedTestCase);
 
-        const logRecord = new LogRecordBuilder()
+        const logRecord = LogRecord.newBuilder()
             .addField("Summary")
             .addField(passedCount.toString())
             .addField("of")
