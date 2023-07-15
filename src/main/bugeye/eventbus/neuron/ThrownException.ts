@@ -3,7 +3,6 @@ import Neuron from "../Neuron";
 import BrainException from "./BrainException";
 import Brain from "../Brain";
 import LogRecord from "./LogRecord";
-import LogRecordBuilder from "./LogRecordBuilder";
 
 @Immutable
 export default class ThrownException implements Neuron {
@@ -15,7 +14,7 @@ export default class ThrownException implements Neuron {
     }
 
     public activate(): void {
-        const logRecord = new LogRecordBuilder()
+        const logRecord = LogRecord.newBuilder()
             .addField(String(this.exception.stack))
             .build();
 

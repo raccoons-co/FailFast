@@ -6,7 +6,6 @@ import PassedTestCase from "./PassedTestCase";
 import FailedTestCase from "./FailedTestCase";
 import FailedTestCaseException from "./FailedTestCaseException";
 import Stopwatch from "../../../util/Stopwatch";
-import LogRecordBuilder from "./LogRecordBuilder";
 import LogRecord from "./LogRecord";
 import ThrownException from "./ThrownException";
 import AssignedAfterEach from "./AssignedAfterEach";
@@ -28,11 +27,12 @@ export default class AssignedTestCase implements Neuron {
 
     public activate(payload: RecognitionPayload) {
         try {
-            const testClass: Class = Strict.notNull(payload).valueOf();
+            Strict.notNull(payload);
+            const testClass = <Class>payload.valueOf();
             const testClassInstance = new testClass;
 
             Brain.instance()
-                .recognize(AssignedBeforeEach,new RecognitionPayload(testClassInstance));
+                .recognize(AssignedBeforeEach, new RecognitionPayload(testClassInstance));
 
             this.stopwatch.start();
             this.method.call(testClassInstance, ...this.args);
@@ -42,7 +42,7 @@ export default class AssignedTestCase implements Neuron {
         } catch (error) {
             this.stopwatch.stop();
 
-            this.handleFailedTestCase(payload.valueOf(), error as FailedTestCaseException);
+            this.handleFailedTestCase(<Class>payload.valueOf(), <FailedTestCaseException>error);
         }
     }
 
@@ -61,7 +61,7 @@ export default class AssignedTestCase implements Neuron {
     }
 
     private logRecord(testStatus: string, testClassName: string): LogRecord {
-        return new LogRecordBuilder()
+        return LogRecord.newBuilder()
             .addField(testStatus)
             .addField(this.stopwatch.elapsedTime().toFixed(3))
             .addField(testClassName)
