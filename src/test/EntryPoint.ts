@@ -11,6 +11,7 @@ import AfterEachTest from "./AfterEachTest";
 import ParameterizedTestTest from "./ParameterizedTestTest";
 import RepeatedTestTest from "./RepeatedTestTest";
 import BeforeEachTest from "./BeforeEachTest";
+import DisplayNameTest from "./DisplayNameTest";
 
 assert.throws(
     () => {
@@ -24,6 +25,7 @@ assert.throws(
             .use(ParameterizedTestTest)
             .use(RepeatedTestTest)
             .use(BeforeEachTest)
+            .use(DisplayNameTest)
             .build();
     },
     BrainException,

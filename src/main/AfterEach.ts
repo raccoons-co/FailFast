@@ -1,4 +1,4 @@
-import {Immutable} from "@raccoons-co/ethics";
+import {Immutable, Strict} from "@raccoons-co/ethics";
 import {Annotation, Method} from "@raccoons-co/genera";
 import Brain from "./bugeye/eventbus/Brain";
 import AssignedAfterEach from "./bugeye/eventbus/neuron/AssignedAfterEach";
@@ -16,8 +16,11 @@ class AfterEach implements Annotation {
         return this.learnAfterEach;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     private learnAfterEach(originalMethod: Method, context: ClassMethodDecoratorContext): void {
+
+        Strict.notNull(context);
+        Strict.argument(String(context.kind) === "method");
+
         Brain.instance()
             .learn(AssignedAfterEach, new AssignedAfterEach(originalMethod));
     }

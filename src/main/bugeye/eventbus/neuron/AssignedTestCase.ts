@@ -11,6 +11,7 @@ import ThrownException from "./ThrownException";
 import AssignedAfterEach from "./AssignedAfterEach";
 import RecognitionPayload from "../RecognitionPayload";
 import AssignedBeforeEach from "./AssignedBeforeEach";
+import AssignedClassDisplayName from "./AssignedClassDisplayName";
 
 @Immutable
 export default class AssignedTestCase implements Neuron {
@@ -28,7 +29,7 @@ export default class AssignedTestCase implements Neuron {
     public activate(payload: RecognitionPayload) {
         try {
             Strict.notNull(payload);
-            const testClass = <Class>payload.valueOf();
+            const testClass = <Class>payload.value();
             const testClassInstance = new testClass;
 
             Brain.instance()
@@ -42,7 +43,8 @@ export default class AssignedTestCase implements Neuron {
         } catch (error) {
             this.stopwatch.stop();
 
-            this.handleFailedTestCase(<Class>payload.valueOf(), <FailedTestCaseException>error);
+            const testClass = <Class>payload.value();
+            this.handleFailedTestCase(testClass, <FailedTestCaseException>error);
         }
     }
 
@@ -64,8 +66,17 @@ export default class AssignedTestCase implements Neuron {
         return LogRecord.newBuilder()
             .addField(testStatus)
             .addField(this.stopwatch.elapsedTime().toFixed(3))
-            .addField(testClassName)
+            .addField(this.displayName(testClassName))
             .addField(this.method.name)
             .build();
+    }
+
+    private displayName(testClassName: string): string {
+        const customNameStack = new Array<string>();
+        Brain.instance()
+            .recognize(AssignedClassDisplayName, new RecognitionPayload(customNameStack));
+        const customName = customNameStack.pop();
+
+        return customName ? customName : testClassName;
     }
 }

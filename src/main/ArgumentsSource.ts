@@ -1,4 +1,4 @@
-import {Immutable} from "@raccoons-co/ethics";
+import {Immutable, Strict} from "@raccoons-co/ethics";
 import {Annotation, Method} from "@raccoons-co/genera";
 import Brain from "./bugeye/eventbus/Brain";
 import AssignedArgumentsSource from "./bugeye/eventbus/neuron/AssignedArgumentsSource";
@@ -12,8 +12,14 @@ import Arguments from "./util/Arguments";
 class ArgumentsSource implements Annotation {
 
     public decorator(args: Array<Arguments>): Method {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
+        Strict.notNull(args);
+
         return function learnArgumentsSource(originalMethod: Method, context: ClassMethodDecoratorContext): void {
+
+            Strict.notNull(context);
+            Strict.argument(String(context.kind) === "method");
+
             Brain.instance()
                 .learn(AssignedArgumentsSource, new AssignedArgumentsSource(originalMethod, args));
         };

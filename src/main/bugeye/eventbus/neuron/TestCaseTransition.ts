@@ -13,6 +13,6 @@ export default abstract class TestCaseTransition implements Neuron {
 
     public activate(testClassInstance: RecognitionPayload) {
         Strict.notNull(testClassInstance);
-        this.method.call(testClassInstance.valueOf());
+        this.method.call(testClassInstance.value());
     }
 }

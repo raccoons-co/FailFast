@@ -9,8 +9,10 @@ import {
     Test,
     TestClass
 } from "../main";
+import DisplayName from "../main/DisplayName";
 
 @TestClass
+@DisplayName("Custom Display Name")
 export default class YourTest {
 
     private property = "";

@@ -30,7 +30,10 @@
       "double"
     ],
     "semi": "off",
-    "@typescript-eslint/semi": "warn"
+    "@typescript-eslint/semi": "warn",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error"
+
   },
   "reportUnusedDisableDirectives": true,
   "noInlineConfig": false

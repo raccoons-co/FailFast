@@ -1,4 +1,4 @@
-import {Immutable} from "@raccoons-co/ethics";
+import {Immutable, Strict} from "@raccoons-co/ethics";
 import {Annotation, Method} from "@raccoons-co/genera";
 import Brain from "./bugeye/eventbus/Brain";
 import AssignedArgumentsSource from "./bugeye/eventbus/neuron/AssignedArgumentsSource";
@@ -18,8 +18,11 @@ class ParameterizedTest implements Annotation {
         return this.handleParametrizedTest;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     private handleParametrizedTest(originalMethod: Method, context: ClassMethodDecoratorContext): void {
+
+        Strict.notNull(context);
+        Strict.argument(String(context.kind) === "method");
+
         Brain.instance()
             .recognize(AssignedArgumentsSource)
             .forget(AssignedArgumentsSource);
