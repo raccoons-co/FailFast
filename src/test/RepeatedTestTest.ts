@@ -33,6 +33,7 @@ export default class RepeatedTestTest {
         return new class AnonymousTest {
             @RepeatedTest(repetitions)
             public nothing(): void {
+                // Intentionally empty
             }
         };
     }
