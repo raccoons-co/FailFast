@@ -12,11 +12,9 @@ import Arguments from "./util/Arguments";
 class ArgumentsSource implements Annotation {
 
     public decorator(args: Array<Arguments>): Method {
-
         Strict.notNull(args);
 
         return function learnArgumentsSource(originalMethod: Method, context: ClassMethodDecoratorContext): void {
-
             Strict.notNull(context);
             Strict.checkArgument(String(context.kind) === "method");
 

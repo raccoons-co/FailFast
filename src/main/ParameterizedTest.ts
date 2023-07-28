@@ -20,7 +20,6 @@ class ParameterizedTest implements Annotation {
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     private handleParametrizedTest(originalMethod: Method, context: ClassMethodDecoratorContext): void {
-
         Strict.notNull(context);
         Strict.checkArgument(String(context.kind) === "method");
 

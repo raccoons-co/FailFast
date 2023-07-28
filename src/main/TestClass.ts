@@ -16,7 +16,6 @@ class TestClass implements Annotation {
     }
 
     private handleTestClass(originalClass: Class, context: ClassDecoratorContext): Class {
-
         Strict.notNull(context);
         Strict.checkArgument(String(context.kind) === "class");
 
@@ -24,6 +23,7 @@ class TestClass implements Annotation {
             .learn(AssignedTestClass, new AssignedTestClass(originalClass))
             .recognize(AssignedTestClass)
             .forget(AssignedTestClass);
+
         return originalClass;
     }
 }

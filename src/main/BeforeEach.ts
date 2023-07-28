@@ -17,7 +17,6 @@ class BeforeEach implements Annotation {
     }
 
     private learnAfterEach(originalMethod: Method, context: ClassMethodDecoratorContext): void {
-
         Strict.notNull(context);
         Strict.checkArgument(String(context.kind) === "method");
 

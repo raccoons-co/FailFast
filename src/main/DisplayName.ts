@@ -12,7 +12,6 @@ class DisplayName implements Annotation {
 
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         return function learnDisplayName(target: Class, context: ClassDecoratorContext): void {
-
             Strict.notNull(context);
             Strict.checkArgument(String(context.kind) === "class");
 

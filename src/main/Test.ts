@@ -20,7 +20,6 @@ class Test implements Annotation {
     }
 
     private learnTestCase(originalMethod: Method, context: ClassMethodDecoratorContext): void {
-
         Strict.notNull(context);
         Strict.checkArgument(String(context.kind) === "method");
 
