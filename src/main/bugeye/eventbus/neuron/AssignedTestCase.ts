@@ -77,6 +77,6 @@ export default class AssignedTestCase implements Neuron {
             .recognize(AssignedClassDisplayName, new RecognitionPayload(customNameStack));
         const customName = customNameStack.pop();
 
-        return customName || testClassName;
+        return customName ?? testClassName;
     }
 }
