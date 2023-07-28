@@ -19,7 +19,7 @@ class AfterEach implements Annotation {
     private learnAfterEach(originalMethod: Method, context: ClassMethodDecoratorContext): void {
 
         Strict.notNull(context);
-        Strict.argument(String(context.kind) === "method");
+        Strict.checkArgument(String(context.kind) === "method");
 
         Brain.instance()
             .learn(AssignedAfterEach, new AssignedAfterEach(originalMethod));

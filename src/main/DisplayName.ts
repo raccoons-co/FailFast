@@ -10,10 +10,11 @@ class DisplayName implements Annotation {
 
         Strict.notNull(customName);
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         return function learnDisplayName(target: Class, context: ClassDecoratorContext): void {
 
             Strict.notNull(context);
-            Strict.argument(String(context.kind) === "class");
+            Strict.checkArgument(String(context.kind) === "class");
 
             Brain.instance()
                 .learn(AssignedClassDisplayName, new AssignedClassDisplayName(customName));

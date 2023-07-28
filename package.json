@@ -35,7 +35,7 @@
     "test": "nyc ts-node src/test/EntryPoint"
   },
   "dependencies": {
-    "@raccoons-co/ethics": "^0.3.0",
+    "@raccoons-co/ethics": "^0.3.1",
     "@raccoons-co/genera": "^0.0.3"
   },
   "devDependencies": {

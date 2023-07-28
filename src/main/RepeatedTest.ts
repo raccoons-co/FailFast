@@ -20,7 +20,7 @@ class RepeatedTest implements Annotation {
         return function handleRepeatedTest(originalMethod: Method, context: ClassMethodDecoratorContext): void {
 
             Strict.notNull(context);
-            Strict.argument(String(context.kind) === "method");
+            Strict.checkArgument(String(context.kind) === "method");
 
             Brain.instance()
                 .learn(AssignedRepeatedTest, new AssignedRepeatedTest(originalMethod, repetitions))

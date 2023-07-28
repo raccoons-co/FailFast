@@ -18,7 +18,7 @@ class TestClass implements Annotation {
     private handleTestClass(originalClass: Class, context: ClassDecoratorContext): Class {
 
         Strict.notNull(context);
-        Strict.argument(String(context.kind) === "class");
+        Strict.checkArgument(String(context.kind) === "class");
 
         Brain.instance()
             .learn(AssignedTestClass, new AssignedTestClass(originalClass))

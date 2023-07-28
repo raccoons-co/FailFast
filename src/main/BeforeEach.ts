@@ -19,7 +19,7 @@ class BeforeEach implements Annotation {
     private learnAfterEach(originalMethod: Method, context: ClassMethodDecoratorContext): void {
 
         Strict.notNull(context);
-        Strict.argument(String(context.kind) === "method");
+        Strict.checkArgument(String(context.kind) === "method");
 
         Brain.instance()
             .learn(AssignedBeforeEach, new AssignedBeforeEach(originalMethod));

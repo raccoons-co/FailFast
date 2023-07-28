@@ -18,7 +18,7 @@ class ArgumentsSource implements Annotation {
         return function learnArgumentsSource(originalMethod: Method, context: ClassMethodDecoratorContext): void {
 
             Strict.notNull(context);
-            Strict.argument(String(context.kind) === "method");
+            Strict.checkArgument(String(context.kind) === "method");
 
             Brain.instance()
                 .learn(AssignedArgumentsSource, new AssignedArgumentsSource(originalMethod, args));

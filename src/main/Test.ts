@@ -22,7 +22,7 @@ class Test implements Annotation {
     private learnTestCase(originalMethod: Method, context: ClassMethodDecoratorContext): void {
 
         Strict.notNull(context);
-        Strict.argument(String(context.kind) === "method");
+        Strict.checkArgument(String(context.kind) === "method");
 
         Brain.instance()
             .learn(AssignedTestCase, new AssignedTestCase(originalMethod));
