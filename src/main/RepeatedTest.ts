@@ -17,6 +17,9 @@ class RepeatedTest implements Annotation {
 
     public decorator(repetitions: number): Method {
 
+        Strict.checkArgument(Number.isInteger(repetitions));
+        Strict.checkArgument(repetitions > 0);
+
         return function handleRepeatedTest(originalMethod: Method, context: ClassMethodDecoratorContext): void {
 
             Strict.notNull(context);
