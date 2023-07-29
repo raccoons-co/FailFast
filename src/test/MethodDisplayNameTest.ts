@@ -40,7 +40,7 @@ export default class DisplayNameTest {
         new Arguments("hasAssignedMethodDisplayName", "Custom MethodDisplayName"),
         new Arguments("recognizesCorrectNumberOfMethodDisplayName", "Another Custom MethodDisplayName")
     ))
-    public nothing(methodName: string, customName: string): void {
+    public recognizesCorrectMethodDisplayName(methodName: string, customName: string): void {
         assert.equal(this.customNamesMap.get(methodName), customName);
     }
 }
