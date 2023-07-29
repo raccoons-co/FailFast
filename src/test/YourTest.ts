@@ -4,12 +4,12 @@ import {
     Arguments,
     ArgumentsSource,
     BeforeEach,
+    DisplayName,
     ParameterizedTest,
     RepeatedTest,
     Test,
     TestClass
 } from "../main";
-import DisplayName from "../main/DisplayName";
 
 @TestClass
 @DisplayName("Custom Display Name")

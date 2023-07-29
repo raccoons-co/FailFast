@@ -1,7 +1,6 @@
-import {Test, TestClass} from "../main";
+import {DisplayName, Test, TestClass} from "../main";
 import {Immutable} from "@raccoons-co/ethics";
 import {assert} from "chai";
-import DisplayName from "../main/DisplayName";
 import Brain from "../main/bugeye/eventbus/Brain";
 import AssignedClassDisplayName from "../main/bugeye/eventbus/neuron/AssignedClassDisplayName";
 import RecognitionPayload from "../main/bugeye/eventbus/RecognitionPayload";

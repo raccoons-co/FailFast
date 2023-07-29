@@ -26,6 +26,7 @@ import ParameterizedTest from "./ParameterizedTest";
 import ArgumentsSource from "./ArgumentsSource";
 import Arguments from "./util/Arguments";
 import RepeatedTest from "./RepeatedTest";
+import DisplayName from "./DisplayName";
 import CleanWayBuilder from "./CleanWayBuilder";
 import BrainException from "./bugeye/eventbus/neuron/BrainException";
 
@@ -38,6 +39,7 @@ export {
     ArgumentsSource,
     Arguments,
     RepeatedTest,
+    DisplayName,
     CleanWayBuilder,
     BrainException
 };
