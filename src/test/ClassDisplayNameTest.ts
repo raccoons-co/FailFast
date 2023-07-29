@@ -8,7 +8,7 @@ import RecognitionPayload from "../main/bugeye/eventbus/RecognitionPayload";
 @TestClass
 @Immutable
 @DisplayName("Custom DisplayNameTest")
-export default class DisplayNameTest {
+export default class ClassDisplayNameTest {
 
     @Test
     public hasAssignedClassDisplayName(): void {
@@ -16,7 +16,7 @@ export default class DisplayNameTest {
     }
 
     @Test
-    public recognizesCorrectDisplayName(): void {
+    public recognizesCorrectClassDisplayName(): void {
         const customNameStack = new Array<string>();
         Brain.instance()
             .recognize(AssignedClassDisplayName, new RecognitionPayload(customNameStack));

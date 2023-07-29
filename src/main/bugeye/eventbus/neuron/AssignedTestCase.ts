@@ -12,6 +12,7 @@ import AssignedAfterEach from "./AssignedAfterEach";
 import RecognitionPayload from "../RecognitionPayload";
 import AssignedBeforeEach from "./AssignedBeforeEach";
 import AssignedClassDisplayName from "./AssignedClassDisplayName";
+import AssignedMethodDisplayName from "./AssignedMethodDisplayName";
 
 @Immutable
 export default class AssignedTestCase implements Neuron {
@@ -66,17 +67,26 @@ export default class AssignedTestCase implements Neuron {
         return LogRecord.newBuilder()
             .addField(testStatus)
             .addField(this.stopwatch.elapsedTime().toFixed(3))
-            .addField(this.displayName(testClassName))
-            .addField(this.method.name)
+            .addField(this.classDisplayName(testClassName))
+            .addField(this.methodDisplayName(this.method.name))
             .build();
     }
 
-    private displayName(testClassName: string): string {
+    private classDisplayName(testClassName: string): string {
         const customNameStack = new Array<string>();
         Brain.instance()
             .recognize(AssignedClassDisplayName, new RecognitionPayload(customNameStack));
         const customName = customNameStack.pop();
 
         return customName ?? testClassName;
+    }
+
+    private methodDisplayName(testMethodName: string): string {
+        const customNamesMap = new Map<string, string>();
+        Brain.instance()
+            .recognize(AssignedMethodDisplayName, new RecognitionPayload(customNamesMap));
+        const customName = customNamesMap.get(testMethodName);
+
+        return customName ?? testMethodName;
     }
 }
