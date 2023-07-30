@@ -7,6 +7,7 @@ import AssignedAfterEach from "./AssignedAfterEach";
 import RecognitionPayload from "../RecognitionPayload";
 import AssignedBeforeEach from "./AssignedBeforeEach";
 import AssignedClassDisplayName from "./AssignedClassDisplayName";
+import AssignedMethodDisplayName from "./AssignedMethodDisplayName";
 
 @Immutable
 export default class AssignedTestClass implements Neuron {
@@ -23,6 +24,7 @@ export default class AssignedTestClass implements Neuron {
             .forget(AssignedTestCase)
             .forget(AssignedBeforeEach)
             .forget(AssignedAfterEach)
-            .forget(AssignedClassDisplayName);
+            .forget(AssignedClassDisplayName)
+            .forget(AssignedMethodDisplayName);
     }
 }
