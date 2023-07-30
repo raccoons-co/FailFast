@@ -8,7 +8,7 @@
 TypeScript 5.0 have implemented the new decorators standard! 
 It's not required to enable experimental support for decorators any more.
 ```
-#### Clean Way 
+### Clean Way 
 The library provides an `EntryPoint` to `@Test`-driven development discipline practice 
 with Typescript. 
 
@@ -32,18 +32,21 @@ method in the current test class.
 - `@AfterEach` is used to annotate a transition method that will be executed after each test 
 method in the current test class.
 
+- `@DisplayName` is used to declare a custom name for the annotated test class or test methods.
+
+
 Test methods, transition methods must not be private or static and must not return a value.
 
 Each test is executed separately with own object of a test class.
 
 Cleanway is friendly to [Istanbul](https://istanbul.js.org/) test coverage tool.
   
-#### Simple auto-start
+### Simple auto-start
 
 Create a new repository from [cleanway-skeleton](https://github.com/raccoons-co/cleanway-skeleton)
 template.
 
-#### Manual start
+### Manual start
 
 Install package as development dependency.
 
@@ -65,7 +68,9 @@ Implement `src/test/YourTest.ts` in accordance to this
 
 Create `src/main/YourProgram.ts`.
 
-Finally paste scripts section to `package.json`:
+Finally paste script to `package.json` to run your tests in execution environment 
+with coverage reporting:
+
 ~~~~
 "scripts": {
   "test": "nyc ts-node src/test/EntryPoint"
@@ -75,7 +80,7 @@ Do not forget to install *istanbul, ts-node* as development dependencies and rev
 [.nycrc.json](https://github.com/raccoons-co/cleanway/blob/master/.nycrc.json) as well.
 
 
-#### Run
+### Run
 
 Now you are ready to follow clean way.
 Run test locally and with continuous integration platform. 

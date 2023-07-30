@@ -4,6 +4,11 @@ import AssignedClassDisplayName from "./bugeye/eventbus/neuron/AssignedClassDisp
 import Brain from "./bugeye/eventbus/Brain";
 import AssignedMethodDisplayName from "./bugeye/eventbus/neuron/AssignedMethodDisplayName";
 
+/**
+ * `@DisplayName` is used to declare a custom name for the annotated test class or test methods.
+ *
+ * @public
+ */
 @Immutable
 class DisplayName implements Annotation {
 
