@@ -12,7 +12,7 @@ import {
 } from "../main";
 
 @TestClass
-@DisplayName("Custom Display Name")
+@DisplayName("YourTest class custom display name")
 export default class YourTest {
 
     private property = "";
@@ -23,11 +23,13 @@ export default class YourTest {
     }
 
     @Test
+    @DisplayName("Custom display name for Test")
     public nothing(): void {
         assert.ok("But your assertions here.");
     }
 
     @ParameterizedTest
+    @DisplayName("Custom display name for ParameterizedTest")
     @ArgumentsSource(Array.of(
         new Arguments("More assertions.", 1)
     ))
@@ -38,6 +40,7 @@ export default class YourTest {
     }
 
     @RepeatedTest(3)
+    @DisplayName("Custom display name for RepeatedTest")
     public matters() {
         assert.equal(this.property, "For your clean code.");
     }
