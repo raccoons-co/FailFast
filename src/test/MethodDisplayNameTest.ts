@@ -9,12 +9,12 @@ import AssignedMethodDisplayName from "../main/bugeye/eventbus/neuron/AssignedMe
 @Immutable
 export default class DisplayNameTest {
 
-    private readonly customNamesMap = new Map<string, string>();
+    private readonly customNames = new Map<string, string>();
 
     @BeforeEach
     public setUp(): void {
         Brain.instance()
-            .recognize(AssignedMethodDisplayName, new RecognitionPayload(this.customNamesMap));
+            .recognize(AssignedMethodDisplayName, new RecognitionPayload(this.customNames));
     }
 
     @Test
@@ -26,13 +26,13 @@ export default class DisplayNameTest {
     @Test
     @DisplayName("Another Custom MethodDisplayName")
     public recognizesCorrectNumberOfMethodDisplayName(): void {
-        assert.equal(this.customNamesMap.size, 2);
+        assert.equal(this.customNames.size, 2);
     }
 
     @Test
     public recognizesAllMethodsWithDisplayName(): void {
         const keys = ["hasAssignedMethodDisplayName", "recognizesCorrectNumberOfMethodDisplayName"];
-        assert.hasAllKeys(this.customNamesMap, keys);
+        assert.hasAllKeys(this.customNames, keys);
     }
 
     @ParameterizedTest
@@ -41,6 +41,6 @@ export default class DisplayNameTest {
         new Arguments("recognizesCorrectNumberOfMethodDisplayName", "Another Custom MethodDisplayName")
     ))
     public recognizesCorrectMethodDisplayName(methodName: string, customName: string): void {
-        assert.equal(this.customNamesMap.get(methodName), customName);
+        assert.equal(this.customNames.get(methodName), customName);
     }
 }

@@ -17,11 +17,9 @@ export default class ClassDisplayNameTest {
 
     @Test
     public recognizesCorrectClassDisplayName(): void {
-        const customNameStack = new Array<string>();
+        const customName = new Array<string>();
         Brain.instance()
-            .recognize(AssignedClassDisplayName, new RecognitionPayload(customNameStack));
-        const customName = customNameStack.pop();
-
-        assert.equal(customName, "Custom DisplayNameTest");
+            .recognize(AssignedClassDisplayName, new RecognitionPayload(customName));
+        assert.equal(customName.pop(), "Custom DisplayNameTest");
     }
 }
