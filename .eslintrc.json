@@ -15,10 +15,8 @@
       "warn",
       "always"
     ],
-    "indent": [
-      "warn",
-      4
-    ],
+    "indent": "off",
+    "@typescript-eslint/indent": ["warn"],
     "max-len": [
       "warn",
       120
@@ -34,11 +32,11 @@
         "args": "all"
       }
     ],
+    "semi": "off",
+    "@typescript-eslint/semi": "warn",
     "quotes": [
       "warn",
       "double"
-    ],
-    "semi": "off",
-    "@typescript-eslint/semi": "warn"
+    ]
   }
 }
