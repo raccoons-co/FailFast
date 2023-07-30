@@ -73,20 +73,16 @@ export default class AssignedTestCase implements Neuron {
     }
 
     private classDisplayName(originalClassName: string): string {
-        const customNameStack = new Array<string>();
+        const customName = new Array<string>();
         Brain.instance()
-            .recognize(AssignedClassDisplayName, new RecognitionPayload(customNameStack));
-        const customName = customNameStack.pop();
-
-        return customName ?? originalClassName;
+            .recognize(AssignedClassDisplayName, new RecognitionPayload(customName));
+        return customName.pop() ?? originalClassName;
     }
 
     private methodDisplayName(originalMethodName: string): string {
-        const customNamesMap = new Map<string, string>();
+        const customNames = new Map<string, string>();
         Brain.instance()
-            .recognize(AssignedMethodDisplayName, new RecognitionPayload(customNamesMap));
-        const customName = customNamesMap.get(originalMethodName);
-
-        return customName ?? originalMethodName;
+            .recognize(AssignedMethodDisplayName, new RecognitionPayload(customNames));
+        return customNames.get(originalMethodName) ?? originalMethodName;
     }
 }

@@ -1,4 +1,4 @@
-import {Immutable} from "@raccoons-co/ethics";
+import {Immutable, Strict} from "@raccoons-co/ethics";
 import Neuron from "../Neuron";
 import RecognitionPayload from "../RecognitionPayload";
 
@@ -8,11 +8,12 @@ export default class AssignedClassDisplayName implements Neuron {
     private readonly customName: string;
 
     constructor(customName: string) {
-        this.customName = customName;
+        this.customName = Strict.notNull(customName);
     }
 
     activate(payload: RecognitionPayload): void {
-        (payload.value() as Array<string>)
-            .push(this.customName);
+        Strict.notNull(payload);
+        const customName: Array<string> = payload.value();
+        customName.push(this.customName);
     }
 }

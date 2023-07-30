@@ -1,4 +1,4 @@
-import {Immutable} from "@raccoons-co/ethics";
+import {Immutable, Strict} from "@raccoons-co/ethics";
 import Neuron from "../Neuron";
 import RecognitionPayload from "../RecognitionPayload";
 
@@ -10,12 +10,13 @@ export default class AssignedMethodDisplayName implements Neuron {
 
 
     constructor(methodName: string, customName: string) {
-        this.methodName = methodName;
-        this.customName = customName;
+        this.methodName = Strict.notNull(methodName);
+        this.customName = Strict.notNull(customName);
     }
 
     activate(payload: RecognitionPayload): void {
-        (payload.value() as Map<string, string>)
-            .set(this.methodName, this.customName);
+        Strict.notNull(payload);
+        const customNames: Map<string, string> = payload.value();
+        customNames.set(this.methodName, this.customName);
     }
 }
