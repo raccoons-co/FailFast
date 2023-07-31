@@ -28,5 +28,4 @@ export default class AfterEachTest {
     public executesMultipleAfterEach(): void {
         assert.equal(this.property, "Another value");
     }
-
 }

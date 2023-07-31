@@ -8,7 +8,6 @@ export default class AssignedMethodDisplayName implements Neuron {
     private readonly methodName: string;
     private readonly customName: string;
 
-
     constructor(methodName: string, customName: string) {
         this.methodName = Strict.notNull(methodName);
         this.customName = Strict.notNull(customName);
