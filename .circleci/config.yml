@@ -43,4 +43,5 @@ workflows:
       - node/test:
           name: upload-code-coverage
           post-steps:
-            - codecov/upload
+            - codecov/upload:
+                xtra_args: "--nonZero"
