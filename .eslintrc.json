@@ -1,37 +1,42 @@
 {
-  "root": true,
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
   ],
+  "noInlineConfig": false,
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "@typescript-eslint"
   ],
+  "reportUnusedDisableDirectives": true,
+  "root": true,
   "rules": {
+    "eol-last": [
+      "warn",
+      "always"
+    ],
+    "indent": "off",
+    "@typescript-eslint/indent": ["warn"],
     "max-len": [
       "warn",
       120
     ],
     "max-lines": [
       "warn",
-      92
+      96
     ],
-    "eol-last": [
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
       "warn",
-      "always"
+      {
+        "args": "all"
+      }
     ],
-    "indent": [
-      "warn",
-      4
-    ],
+    "semi": "off",
+    "@typescript-eslint/semi": "warn",
     "quotes": [
       "warn",
       "double"
-    ],
-    "semi": "off",
-    "@typescript-eslint/semi": "warn"
-  },
-  "reportUnusedDisableDirectives": true,
-  "noInlineConfig": false
+    ]
+  }
 }

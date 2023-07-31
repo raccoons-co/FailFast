@@ -4,13 +4,13 @@ import {Any} from "@raccoons-co/genera";
 @Immutable
 export default class RecognitionPayload {
 
-    private readonly value: Any;
+    private readonly payloadValue: Any;
 
     constructor(value: Any) {
-        this.value = Strict.notNull(value);
+        this.payloadValue = Strict.notNull(value);
     }
 
-    public valueOf(): Any {
-        return this.value;
+    public value(): Any {
+        return this.payloadValue;
     }
 }

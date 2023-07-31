@@ -1,4 +1,4 @@
-import {Immutable} from "@raccoons-co/ethics";
+import {Immutable, Strict} from "@raccoons-co/ethics";
 import {Annotation, Method} from "@raccoons-co/genera";
 import Brain from "./bugeye/eventbus/Brain";
 import AssignedRepeatedTest from "./bugeye/eventbus/neuron/AssignedRepeatedTest";
@@ -16,8 +16,13 @@ import AssignedRepeatedTest from "./bugeye/eventbus/neuron/AssignedRepeatedTest"
 class RepeatedTest implements Annotation {
 
     public decorator(repetitions: number): Method {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        Strict.checkArgument(Number.isInteger(repetitions));
+        Strict.checkArgument(repetitions > 0);
+
         return function handleRepeatedTest(originalMethod: Method, context: ClassMethodDecoratorContext): void {
+            Strict.notNull(context);
+            Strict.checkArgument(String(context.kind) === "method");
+
             Brain.instance()
                 .learn(AssignedRepeatedTest, new AssignedRepeatedTest(originalMethod, repetitions))
                 .recognize(AssignedRepeatedTest)

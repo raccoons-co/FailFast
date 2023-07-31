@@ -11,6 +11,8 @@ import ThrownException from "./ThrownException";
 import AssignedAfterEach from "./AssignedAfterEach";
 import RecognitionPayload from "../RecognitionPayload";
 import AssignedBeforeEach from "./AssignedBeforeEach";
+import AssignedClassDisplayName from "./AssignedClassDisplayName";
+import AssignedMethodDisplayName from "./AssignedMethodDisplayName";
 
 @Immutable
 export default class AssignedTestCase implements Neuron {
@@ -28,7 +30,7 @@ export default class AssignedTestCase implements Neuron {
     public activate(payload: RecognitionPayload) {
         try {
             Strict.notNull(payload);
-            const testClass = <Class>payload.valueOf();
+            const testClass = <Class>payload.value();
             const testClassInstance = new testClass;
 
             Brain.instance()
@@ -42,7 +44,8 @@ export default class AssignedTestCase implements Neuron {
         } catch (error) {
             this.stopwatch.stop();
 
-            this.handleFailedTestCase(<Class>payload.valueOf(), <FailedTestCaseException>error);
+            const testClass = <Class>payload.value();
+            this.handleFailedTestCase(testClass, <FailedTestCaseException>error);
         }
     }
 
@@ -64,8 +67,22 @@ export default class AssignedTestCase implements Neuron {
         return LogRecord.newBuilder()
             .addField(testStatus)
             .addField(this.stopwatch.elapsedTime().toFixed(3))
-            .addField(testClassName)
-            .addField(this.method.name)
+            .addField(this.classDisplayName(testClassName))
+            .addField(this.methodDisplayName(this.method.name))
             .build();
+    }
+
+    private classDisplayName(originalClassName: string): string {
+        const customName = new Array<string>();
+        Brain.instance()
+            .recognize(AssignedClassDisplayName, new RecognitionPayload(customName));
+        return customName.pop() ?? originalClassName;
+    }
+
+    private methodDisplayName(originalMethodName: string): string {
+        const customNames = new Map<string, string>();
+        Brain.instance()
+            .recognize(AssignedMethodDisplayName, new RecognitionPayload(customNames));
+        return customNames.get(originalMethodName) ?? originalMethodName;
     }
 }

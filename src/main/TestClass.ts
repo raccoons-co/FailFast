@@ -1,4 +1,4 @@
-import {Immutable} from "@raccoons-co/ethics";
+import {Immutable, Strict} from "@raccoons-co/ethics";
 import {Annotation, Class, Method} from "@raccoons-co/genera";
 import Brain from "./bugeye/eventbus/Brain";
 import AssignedTestClass from "./bugeye/eventbus/neuron/AssignedTestClass";
@@ -15,12 +15,15 @@ class TestClass implements Annotation {
         return this.handleTestClass;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     private handleTestClass(originalClass: Class, context: ClassDecoratorContext): Class {
+        Strict.notNull(context);
+        Strict.checkArgument(String(context.kind) === "class");
+
         Brain.instance()
             .learn(AssignedTestClass, new AssignedTestClass(originalClass))
             .recognize(AssignedTestClass)
             .forget(AssignedTestClass);
+
         return originalClass;
     }
 }
